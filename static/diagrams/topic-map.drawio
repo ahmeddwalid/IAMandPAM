@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="topic-map" name="Page-1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n1" value="Home" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="IAM Fundamentals" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Protocols &amp; IGA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="PAM Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Vendor Landscape" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="440" y="360" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Scenarios &amp; Troubleshooting" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="440" y="520" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" value="Interview Preparation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="800" y="200" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" value="Certifications &amp; Career" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="800" y="360" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" value="Hands-On Labs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="800" y="520" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="start here" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b5aa9a;dashed=1;fontColor=#7a6e5f;fontSize=11;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="do this in parallel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b5aa9a;dashed=1;fontColor=#7a6e5f;fontSize=11;" edge="1" parent="1" source="n1" target="n9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="foundation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n2" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="assumes IAM basics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n2" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="evaluate vendors with fundamentals" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n2" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="protocol literacy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n3" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="identify the failing step" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n3" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="recurring pain points" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n4" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="vendor fit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n4" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="answers grounded in real cases" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n6" target="n7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="evidence for the interview" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n9" target="n7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="credential + experience" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=11;" edge="1" parent="1" source="n7" target="n8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

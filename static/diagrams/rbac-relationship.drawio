@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="rbac-relationship" name="RBAC relationships">
+    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="u" value="User" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r" value="Role" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="p" value="Permission" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="res" value="Resource" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="assigned" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="u" target="r">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="granted" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="r" target="p">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="applies to" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="p" target="res">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

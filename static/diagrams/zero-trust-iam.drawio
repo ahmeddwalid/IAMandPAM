@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="zero-trust-iam" name="Zero-trust IAM architecture">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="480" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="user" value="User +&#10;managed device" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="pep" value="Policy engine&#10;identity + device posture + risk&#10;(policy decision &amp; enforcement)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="jit" value="JIT access broker (PAM)&#10;time-boxed grants,&#10;no standing privilege" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="idp" value="Identity provider&#10;phishing-resistant MFA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dir" value="Directory&#10;(source of truth)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="res" value="Resources&#10;apps, data,&#10;infrastructure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="180" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="mon" value="Continuous monitoring&#10;&amp; analytics" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="standing" value="Standing privileged&#10;accounts (eliminated)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#c0392b;dashed=1;fontColor=#c0392b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="360" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="request access" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="user" target="pep">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="grant decision" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="pep" target="jit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="verify identity" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="idp" target="pep">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="attributes" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="dir" target="pep">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="enforce" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="pep" target="res">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="time-boxed access" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="jit" target="res">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="logs" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="pep" target="mon">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

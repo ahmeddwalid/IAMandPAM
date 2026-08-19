@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="lab-5" name="Page-1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n1" value="HR source (CSV export)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="Identity store" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Entitlements (group memberships)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="Access certification campaign" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="120" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Segregation-of-duties check" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="320" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Remediation (revoke or adjust)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#c0392b;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="import: joiner, mover, leaver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="provision entitlements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n2" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="owners review each access" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n3" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="conflict detection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n4" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="remediate flagged access" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#c0392b;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n5" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="update membership" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n6" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

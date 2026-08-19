@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="lab-2" name="Page-1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctx" value="AWS Organizations" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#d5cdc0;dashed=1;verticalAlign=top;fontColor=#7a6e5f;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="520" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" value="Management account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="Member account: production" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Member account: development" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="IAM Identity Center (federated identity source)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Company identity provider (Keycloak or Entra ID)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="640" y="320" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Permission sets (scoped roles)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="640" y="520" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="org structure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d5cdc0;dashed=1;fontColor=#7a6e5f;fontSize=12;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="org structure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d5cdc0;dashed=1;fontColor=#7a6e5f;fontSize=12;" edge="1" parent="1" source="n1" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="SAML federation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n5" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="group to permission-set mapping" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n4" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="assigned role (short-lived credentials)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n6" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="assigned role" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n6" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

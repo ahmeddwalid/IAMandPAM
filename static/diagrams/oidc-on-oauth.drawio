@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="oidc-on-oauth" name="OIDC layered on OAuth">
+    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="460" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="oidcband" value="OpenID Connect (authentication layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=14;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="760" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="oauthband" value="OAuth 2.0 (authorization framework)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=14;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="760" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="idtok" value="ID Token&#10;(signed JWT with&#10;identity claims)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ui" value="UserInfo&#10;endpoint" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="disc" value="Discovery +&#10;dynamic registration" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="authcode" value="Authorization code&#10;+ PKCE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="acctok" value="Access token&#10;(scoped, short-lived)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="320" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="reftok" value="Refresh token&#10;(long-lived, rotatable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="adds identity claims" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="idtok" target="acctok">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="exchanged for" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="authcode" target="acctok">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="renewed by" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="acctok" target="reftok">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="protected by" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="acctok" target="ui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

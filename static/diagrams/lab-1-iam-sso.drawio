@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="lab-1" name="Page-1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctx" value="Home lab network (VirtualBox)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#d5cdc0;dashed=1;verticalAlign=top;fontColor=#7a6e5f;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1120" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" value="User browser" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="Keycloak (OIDC identity provider)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Active Directory (user store)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="480" y="320" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="Application 1 (OIDC client)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="480" y="120" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Application 2 (OIDC client)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="840" y="120" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1. sign in (redirect to IdP)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="2. LDAP bind: password check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n2" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="3. ID token + access token (OIDC)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n2" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="SSO: same session, no new login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b5aa9a;fontColor=#5a4f42;fontSize=12;dashed=1;" edge="1" parent="1" source="n1" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d5cdc0;" edge="1" parent="1" source="n4" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

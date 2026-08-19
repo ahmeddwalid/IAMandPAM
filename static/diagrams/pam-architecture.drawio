@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="pam-architecture" name="Complete PAM architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="admin" value="Admin&#10;(session request)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="psm" value="Privileged Session Manager&#10;broker + policy + recording" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="targets" value="Target systems&#10;servers, databases,&#10;network devices" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ticketing" value="Ticketing /&#10;approval" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="vault" value="Credential vault&#10;encrypted, rotated,&#10;checked out per session" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="recording" value="Session recording&#10;&amp; storage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="hadr" value="Vault HA/DR&#10;replication + failover" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="siem" value="SIEM&#10;logs + alerts" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="session request" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="admin" target="psm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="ticket approval" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ticketing" target="psm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="retrieve credential" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="psm" target="vault">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="connect with vaulted credential&#10;(user never sees the password)" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="psm" target="targets">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="mirror session" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="psm" target="recording">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="replicate" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="vault" target="hadr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="logs" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="recording" target="siem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="logs + alerts" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="psm" target="siem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

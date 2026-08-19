@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="jit-access" name="JIT access workflow">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="320" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="req" value="1. Request&#10;user asks for elevated access&#10;with ticket + reason + duration" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="appr" value="2. Approve&#10;manager or policy decides&#10;auto-approve for low risk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="grant" value="3. Grant&#10;time-boxed privilege,&#10;default window in minutes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="use" value="4. Use&#10;session is brokered,&#10;monitored, recorded" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="rev" value="5. Revoke&#10;expiry or task end,&#10;verified automatically" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="6. Audit&#10;request, approval, grant,&#10;use and revocation logged" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;" edge="1" parent="1" source="req" target="appr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;" edge="1" parent="1" source="appr" target="grant">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;" edge="1" parent="1" source="grant" target="use">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="expiry reached" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="use" target="rev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;" edge="1" parent="1" source="rev" target="audit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

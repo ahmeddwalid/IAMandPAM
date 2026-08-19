@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="hybrid-identity-architecture" name="Hybrid identity architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="820" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="onprem-band" value="On-premises" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#7a6e5f;fontColor=#7a6e5f;fontSize=13;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="0" y="160" width="280" height="320" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-band" value="Cloud" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#7a6e5f;fontColor=#7a6e5f;fontSize=13;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="280" height="320" as="geometry"/>
+        </mxCell>
+        <mxCell id="users" value="Users&#10;people + devices" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloudapps" value="Cloud apps&#10;Microsoft 365, SaaS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ad" value="Active Directory&#10;domains, forests,&#10;trusts, GPOs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="200" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="entra" value="Microsoft Entra ID&#10;cloud identity&#10;authority" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="200" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ca" value="Conditional Access&#10;evaluate every sign-in" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="sync" value="Entra Connect Sync /&#10;Cloud Sync" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="onpremapps" value="On-prem apps&#10;Kerberos / LDAP" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="pim" value="PIM&#10;just-in-time role&#10;activation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="400" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="Kerberos sign-in" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="users" target="ad">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="sign-in + MFA" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="users" target="entra">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="object sync" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ad" target="sync">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="object sync" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="sync" target="entra">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="sign-in context" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="entra" target="ca">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="SSO via SAML / OIDC" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ca" target="cloudapps">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="auth" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ad" target="onpremapps">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="activate privileged role" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=12;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="entra" target="pim">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Auth options: Password Hash Sync (hash only, not the password), Pass-through Auth, or federation. Seamless SSO covers both worlds with one sign-in." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b5aa9a;fontColor=#5a4f42;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="480" width="440" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

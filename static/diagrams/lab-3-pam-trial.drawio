@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="lab-3" name="Page-1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctx" value="PAM trial lab (isolated network)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#d5cdc0;dashed=1;verticalAlign=top;fontColor=#7a6e5f;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" value="Admin workstation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="Vault / PVWA (CyberArk trial)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Target: Windows Server (AD domain)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="CPM (credential rotation)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#b76e2e;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="360" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="PSM (session proxy)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Session recording + audit trail" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f6f2;strokeColor=#e0ddd8;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1. MFA + request access" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="2. session is brokered through PSM" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n2" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="3. credential injected, never shown" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n5" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="member of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d5cdc0;dashed=1;fontColor=#7a6e5f;fontSize=12;" edge="1" parent="1" source="n3" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="4. rotation policy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n2" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="5. password changed after use" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7a6e5f;fontColor=#5a4f42;fontSize=12;" edge="1" parent="1" source="n4" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="video + keystrokes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d5cdc0;fontColor=#7a6e5f;fontSize=12;" edge="1" parent="1" source="n5" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
