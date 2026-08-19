@@ -1,0 +1,39 @@
+{
+  "video": "part1",
+  "title": "What is IAM & PAM?",
+  "voice": "en-US-GuyNeural",
+  "scenes": [
+    {
+      "id": "title",
+      "narration": "Identity and access management. Privileged access management. Two disciplines, one goal. Make sure the right people reach the right systems, for the right reasons, and only while they need to."
+    },
+    {
+      "id": "objects",
+      "narration": "Every identity program works with the same objects. An identity is a digital record for a person, a device, or a service. An account is that identity's credentials on a specific system. Attributes are facts attached to the identity, like department, location, or role. And entitlements are the permissions an identity holds. One person often holds accounts across dozens of systems. That spread is the problem IAM exists to solve."
+    },
+    {
+      "id": "aaa",
+      "narration": "Access decisions follow the AAA model. Authentication proves who you are. Authorization decides what you may do. Accounting records what you did. All three matter. Authentication without authorization is meaningless, and neither one matters without an audit trail."
+    },
+    {
+      "id": "lifecycle",
+      "narration": "Identity is a lifecycle, not a moment. Joiner. Mover. Leaver. A person joins and gets the access their role requires. They move, and their access changes with them. They leave, and their access ends. Every step needs a source of truth. HR for people. A contract for vendors. A registry for machines."
+    },
+    {
+      "id": "least",
+      "narration": "The organizing principle is least privilege. Grant the minimum access needed to do the job, for the minimum time needed to do it. And verify continuously. Zero trust treats every request as unverified until proven otherwise."
+    },
+    {
+      "id": "pam",
+      "narration": "Privileged access is where risk concentrates. Domain admins. Root accounts. Service accounts. Break-glass accounts. A handful of credentials can control an entire organization. PAM protects that handful. Vault the credentials. Broker the sessions. Grant privileged access just in time, with approval, recording, and review."
+    },
+    {
+      "id": "iamvs",
+      "narration": "So IAM governs everyday access for everyone. PAM governs the dangerous few. They overlap, and a mature program runs both from one story. Know every identity. Give it exactly the access it needs. And prove that answer stays correct over time."
+    },
+    {
+      "id": "outro",
+      "narration": "That is the discipline this site covers in depth. Protocols. Vendors. Scenarios. Labs. And the interview preparation to make it a career. Identity security is a skill you can build. This is the roadmap."
+    }
+  ]
+}
