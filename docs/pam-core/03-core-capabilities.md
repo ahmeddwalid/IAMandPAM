@@ -57,3 +57,14 @@ The single most important architectural distinction in PAM is between the **vaul
 A program with a vault but no session layer has protected the credential and lost the attribution. A program with a session layer but no vault has the attribution and no protected credential. The [architecture page](pam-architecture) shows both and the path between them.
 
 Next: [Best practices](best-practices), the rules that turn these mechanisms into a program.
+
+## Capability interaction: what breaks without the pairing
+
+Each capability above is often sold and bought individually. The failures come from the gaps between them:
+
+- **Vaulting without rotation:** a credential in a vault that never rotates is a credential that, once leaked, stays leaked. The vault gives the illusion of control; the rotation is the control.
+- **PSM without recording:** a brokered session with no recording is a session that cannot be audited. The broker gives the illusion of control; the recording is the evidence.
+- **JIT without workflow:** a JIT grant with no approval workflow is a JIT grant that anyone with access to the request page can approve. The time-box gives the illusion of control; the approval is the control.
+- **Discovery without action:** an inventory of privileged accounts that nobody acts on is a documented risk that the organization has chosen to accept. The inventory gives the illusion of control; the remediation is the control.
+
+The pattern: every PAM capability has a "sitting next to it" capability that makes it real. Buying one without the other is the most common PAM program failure mode.

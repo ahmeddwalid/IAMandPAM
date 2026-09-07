@@ -81,3 +81,15 @@ The pattern across all of them: Kerberos is safe *if* keys stay secret and ticke
 ## Interview angle
 
 Two questions dominate: "explain how SSO works" and "what happens when Kerberos fails". The first is the ticket exchange above, told in two minutes: password proves identity once, the TGT proves it all day, each service trusts the KDC's encryption. The second is usually one of: clock skew (time), SPN mismatch (the service name in the ticket does not match what the client requested), missing or stale keytab (the service cannot decrypt its tickets), or the service account password changed and the machine did not update. Those four causes cover most real-world Kerberos breakage, and each has a concrete fix.
+
+## Detection signals in the wild
+
+The Kerberos exchange is textbook. The detection work is recognizing when the exchange is being abused:
+
+- **RC4 tickets in an AES-only environment.** If the domain is configured to refuse RC4, any RC4 ticket is either a legacy system that was not migrated (track it down) or an attacker downgrading the encryption to crack the ticket offline (Kerberoasting with RC4 is orders of magnitude faster than AES).
+- **TGT lifetime anomalies.** A TGT that lasts longer than the domain default (10 hours) is either a golden ticket or a misconfigured policy. The `TicketOptions` field in the 4768 event encodes the requested lifetime; flag anything above the default.
+- **Pre-authentication disabled.** The `UF_DONT_REQUIRE_PREAUTH` flag on a user account lets an attacker request a ticket without knowing the password and crack it offline. The 4768 event without pre-auth is the signal. The accounts that legitimately need this flag (rare) should be in a dedicated OU and monitored separately.
+- **Service ticket volume spikes.** A sudden increase in 4769 events to a single SPN is a Kerberoasting attack: the attacker is requesting service tickets for offline cracking. The signal is volume, not success or failure.
+- **DRSUAPI from non-domain controllers.** The 4662 event with the DRSUAPI replication GUID is a DCSync attack: an attacker is requesting directory replication to extract password hashes. The source computer in the event should always be a domain controller.
+
+**What breaks without these:** an attacker who Kerberoasts a service account and cracks the password offline produces no failed logins, no account lockouts, and no obvious signal. The only detection is the 4769 volume spike, which most environments do not monitor.

@@ -59,3 +59,15 @@ flowchart TD
 An OAuth access token proves "this client has scope X on resource Y." It does not prove who the user is, and a resource server that treats a scope as an identity is repeating the classic confusion. Identity on top of OAuth is the job of OIDC, which adds the ID token and the UserInfo endpoint.
 
 Next: [OpenID Connect](04-oidc.md), the identity layer that turns OAuth 2.0 into a usable SSO protocol.
+
+## Edge cases and protocol decisions
+
+The grant selection chart above is the common case. The decisions that separate experienced practitioners:
+
+- **PKCE is not optional for any public client.** The authorization code grant without PKCE is vulnerable to code interception on mobile and desktop apps. Every OAuth library built after 2020 supports PKCE; if yours does not, replace it.
+- **Refresh tokens for public clients are a design tension.** A refresh token on a browser or mobile app can be exfiltrated with the same effort as an access token. The current pattern for SPAs is the BFF (Backend for Frontend) pattern: the SPA talks to a thin backend server that holds the refresh token and issues session cookies. The SPA never sees the refresh token.
+- **The "audience" problem:** an access token issued for API A can be presented to API B if API B does not validate the `aud` claim. The validation is the resource server's responsibility; the authorization server cannot enforce it. Every resource server must check `aud` against its own identifier.
+- **Token exchange (RFC 8693):** when a service needs to call another service on behalf of the user, the naive pattern is to forward the original access token (wrong: wrong audience, wrong scope, no delegation chain). The correct pattern is token exchange: the calling service exchanges the original token for a new one scoped to the downstream service, with the delegation chain preserved.
+- **Sender-constrained tokens (mTLS bound or DPoP):** a bearer token stolen from logs or memory can be used by anyone. Sender-constrained tokens bind the token to the client's TLS certificate or a proof-of-possession key, so a stolen token is useless without the bound credential. This is the direction the ecosystem is moving for high-security clients.
+
+**What breaks without these:** an OAuth deployment that only implements the happy-path authorization code flow and stops is the most common source of OAuth vulnerabilities in the wild. The edge cases above are not advanced; they are the baseline for a production deployment in 2026.
