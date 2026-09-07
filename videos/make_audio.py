@@ -41,7 +41,7 @@ def parse_srt(path: Path, offset: float) -> list:
     cues = []
     for line in path.read_text().splitlines():
         event = json.loads(line)
-        if event.get("type") != "WordBoundary":
+        if event.get("type") not in ("SentenceBoundary", "WordBoundary"):
             continue
         start = event["offset"] / 1_000_000
         end = start + event["duration"] / 1_000_000
