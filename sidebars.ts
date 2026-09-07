@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
         'fundamentals/nist-800-207',
         'fundamentals/passwordless',
         'fundamentals/password-policy',
+        'fundamentals/identity-analytics',
       ],
     },
     {
@@ -55,6 +56,8 @@ const sidebars: SidebarsConfig = {
         'pam-core/secrets-management',
         'pam-core/service-accounts',
         'pam-core/iam-metrics',
+        'pam-core/privileged-access-workstations',
+        'pam-core/identity-threat-detection',
       ],
     },
     {
@@ -167,6 +170,17 @@ const sidebars: SidebarsConfig = {
         {type: 'doc', id: 'labs/jit-mfa', label: '5. JIT Access with MFA'},
         {type: 'doc', id: 'labs/iga-campaign', label: '6. Lightweight IGA'},
         {type: 'doc', id: 'labs/secrets-vault', label: '7. Secrets Management with Vault'},
+        {type: 'doc', id: 'labs/devops-identity', label: '8. DevOps CI-CD Identity'},
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Video Series',
+      collapsible: true,
+      collapsed: false,
+      link: {type: 'doc', id: 'videos/index'},
+      items: [
+        'videos/index',
       ],
     },
     {
@@ -180,6 +194,7 @@ const sidebars: SidebarsConfig = {
         'reference/cheat-sheets',
         'reference/compliance-mapping',
         'reference/external-links',
+        'reference/iam-program-audit',
       ],
     },
   ],

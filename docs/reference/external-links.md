@@ -55,4 +55,18 @@ The links referenced or implied throughout this site, gathered in one place. Onl
 | [SailPoint documentation](https://documentation.sailpoint.com/) | IdentityNow and IdentityIQ governance and provisioning. |
 | [Okta developer documentation](https://developer.okta.com/docs/) | Okta's API and protocol reference for identity integrations. |
 
+## PAW and tiering
+
+| Source | Covers |
+| --- | --- |
+| [Microsoft privileged access workstations](https://learn.microsoft.com/en-us/security/privileged-access-workstations) | PAW architecture, tiering model, hardening guidance |
+| [Microsoft Active Directory administrative tier model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-strategies) | Tier 0/1/2 model, asset classes, isolation strategies |
+
+## DevOps identity
+
+| Source | Covers |
+| --- | --- |
+| [GitHub Actions OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect) | Configuring OIDC trust with cloud providers |
+| [AWS IAM OIDC providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) | Creating an OIDC trust provider in AWS |
+
 Two notes on currency: vendor doc portals move their URL structure periodically (CyberArk moved to a spaces layout in 2026), so if a link above dies, search the vendor's main site for "documentation" rather than assuming the product changed. Certification prices and names change too; the [certifications page](/docs/careers/certifications) carries its verification date at the top.
