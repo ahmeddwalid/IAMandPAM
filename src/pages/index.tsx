@@ -157,6 +157,25 @@ export default function Home() {
           </p>
         </section>
 
+        <section aria-labelledby="video-heading">
+          <h2 id="video-heading" className="home-block-heading">
+            The series in two minutes
+          </h2>
+          <p className="home-block-lede">
+            A narrated walkthrough of the whole discipline, animated from the
+            same diagrams the site uses. The full series covers protocols, PAM,
+            vendors, scenarios, compliance, labs, and the career track.
+          </p>
+          <video
+            className="video-embed"
+            controls
+            preload="none"
+            poster="/videos/part1-poster.png"
+          >
+            <source src="/videos/part1-what-is-iam-pam.mp4" type="video/mp4" />
+          </video>
+        </section>
+
         <section aria-labelledby="sections-heading">
           <h2 id="sections-heading" className="home-block-heading">
             What the site covers

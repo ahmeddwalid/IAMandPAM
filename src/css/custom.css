@@ -629,6 +629,15 @@ code {
   line-height: 1.6;
 }
 
+.video-embed {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  border: 1px solid var(--warm-3);
+  background: var(--warm-1);
+}
+
 .home-sections {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
