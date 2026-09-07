@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2026-09-07T00:00:00.000Z" agent="Hermes Agent" version="21.0.0" type="device">
+  <diagram id="paw-arch" name="PAW Architecture">
+    <mxGraphModel dx="1200" dy="520" grid="1" gridSize="40" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="520" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" value="Internet" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="Unprivileged&lt;br&gt;Workstation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="Unprivileged VLAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontSize=13;fontColor=#3d352a;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="200" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="Firewall" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="Management VLAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontSize=13;fontColor=#3d352a;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="200" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="PAW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="160" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="Jump Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="480" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="Tier 0&lt;br&gt;Domain Controllers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="Tier 1&lt;br&gt;Servers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="160" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="Tier 2&lt;br&gt;Workstations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" value="SIEM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="160" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" value="Admin User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="400" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="email, web" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;fontSize=11;fontColor=#3d352a;" edge="1" source="2" target="3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="15" value="blocked" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#c0392b;fontSize=11;fontColor=#c0392b;dashed=1;" edge="1" source="3" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="16" value="privileged tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;fontSize=11;fontColor=#3d352a;dashed=1;" edge="1" source="13" target="7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="17" value="email, web only" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;fontSize=11;fontColor=#3d352a;dashed=1;" edge="1" source="13" target="3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;" edge="1" source="7" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;" edge="1" source="7" target="9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;" edge="1" source="8" target="10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;" edge="1" source="7" target="11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="22" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;fontSize=11;fontColor=#3d352a;" edge="1" source="9" target="12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="23" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#3d352a;fontSize=11;fontColor=#3d352a;" edge="1" source="10" target="12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

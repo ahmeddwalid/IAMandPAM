@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" modified="2026-09-07" agent="Hermes" version="24.0.0">
+  <diagram name="ITDR Workflow" id="itdr-flow">
+    <mxGraphModel dx="1200" dy="400" grid="1" gridSize="40" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Identity logs -->
+        <mxCell id="logs" value="Identity logs&#xa;(IdP, AD, PAM, VPN)" style="shape=mxgraph.bpmn.group;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Log aggregator / SIEM -->
+        <mxCell id="siem" value="Log aggregator&#xa;/ SIEM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Correlation rules -->
+        <mxCell id="rules" value="Correlation rules&#xa;(identity context)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="520" y="120" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Risk scoring -->
+        <mxCell id="risk" value="Risk scoring&#xa;(weighted sum)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="120" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Alert / SOAR -->
+        <mxCell id="alert" value="Alert / SOAR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="120" width="120" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Analyst -->
+        <mxCell id="analyst" value="Analyst" style="shape=umlActor;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="280" width="40" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Revoke session (automated) -->
+        <mxCell id="revoke" value="Revoke session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Step-up MFA (automated) -->
+        <mxCell id="stepup" value="Step-up MFA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="logs" target="siem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="siem" target="rules">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rules" target="risk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="risk" target="alert">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="alert" target="analyst">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="risk" target="revoke">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6-label" value="high risk&#xa;auto-response" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="risk" target="stepup">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7-label" value="medium risk&#xa;auto-response" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e7">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

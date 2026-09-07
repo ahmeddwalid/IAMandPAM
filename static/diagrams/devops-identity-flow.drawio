@@ -1,0 +1,96 @@
+<mxfile host="app.diagrams.net" modified="2026-09-07" agent="Hermes" version="24.0.0">
+  <diagram name="DevOps Identity Flow" id="devops-flow">
+    <mxGraphModel dx="1200" dy="400" grid="1" gridSize="40" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- GitHub Actions runner -->
+        <mxCell id="runner" value="GitHub Actions&#xa;runner" style="shape=mxgraph.bpmn.group;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- GitHub OIDC token -->
+        <mxCell id="token" value="GitHub OIDC token&#xa;(repo, branch, env)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Cloud OIDC trust provider -->
+        <mxCell id="trust" value="Cloud OIDC&#xa;trust provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- IAM role with trust policy -->
+        <mxCell id="role" value="IAM role&#xa;(trust policy scoped)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Scoped cloud session -->
+        <mxCell id="session" value="Scoped cloud session&#xa;(short-lived credentials)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="800" y="180" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Cloud resources -->
+        <mxCell id="resources" value="Cloud resources&#xa;(S3, EC2, etc.)" style="shape=mxgraph.bpmn.group;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="160" width="140" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Local dev laptop (blocked) -->
+        <mxCell id="local" value="Local dev laptop" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontSize=13;fontColor=#3d352a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="runner" target="token">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1-label" value="generates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="token" target="trust">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2-label" value="presents" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="trust" target="role">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3-label" value="validates &amp; assumes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e3">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="role" target="session">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4-label" value="issues" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="session" target="resources">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5-label" value="accesses" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#3d352a;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#c0392b;dashed=1;" edge="1" parent="1" source="local" target="resources">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="350"/>
+              <mxPoint x="260" y="400"/>
+              <mxPoint x="1110" y="400"/>
+              <mxPoint x="1110" y="210"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6-label" value="no path" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#c0392b;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
