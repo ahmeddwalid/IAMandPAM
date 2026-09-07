@@ -372,6 +372,31 @@ body {
   font-size: 0.875rem;
 }
 
+/* ---------- PDF download button ---------- */
+.pdf-download-btn {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink-2) !important;
+  border: 1px solid var(--warm-3);
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  margin: 0 0.5rem;
+  transition: border-color 160ms ease, color 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pdf-download-btn:hover {
+  border-color: var(--accent-400);
+  color: var(--accent-600) !important;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .pdf-download-btn {
+  border-color: var(--warm-3);
+}
+
 /* ---------- navbar ---------- */
 .navbar {
   border-bottom: 1px solid var(--warm-3);

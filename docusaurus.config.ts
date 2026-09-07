@@ -119,6 +119,11 @@ const config: Config = {
           position: 'left',
           label: 'Learn',
         },
+        {
+          type: 'html',
+          position: 'right',
+          value: '<a href="/pdf/iam-pam-reference.pdf" class="navbar__link pdf-download-btn" download title="Download the entire site as a PDF">Download PDF</a>',
+        },
       ],
     },
     footer: {
