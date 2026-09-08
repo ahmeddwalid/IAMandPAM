@@ -85,7 +85,7 @@ Session-to-session status log. Read `AGENTS.md` and `SPEC.md` before doing any w
 
 ### Open items / decisions still pending
 
-- **Production URL**: `url: 'https://example.com'` is a placeholder. Must be set before any deployment. Favicon PNG fallback not generated (SVG favicon only; fine for modern browsers).
+- **Production URL**: set to `https://ahmeddwalid.me` (update `baseUrl` if deploying to a subpath).
 - Test page `docs/diagram-test/` kept intentionally unlisted as a rendering QA harness. Revisit at Phase 9 polish whether to keep or remove.
 - The easyops search-local plugin is installed but its theming was not deeply audited (its default suggestion styling may deviate from the warm palette). Audit visually at Phase 9.
 

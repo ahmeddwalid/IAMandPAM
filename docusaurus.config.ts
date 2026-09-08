@@ -9,7 +9,7 @@ const config: Config = {
   favicon: 'img/favicon.svg',
 
   // Placeholder until the site has a production URL (see PROGRESS.md).
-  url: 'https://example.com',
+  url: 'https://ahmeddwalid.me',
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
