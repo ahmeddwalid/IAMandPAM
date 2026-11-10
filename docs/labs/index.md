@@ -61,4 +61,4 @@ See the [site topic map](/) for where these labs sit in the overall learning pat
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES.labs.title} questions={QUIZZES.labs.questions} passingScore={3} />
+<SectionQuiz title={QUIZZES.labs.title} questions={QUIZZES.labs.questions} passingScore={3} sectionKey="labs" />

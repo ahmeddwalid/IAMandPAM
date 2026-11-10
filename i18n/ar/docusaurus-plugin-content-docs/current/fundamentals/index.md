@@ -34,3 +34,10 @@ description: "المفاهيم التأسيسية لإدارة الهوية وا
 ## الترتيب المقترح للدراسة
 
 يُفضل قراءة الصفحات وفق تسلسلها الرقمي. يوفر نموذج AAA الهيكل الذي تفصله صفحات المصادقة والترخيص؛ وتوضح دورة حياة الهوية كيفية منع الحسابات المهجورة؛ وتحدد الثقة المعدومة المعيار الأمني الذي تقاس عليه بقية الأقسام. ينقلك بعد ذلك قسم [بروتوكولات الهوية وحوكمتها (IGA)](../protocols-iga/index.md) إلى كيفية تطبيق هذه النظريات عملياً عبر الأنظمة التقنية.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['fundamentals'].title} questions={QUIZZES_AR['fundamentals'].questions} passingScore={3} sectionKey="fundamentals-ar" />

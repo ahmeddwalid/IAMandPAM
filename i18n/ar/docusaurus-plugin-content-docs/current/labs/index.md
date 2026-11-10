@@ -42,3 +42,10 @@ description: "عشرة مشاريع مختبرية تحول المعرفة ال�
 - **HashiCorp Vault & Teleport**: الحزم المجانية مفتوحة المصدر التي تعمل محلياً عبر حاويات Docker.
 
 العتاد الموصى به لتشغيل البيئة كاملة: حاسوب محمول بذاكرة عشوائية (RAM) لا تقل عن 16 جيجابايت، ومساحة تخزين حرة 80 جيجابايت، ومعالج يدعم ميزات المحاكاة الافتراضية (VT-x / AMD-V).
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['labs'].title} questions={QUIZZES_AR['labs'].questions} passingScore={3} sectionKey="labs-ar" />

@@ -42,4 +42,4 @@ Read the pages in order. LDAP introduces the directory as the store; SAML and OI
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES['protocols-iga'].title} questions={QUIZZES['protocols-iga'].questions} passingScore={3} />
+<SectionQuiz title={QUIZZES['protocols-iga'].title} questions={QUIZZES['protocols-iga'].questions} passingScore={3} sectionKey="protocols-iga" />

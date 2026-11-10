@@ -33,7 +33,7 @@ Start with [The vendor landscape](01-major-vendors.md), then read the two or thr
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES.vendors.title} questions={QUIZZES.vendors.questions} passingScore={3} />
+<SectionQuiz title={QUIZZES.vendors.title} questions={QUIZZES.vendors.questions} passingScore={3} sectionKey="vendors" />
 
 ## Fact-checking note
 

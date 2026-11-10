@@ -51,4 +51,4 @@ Start with [Onboarding (Joiner)](01-onboarding.md).
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES.scenarios.title} questions={QUIZZES.scenarios.questions} passingScore={3} />
+<SectionQuiz title={QUIZZES.scenarios.title} questions={QUIZZES.scenarios.questions} passingScore={3} sectionKey="scenarios" />

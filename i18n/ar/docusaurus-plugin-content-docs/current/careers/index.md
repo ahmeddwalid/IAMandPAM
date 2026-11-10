@@ -22,3 +22,10 @@ description: "الشهادات المهنية المعتمدة، وسلالم ا
    مع التكاليف المحدثة، ونسب الصعوبة، والترتيب الأمثل لاجتيازها.
 2. **[سلم التدرج الوظيفي (Career Ladder)](02-career-ladder.md)**: مسار IAM (من محلل وصول إلى مدير إدارة) ومسار PAM (من مسؤول وصول مميّز إلى كبير مهندسي الحلول)، والمهارات المطلوبة عند كل مرحلة.
 3. **[سوق العمل في الشرق الأوسط (الخليج ومصر)](03-middle-east-gulf-egypt.md)**: خصوصية الأسواق الإقليمية في السعودية والإمارات ومصر، متطلبات الهيئات الوطنية للأمن السيبراني (NCA ECC / NESA)، والقيمة التصديرية لخبرات PAM.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['careers'].title} questions={QUIZZES_AR['careers'].questions} passingScore={3} sectionKey="careers-ar" />

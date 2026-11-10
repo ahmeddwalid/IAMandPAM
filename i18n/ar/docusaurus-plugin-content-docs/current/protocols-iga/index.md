@@ -37,3 +37,10 @@ import ProtocolChooser from '@site/src/components/ProtocolChooser';
 ## الترتيب المقترح للدراسة
 
 يُفضل قراءة الصفحات وفق تسلسلها المنطقي. يقدم LDAP مخزن الدليل؛ ويمثل SAML و OIDC بروتوكولي الدخول الموحد (اقرأ OAuth 2.0 أولاً لأن OIDC امتداد له)؛ بينما يمثل SCIM مسار الكتابة والمزامنة؛ وتشكل IGA طبقة اتخاذ القرارات والرقابة؛ وتلخص صفحة البنية المعمارية الصورة الكلية. يُعد قسم [أساسيات IAM](../fundamentals/index.md) متطلباً سابقاً؛ وقسم [أساسيات إدارة الوصول المميّز (PAM)](../pam-core/index.md) هو الخطوة التالية الطبيعية.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['protocols-iga'].title} questions={QUIZZES_AR['protocols-iga'].questions} passingScore={3} sectionKey="protocols-iga-ar" />

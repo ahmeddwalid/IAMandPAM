@@ -39,3 +39,10 @@ description: "سيناريوهات الهوية الواقعية، وأدلة ا
 - **[اختراق حساب مميّز (Compromised Privileged Account)](15-incident-compromised-privileged-account.md)**: الاحتواء الفوري، وحفظ الأدلة الجنائية، والتدوير الشامل.
 - **[مراجعة الجلسات للتهديدات الداخلية (Insider Threat)](16-incident-insider-threat-session-review.md)**: ما يمكن لتسجيلات الفيديو إثباته وما تعجز عنه.
 - **[التدوير الطارئ للاعتمادات أثناء هجمات الفدية](17-incident-ransomware-credential-rotation.md)**: استراتيجية تدوير كلمات السر دفعة واحدة على مستوى المنظمة.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['scenarios'].title} questions={QUIZZES_AR['scenarios'].questions} passingScore={3} sectionKey="scenarios-ar" />

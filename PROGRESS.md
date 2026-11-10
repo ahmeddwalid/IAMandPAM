@@ -573,19 +573,25 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 ### 1. Interactive Section Assessments
 
-- New `src/components/SectionQuiz.tsx`: five-question multiple-choice assessment with per-option explanations, a key takeaway per question, pass threshold, submit gating, and retake.
-- New `src/components/QuizScore.tsx`: reads the latest stored result for a section from `localStorage` (`iam-pam-quiz-scores`) and exposes `recordQuizScore()` for persistence.
-- New `src/data/quizzes.ts`: question banks for all eight taught sections (fundamentals, protocols-iga, pam-core, vendors, scenarios, labs, interviews, careers).
-- Each section index page ends with a `## Section Assessment` block. Pass mark is 3 of 5.
-- Styling uses the existing warm-neutral tokens (`--warm-*`, `--ink-*`, `--accent-*`, `--sem-*`); no new palette.
+- New `src/components/SectionQuiz.tsx`: five-question multiple-choice assessment with per-option explanations, a key takeaway per question, pass threshold, submit gating, and retake. Labels switch to Arabic when the active locale is `ar`.
+- New `src/data/quizzes.ts` and `src/data/quizzes.ar.ts`: parallel question banks for all eight taught sections (fundamentals, protocols-iga, pam-core, vendors, scenarios, labs, interviews, careers). Same ids and correct answers in both locales.
+- New `src/lib/quizStorage.ts`: stores the latest result per `sectionKey` in `localStorage` (`iam-pam-quiz-scores`). The assessment shows the previous score above the questions and records the new one on submit. English and Arabic keep separate keys.
+- Each section index page, English and Arabic, ends with an assessment block. Pass mark is 3 of 5.
+- Styling uses the existing warm-neutral tokens (`--warm-*`, `--ink-*`, `--accent-*`, `--sem-*`); no new palette. Spacing and the explanation rule use logical properties so RTL renders correctly.
+
+### 1a. Framework leftovers removed
+
+- Deleted `src/pages/markdown-page.mdx` (the Docusaurus "Markdown page example" scaffold).
+- Set `blog: false` in the preset options. The classic preset had been generating an empty `/blog` listing and a sitemap entry with no posts behind it.
 
 ### 2. GitHub Pages Deployment
 
 - `.github/workflows/deploy.yml`: builds on push to `main` with Node 20, `PUPPETEER_SKIP_DOWNLOAD` set so the PDF-only Chromium download is skipped, uploads `build/` through `actions/upload-pages-artifact`, deploys with `actions/deploy-pages`.
 - `static/CNAME` pins the custom domain `iamandpam.ahmeddwalid.me`; Docusaurus copies it into every build, so the artifact carries the domain.
 - `docusaurus.config.ts` `url` updated from `https://ahmeddwalid.me` to `https://iamandpam.ahmeddwalid.me`. `baseUrl` stays `/` because the site is served from the domain root, not a project subpath.
-- Repo Settings → Pages is set to `build_type: workflow` with the custom domain verified. HTTPS enforcement is enabled once the certificate is issued.
-- DNS is managed at the registrar (Namecheap nameservers). Required record: `CNAME iamandpam → ahmeddwalid.github.io`. This is the one step that cannot be done from the repository; the domain does not resolve until the record exists.
+- Repo Settings → Pages is set to `build_type: workflow` with the custom domain verified. HTTPS enforcement is on; GitHub issued a Let's Encrypt certificate for the domain on the first successful deploy.
+- DNS is managed at the registrar (Namecheap nameservers). `iamandpam.ahmeddwalid.me` carries a `CNAME` to `ahmeddwalid.github.io`, so it resolves without any further setup.
+- The first deploy attempt targeted `iamnpam.ahmeddwalid.me`, which had no DNS record at all. That run stalled for ten minutes in `syncing_files` and was cancelled. The same workflow deployed in ten seconds once it pointed at a domain that resolves; the domain, not the artifact, was the failure.
 
 ### 3. Code Samples Library
 
@@ -610,11 +616,12 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 ### 6. Verification
 
 - `npm run build:site` clean for `en` and `ar`; `build/CNAME` present in the output.
+- `npx tsc --noEmit` clean.
 - `npm ci --dry-run` succeeds, so the lockfile the workflow installs from is in sync with `package.json`.
 - `video-scripts/` reports as untracked (`?? video-scripts/`), confirming it is neither committed nor ignored.
+- Live checks on `https://iamandpam.ahmeddwalid.me`: homepage, `/ar/`, `/docs/fundamentals/`, `/docs/code-samples/`, and the Draw.io viewer all return 200. Certificate issued by Let's Encrypt, valid to 2027-02-08. `/blog` and `/markdown-page` no longer exist.
 
 ### Open items
 
-- DNS record `iamandpam → ahmeddwalid.github.io` must be created at the registrar. Until then the Pages deployment succeeds but the custom domain does not resolve.
-- After the certificate is issued, confirm "Enforce HTTPS" in Pages settings.
 - Arabic mirror quality issues carried over from Phase 12 remain to be cleaned: untranslated English sentences in `interviews/07-technical-deep-dive.md`, the typo in `careers/05-salary-negotiation.md`, and `sampp:Artifact` in `protocols-iga/12-saml-deep-dive.md`.
+- The PDF pipeline still builds only on demand (`npm run build`), not in CI. If the PDF should be downloadable from the deployed site, it needs a separate job or a release asset.

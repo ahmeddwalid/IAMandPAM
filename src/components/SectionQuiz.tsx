@@ -1,4 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {getLatestScore, recordQuizScore} from '../lib/quizStorage';
+
+const LABELS = {
+  en: {
+    section: 'Section Assessment',
+    passed: 'Passed',
+    review: 'Review Needed',
+    submit: 'Submit Answers',
+    retake: 'Retake Quiz',
+    answerAll: (total: number) => `Answer all ${total} questions to submit`,
+    correct: 'Correct',
+    incorrect: 'Incorrect',
+    keyPoint: 'Key point:',
+    previous: (score: number, total: number) => `Previous score: ${score}/${total}`,
+  },
+  ar: {
+    section: 'تقييم القسم',
+    passed: 'ناجح',
+    review: 'يحتاج مراجعة',
+    submit: 'إرسال الإجابات',
+    retake: 'إعادة الاختبار',
+    answerAll: (total: number) => `أجب عن جميع الأسئلة (${total}) قبل الإرسال`,
+    correct: 'إجابة صحيحة',
+    incorrect: 'إجابة خاطئة',
+    keyPoint: 'النقطة الأساسية:',
+    previous: (score: number, total: number) => `نتيجتك السابقة: ${score}/${total}`,
+  },
+};
 
 export interface QuizQuestion {
   id: string;
@@ -11,11 +40,26 @@ export interface SectionQuizProps {
   title: string;
   questions: QuizQuestion[];
   passingScore?: number;
+  /** Stable key used to store the last result. Omit to disable persistence. */
+  sectionKey?: string;
 }
 
-export default function SectionQuiz({ title, questions, passingScore = 3 }: SectionQuizProps) {
+export default function SectionQuiz({
+  title,
+  questions,
+  passingScore = 3,
+  sectionKey,
+}: SectionQuizProps) {
+  const { i18n } = useDocusaurusContext();
+  const t = i18n.currentLocale === 'ar' ? LABELS.ar : LABELS.en;
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [previous, setPrevious] = useState<{score: number; total: number} | null>(null);
+
+  useEffect(() => {
+    if (!sectionKey) return;
+    setPrevious(getLatestScore(sectionKey));
+  }, [sectionKey]);
 
   const handleSelect = (questionId: string, optionId: string) => {
     if (!submitted) {
@@ -25,6 +69,13 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
 
   const handleSubmit = () => {
     setSubmitted(true);
+    if (!sectionKey) return;
+    const finalScore = questions.reduce((acc, q) => {
+      const selected = answers[q.id];
+      return acc + (q.options.find((o) => o.id === selected)?.isCorrect ? 1 : 0);
+    }, 0);
+    recordQuizScore(sectionKey, finalScore, questions.length);
+    setPrevious({score: finalScore, total: questions.length});
   };
 
   const handleReset = () => {
@@ -73,7 +124,7 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
               marginBottom: '0.25rem',
             }}
           >
-            Section Assessment
+            {t.section}
           </div>
           <h3
             style={{
@@ -85,6 +136,11 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
           >
             {title}
           </h3>
+          {previous && !submitted && (
+            <div style={{fontSize: '0.8rem', color: 'var(--ink-3)', marginTop: '0.25rem'}}>
+              {t.previous(previous.score, previous.total)}
+            </div>
+          )}
         </div>
         {submitted && (
           <div
@@ -98,7 +154,7 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
               color: passed ? 'var(--sem-success)' : 'var(--sem-danger)',
             }}
           >
-            {score}/{total} {passed ? 'Passed' : 'Review Needed'}
+            {score}/{total} {passed ? t.passed : t.review}
           </div>
         )}
       </div>
@@ -166,7 +222,7 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
                       <span
                         style={{
                           display: 'inline-block',
-                          marginRight: '0.5rem',
+                          marginInlineEnd: '0.5rem',
                           fontWeight: 600,
                           color: isSelected ? 'var(--accent-600)' : 'var(--ink-3)',
                         }}
@@ -187,19 +243,19 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
                     background: selectedOption.isCorrect
                       ? 'rgba(44, 122, 74, 0.08)'
                       : 'rgba(192, 57, 43, 0.08)',
-                    borderLeft: `3px solid ${selectedOption.isCorrect ? 'var(--sem-success)' : 'var(--sem-danger)'}`,
+                    borderInlineStart: `3px solid ${selectedOption.isCorrect ? 'var(--sem-success)' : 'var(--sem-danger)'}`,
                     borderRadius: '2px',
                     fontSize: '0.85rem',
                     color: 'var(--ink-1)',
                   }}
                 >
                   <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>
-                    {selectedOption.isCorrect ? 'Correct' : 'Incorrect'}
+                    {selectedOption.isCorrect ? t.correct : t.incorrect}
                   </div>
                   <div>{selectedOption.explanation}</div>
                   {q.takeaway && (
                     <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--ink-2)' }}>
-                      <strong>Key point:</strong> {q.takeaway}
+                      <strong>{t.keyPoint}</strong> {q.takeaway}
                     </div>
                   )}
                 </div>
@@ -226,7 +282,7 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
               fontSize: '0.875rem',
             }}
           >
-            Submit Answers
+            {t.submit}
           </button>
         ) : (
           <button
@@ -243,12 +299,12 @@ export default function SectionQuiz({ title, questions, passingScore = 3 }: Sect
               fontSize: '0.875rem',
             }}
           >
-            Retake Quiz
+            {t.retake}
           </button>
         )}
         {!submitted && Object.keys(answers).length < total && (
           <span style={{ fontSize: '0.8rem', color: 'var(--ink-3)' }}>
-            Answer all {total} questions to submit
+            {t.answerAll(total)}
           </span>
         )}
       </div>

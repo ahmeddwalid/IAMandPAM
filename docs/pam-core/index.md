@@ -41,4 +41,4 @@ This section connects to the rest of the site: the [Identity Protocols & IGA](/d
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES['pam-core'].title} questions={QUIZZES['pam-core'].questions} passingScore={3} />
+<SectionQuiz title={QUIZZES['pam-core'].title} questions={QUIZZES['pam-core'].questions} passingScore={3} sectionKey="pam-core" />

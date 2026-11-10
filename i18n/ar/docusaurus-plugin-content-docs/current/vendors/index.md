@@ -27,3 +27,10 @@ description: "المنتجات والتقنيات الرائدة في إدارة
 7. **[أدوات حوكمة الهوية (IGA)](07-governance-tools.md)**: مقارنة بين SailPoint و Saviynt و Okta IGA.
 8. **[مصفوفة المقارنة والتقييم](08-vendor-comparison.md)**: معايير اختيار الأداة المناسبة لمتطلبات المنظمة.
 9. **[حلول PAM السحابية الحديثة](09-modern-cloud-pam.md)**: البنية المعمارية لـ Teleport و HashiCorp Boundary و StrongDM.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['vendors'].title} questions={QUIZZES_AR['vendors'].questions} passingScore={3} sectionKey="vendors-ar" />

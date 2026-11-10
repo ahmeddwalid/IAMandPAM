@@ -29,3 +29,10 @@ description: "بنك أسئلة متكامل لمقابلات إدارة اله�
 ## نصيحة منهجية للمذاكرة
 
 اقرأ السؤال وحاول الإجابة عليه بصوت مسموع لمدة دقيقة كاملة قبل قراءة الإجابة المكتوبة؛ الفجوة بين إجابتك المرتجلة والشرح النموذجي هي بالضبط ما يجب عليك التركيز عليه في المذاكرة.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['interviews'].title} questions={QUIZZES_AR['interviews'].questions} passingScore={3} sectionKey="interviews-ar" />

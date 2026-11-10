@@ -34,3 +34,10 @@ description: "إدارة الوصول المميّز من البداية إلى 
 ## القاعدة الذهبية لإدارة الوصول المميّز
 
 اجعل كل وصول مميّز **شخصياً** (غير مشترك)، **مؤقتاً** (بمهلة زمنية صارمة)، و**مسجلاً ومراقباً بالكامل**: احفظ في الخزينة ما لا بد من وجوده، واقضِ على ما يمكن تحويله إلى مؤقت، وتوسط كل اتصال بين المستخدم والهدف، وصدّر كافة سجلات التدقيق خارج منصة الاستهداف.
+
+## تقييم القسم
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES_AR } from '@site/src/data/quizzes.ar';
+
+<SectionQuiz title={QUIZZES_AR['pam-core'].title} questions={QUIZZES_AR['pam-core'].questions} passingScore={3} sectionKey="pam-core-ar" />

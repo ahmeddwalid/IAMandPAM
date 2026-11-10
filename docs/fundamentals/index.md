@@ -35,4 +35,4 @@ Read the pages in order. The AAA model gives you the structure that authenticati
 import SectionQuiz from '@site/src/components/SectionQuiz';
 import { QUIZZES } from '@site/src/data/quizzes';
 
-<SectionQuiz title={QUIZZES.fundamentals.title} questions={QUIZZES.fundamentals.questions} passingScore={3} />
+<SectionQuiz title={QUIZZES.fundamentals.title} questions={QUIZZES.fundamentals.questions} passingScore={3} sectionKey="fundamentals" />
