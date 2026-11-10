@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-# Re-encode the NotebookLM masters into web versions served from static/videos/series.
+# Re-encode the NotebookLM masters into web versions. The output stays in the
+# gitignored masters folder: the MP4s are published as release assets by
+# scripts/publish-series.sh, and only their posters are committed to the site.
 set -euo pipefail
 
 SRC="/home/ahmed/Projects/IAM and PAM/Gemini NotebookLM Videos"
-OUT="/home/ahmed/Projects/IAM and PAM/static/videos/series"
+OUT="$SRC/web"
 mkdir -p "$OUT"
 
 encode() {

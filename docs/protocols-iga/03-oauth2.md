@@ -40,6 +40,36 @@ flowchart TD
 - **Client credentials.** Machine to machine: the client authenticates with its own secret (or mTLS certificate) and receives a token scoped to its own permissions. No user involved.
 - **Device flow.** For TVs and CLI tools: the user authorizes on another device by entering a short code.
 
+### The authorization code flow, end to end
+
+The grant chart shows which flow a client uses. The sequence below shows what the workhorse flow actually exchanges, with PKCE included because every client should use it:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client
+    participant AS as Authorization server
+    participant API as Resource server
+
+    C->>C: Generate state, code_verifier, and code_challenge
+    U->>C: Starts the sign-in
+    C->>AS: /authorize with client_id, redirect_uri, scope, state, code_challenge
+    AS->>U: Authenticate (password, MFA)
+    U->>AS: Consent to the requested scope
+    AS->>C: Redirect to redirect_uri with a single-use code and state
+    C->>C: Compare state with the stored value
+    C->>AS: POST /token with code, code_verifier, client authentication
+    AS->>AS: Check the code, redirect_uri, client, and code_challenge
+    AS->>C: Access token, plus a refresh token when issued
+    C->>API: Request with Authorization: Bearer
+    API->>API: Validate signature, aud, exp, and scope
+    API->>C: Resource
+```
+
+*Authorization code with PKCE. The user authenticates only at the authorization server, the code is single-use and worthless without the verifier, and the access token is scoped to one resource server.*
+
+Each step carries a control. `state` binds the callback to this browser session, so an attacker cannot drop their own code into a victim's flow. The redirect URI must match the registered value exactly, because a wildcard or prefix match turns the code into a gift. The code is short-lived and single-use, and the token endpoint requires either client authentication or the PKCE verifier, so an intercepted code cannot be redeemed by another party. The resource server checks the audience, which is the only thing that stops a token minted for one API from being replayed against another.
+
 ## Tokens and their lifetimes
 
 - **Access token.** Presented to the resource server; short-lived (minutes to an hour). Modern practice uses JWTs so resource servers can validate the token locally without calling back to the authorization server.

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {SERIES} from '../data/videos';
+import {SERIES, VIDEO_BASE} from '../data/videos';
 
 const LABELS = {
   en: {
@@ -40,7 +40,7 @@ export default function VideoSeries() {
           poster={`/videos/series/${video.slug}.jpg`}
           className="video-series__player"
         >
-          <source src={`/videos/series/${video.slug}.mp4`} type="video/mp4" />
+          <source src={`${VIDEO_BASE}/${video.slug}.mp4`} type="video/mp4" />
         </video>
 
         <div className="video-series__caption">

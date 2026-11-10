@@ -24,31 +24,26 @@ FIDO2 comprises two coordinated specifications:
 
 ## 2. Authentication Ceremony Walkthrough
 
+```mermaid
+sequenceDiagram
+    participant B as Browser (client)
+    participant A as Authenticator
+    participant S as Server (RP)
+
+    B->>S: Begin login for a username
+    S->>B: Challenge, rpId, allowCredentials, timeout
+    B->>A: navigator.credentials.get() over CTAP2
+    A->>A: User presence (touch) or verification (PIN, biometric)
+    A->>A: Sign authData + SHA-256(clientDataJSON) with the private key
+    A->>B: credentialId, authenticatorData, clientDataJSON, signature
+    B->>S: Complete login with the assertion
+    S->>S: Verify origin, rpIdHash, challenge, signature, signCount
+    S->>B: Session established
 ```
-Victim Browser (RP)              Authenticator (YubiKey/TouchID)           Enterprise Server (IdP)
-       |                                       |                                      |
-       | 1. Initiates login                    |                                      |
-       |----------------------------------------------------------------------------->|
-       |                                       |                                      |
-       | 2. Issues random cryptographic challenge + RP ID ("login.enterprise.com")   |
-       |<-----------------------------------------------------------------------------|
-       |                                       |                                      |
-       | 3. Passes challenge via CTAP2         |                                      |
-       |-------------------------------------->|                                      |
-       |                                       | 4. User Presence (touch) or          |
-       |                                       |    User Verification (PIN/biometric) |
-       |                                       |    Signs (clientDataJSON + authData) |
-       | 5. Returns signature + authData       |                                      |
-       |<--------------------------------------|                                      |
-       |                                       |                                      |
-       | 6. Sends signature + clientDataJSON + authenticatorData                      |
-       |----------------------------------------------------------------------------->|
-       |                                       |                                      |
-       |                                       | 7. Verifies signature against stored |
-       |                                       |    public key & verifies origin.     |
-       | 8. Issues session token               |                                      |
-       |<-----------------------------------------------------------------------------|
-```
+
+*A WebAuthn assertion. The private key never leaves the authenticator, and the signature covers both the server's challenge and the browser's origin, which is what a reverse proxy at another origin cannot reproduce.*
+
+The origin is inside `clientDataJSON`, and the browser fills it in rather than the page. That is the detail that defeats an AiTM proxy: the attacker's site may present the victim's real login page pixel for pixel, but the `clientDataJSON` the browser builds carries `https://evil.example` as the origin, and the server rejects an assertion whose origin is not its own. The `signCount` in `authenticatorData` is the second check: a counter that fails to increase suggests a cloned authenticator, which is why hardware keys that reset it are flagged rather than trusted.
 
 ---
 

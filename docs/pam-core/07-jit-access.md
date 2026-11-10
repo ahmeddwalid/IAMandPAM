@@ -30,6 +30,40 @@ import arch from '!!raw-loader!@site/static/diagrams/jit-access-flow.drawio';
 
 **6. Audit.** The full cycle is logged: request, approval, grant, use, revocation. The audit trail is the deliverable; the [best practices](04-best-practices.md) rule about the audit trail applies to JIT most of all, because the whole point of JIT is that every privileged grant is a visible event.
 
+### The same cycle, with the actors
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant B as JIT broker
+    participant Ap as Approver or policy
+    participant D as Directory or IdP
+    participant P as Brokered session
+    participant L as Audit log
+
+    U->>B: Request with scope, reason, and duration
+    B->>Ap: Route by risk
+    alt Low risk and inside policy
+        Ap->>B: Auto-approve
+    else High risk
+        Ap->>B: Human approval
+    end
+    B->>D: Grant a time-boxed entitlement
+    D->>B: Entitlement active
+    B->>L: Request, decision, grant
+    U->>P: Start the task
+    P->>L: Session recording and commands
+    U->>P: Finish
+    Note over B,D: Window expires or the task ends
+    B->>D: Remove the entitlement
+    D->>B: Confirmed absent
+    B->>L: Revocation and its verification
+```
+
+*The JIT cycle by actor. Approval, grant, use, and revocation are four separate events with four separate records; the last one is a read-back from the directory rather than an assumption by the broker.*
+
+The read-back is the step most deployments skip. A broker that calls the removal API and logs "revoked" has recorded an intention, not a state. The group membership, role assignment, or credential has to be read again and confirmed gone, because a failed removal looks exactly like a successful one in the request log. The same rule applies to the expiry path: the window closing is not by itself proof that the privilege ended.
+
 ## The patterns
 
 JIT is implemented in four recurring shapes:

@@ -35,6 +35,34 @@ The ID token is the heart of OIDC: a signed JWT issued by the IdP to the client 
 
 The client validates the signature (using the IdP's keys discovered below), checks issuer, audience, and expiry, and then owns an identity it can trust without a second network call. The claims are only as good as what the IdP publishes: a `roles` claim in the token makes the IdP the authorization source of truth, which is convenient and also a target for attackers who compromise the IdP.
 
+## The sign-in sequence
+
+OIDC adds identity to the authorization code flow. The messages are the ones OAuth already defines; what changes is the `openid` scope, the ID token in the token response, and the nonce that ties the token to this request.
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client
+    participant OP as OpenID provider
+    participant API as API
+
+    C->>C: Generate state, nonce, and a PKCE pair
+    C->>OP: /authorize with response_type=code, scope=openid, nonce, state
+    OP->>U: Authenticate (MFA)
+    OP->>C: Redirect with code and state
+    C->>C: Compare state with the stored value
+    C->>OP: POST /token with code and code_verifier
+    OP->>C: id_token (JWT) and access_token
+    C->>C: Verify signature via JWKS, then iss, aud, exp, nonce
+    C->>OP: GET /userinfo with the access token
+    OP->>C: Additional claims
+    C->>API: Call the API with the access token
+```
+
+*OIDC sign-in. The ID token says who the user is and is validated by the client; the access token says what the client may call and is validated by the API. Neither token substitutes for the other.*
+
+The split matters in practice. An API that accepts an ID token as a bearer credential is accepting a token minted for a different audience, which is the OIDC version of the OAuth audience mistake. The nonce check is what makes a replayed ID token fail, and the JWKS fetch is what lets the IdP rotate signing keys without breaking every client at once.
+
 ## Discovery and dynamic registration
 
 OIDC solved SAML's metadata friction with a standard discovery document: fetching `/.well-known/openid-configuration` from the issuer returns its authorization, token, and UserInfo endpoints plus its signing keys (via JWKS). A client can bootstrap the entire trust relationship from the issuer URL alone, and key rotation is handled by republishing the key set, which is why OIDC integrations rarely break on certificate rotation the way SAML ones do.

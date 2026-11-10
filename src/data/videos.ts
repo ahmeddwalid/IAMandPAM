@@ -9,8 +9,14 @@ export interface SeriesVideo {
   section: {label: string; labelAr: string; to: string};
 }
 
-// Files live in static/videos/series. Masters are kept outside the repo and are
-// re-encoded with scripts/encode-series.sh (CRF 24, 720p, faststart).
+// Videos are release assets, not site files. The Pages deployment times out
+// syncing an artifact that carries several hundred megabytes of media, so the
+// MP4s live on the `video-series-v1` release and only the posters ship with the
+// site. Rebuild them with scripts/encode-series.sh, publish with
+// scripts/publish-series.sh.
+export const VIDEO_BASE =
+  'https://github.com/ahmeddwalid/IAMandPAM/releases/download/video-series-v1';
+
 export const SERIES: SeriesVideo[] = [
   {
     slug: 'iam-enterprise-scale',

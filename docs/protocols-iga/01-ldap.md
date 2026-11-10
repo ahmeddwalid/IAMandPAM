@@ -34,6 +34,34 @@ Everything a client does with LDAP is one of a small set of operations:
 
 The bind is how most IAM integrations actually use LDAP: applications and identity providers bind with a service account and then search for users and groups. The search filter language (`(&(objectClass=user)(sAMAccountName=alimi))`) is the query syntax every IAM engineer eventually learns.
 
+### One integration, message by message
+
+The operations compose into a single exchange. This is the shape almost every LDAP-backed application follows:
+
+```mermaid
+sequenceDiagram
+    participant App as Application
+    participant Dir as Directory (AD DS or OpenLDAP)
+
+    App->>Dir: TCP connect to 389, or 636 for LDAPS
+    App->>Dir: StartTLS when the connection is plain
+    Dir->>App: TLS established
+    App->>Dir: Bind with the service account DN and password
+    alt Credentials valid
+        Dir->>App: Bind success
+        App->>Dir: Search with base DN, scope, filter, attributes
+        Dir->>App: Matching entries
+        App->>Dir: Unbind
+    else Invalid credentials
+        Dir->>App: resultCode 49, invalidCredentials
+        Note over App,Dir: Sub-code 52e means a wrong password, not a missing entry
+    end
+```
+
+*The LDAP exchange from connect to unbind. The service account bind sets the identity the search runs under, the filter does the lookup, and StartTLS or LDAPS keeps the credentials off the wire in clear text.*
+
+A password check usually takes one more step: the application binds the service account, searches for the user's DN, then binds again with that DN and the password the user typed. A successful second bind is the proof; the directory never returns the stored password for comparison. That is also why a failed user login shows up as a bind failure rather than a "user not found", and why error 49 with sub-code 52e is the most common line in an LDAP troubleshooting ticket.
+
 ## How LDAP fits IAM
 
 LDAP plays several roles in the identity stack:

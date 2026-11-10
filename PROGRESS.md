@@ -641,10 +641,17 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 ### 2. Web encode
 
-- `scripts/encode-series.sh` re-encodes each master into `static/videos/series/<slug>.mp4`: libx264 CRF 24, `slow`, High@4.0, yuv420p, AAC 96 kbit/s mono, `+faststart`.
+- `scripts/encode-series.sh` re-encodes each master into a `web/` folder beside the masters: libx264 CRF 24, `slow`, High@4.0, yuv420p, AAC 96 kbit/s mono, `+faststart`.
 - Each video gets a poster frame at 12% of its duration, saved next to it as `<slug>.jpg`.
 - Result: 10 MP4 + 10 JPG, 308 MB in total, no file above 56 MB. Runtime is about 71 minutes across the series: enterprise 8:37, IAM stack 8:05, zero trust 10:40, vendor fit 7:22, blueprint 6:11, workflow 6:44, scenarios 6:07, labs 5:09, interviews 4:26, Arabic 8:04.
 - The script skips files that already exist, so a re-run only encodes what is missing.
+
+### 2a. The MP4s are release assets, not site files
+
+- The first attempt put the MP4s in `static/`. The build produced a 325 MB Pages artifact, and the deploy job sat in `syncing_files` for ten minutes before failing with a timeout. A rerun failed the same way. The previous 29 MB artifact had deployed in ten seconds, so the media was the variable.
+- The MP4s now live on the `video-series-v1` GitHub release and the page streams them from there. `VIDEO_BASE` in `src/data/videos.ts` holds the URL; the posters stay in `static/videos/series` at 1.1 MB total.
+- Site artifact after the move: 58 MB, close to what deployed reliably before.
+- `scripts/publish-series.sh` uploads a re-encoded set to the release with `--clobber` and copies the new posters into the site.
 
 ### 3. Page and component
 
@@ -660,7 +667,7 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 - Docusaurus copies every `staticDirectory` into each locale's output, so `build/ar/videos` was a 315 MB duplicate of `build/videos`. The full artifact was 681 MB, more than half of it dead weight.
 - `scripts/prune-locale-static.mjs` runs at the end of `npm run build:site` and removes `videos`, `diagrams`, and `lib` from non-default locale output, but only after scanning that locale's HTML, JS, CSS, and JSON for a `/<locale>/<dir>/` reference. If one is found the directory is kept and the reason printed.
 - `img` is deliberately not pruned: translated pages reference `/ar/img/...` directly.
-- Artifact: 681 MB to 364 MB. The workflow calls `npm run build:site`, so CI prunes without any change to `deploy.yml`.
+- Artifact: 681 MB to 58 MB after the media moved to the release; the prune script still reclaims the ~10 MB of remaining duplicates and keeps the trap from returning if large assets are added to `static/` again. The workflow calls `npm run build:site`, so CI prunes without any change to `deploy.yml`.
 
 ### 5. Diagram download links
 
@@ -677,3 +684,26 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 - The repository now carries 308 MB of video. Cloning is slower than it used to be. Moving the series to object storage or a video host would cut that, at the cost of a second service to keep alive.
 - Two 404-page locale-switcher links point at a route that does not exist. Harmless, but it is a framework behavior rather than a choice.
+
+## Phase 15 — Sequence Diagrams for the Multi-Actor Flows (done 2026-11-10)
+
+### 1. What was missing
+
+- Before this pass, three pages carried a sequence diagram: SAML, SCIM, and Kerberos. The protocol pages that get read most (OAuth 2.0, OIDC, LDAP) had tables and, in one case, a grant-selection flowchart, but never the message exchange itself. The operational pages (PAM architecture, JIT access) described the steps in prose without saying who sends what to whom.
+
+### 2. What was added
+
+- **OAuth 2.0** (`docs/protocols-iga/03-oauth2.md`): authorization code with PKCE, including `state`, the verifier exchange, and the audience check at the resource server.
+- **OIDC** (`04-oidc.md`): sign-in with nonce, token validation through JWKS, and the optional UserInfo call.
+- **LDAP** (`01-ldap.md`): connect, StartTLS, service-account bind, search, unbind, plus the failed-bind branch showing result code 49 and sub-code 52e.
+- **PAM architecture** (`docs/pam-core/05-pam-architecture.md`): the brokered session across admin, PSM, ticket, vault, target, recording, and SIEM.
+- **JIT access** (`docs/pam-core/07-jit-access.md`): request, risk routing, grant, use, and the verified revocation.
+- **FIDO2** (`docs/protocols-iga/09-fido2-webauthn-deep-dive.md`): the 22-line ASCII sequence was replaced with a Mermaid assertion diagram.
+- Every diagram has a caption and a paragraph that explains the controls it shows. The Arabic pages use Arabic participant labels and Arabic messages, not English diagrams with Arabic captions.
+
+### 3. Verification
+
+- All 28 Mermaid blocks in the repository parse. 18 of them are sequence diagrams.
+- Rendered in headless Chrome at 1440 px: zero console errors, diagrams between 670x335 and 823x852, Arabic labels render right to left without overlap.
+- `autonumber` is not used: this site's theme draws the number markers as filled dots with the digits invisible, so the numbers added clutter without information. The messages read top to bottom instead.
+- `npm run build:site` and `npx tsc --noEmit` clean. Internal link audit over 42,508 references resolves everything except the locale switcher on the 404 page.

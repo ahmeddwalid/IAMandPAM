@@ -44,6 +44,36 @@ import arch from '!!raw-loader!@site/static/diagrams/pam-architecture.drawio';
 6. On disconnect, the PSM closes the session; the vault may rotate the credential immediately.
 7. Logs from PSM, vault, and recording converge in the SIEM.
 
+The same sequence with the actors named:
+
+```mermaid
+sequenceDiagram
+    participant A as Admin
+    participant PSM as Session manager
+    participant T as Ticket or approver
+    participant V as Vault
+    participant Tgt as Target
+    participant R as Recording
+    participant S as SIEM
+
+    A->>PSM: Request a session for a target, with ticket and reason
+    PSM->>T: Validate the approval
+    T->>PSM: Approved
+    PSM->>V: Check out the credential for this session
+    V->>PSM: Credential
+    PSM->>Tgt: Connect over SSH, RDP, or SQL
+    Tgt->>PSM: Session traffic
+    PSM->>R: Mirror the session
+    PSM->>S: Session start, commands, session end
+    A->>PSM: Disconnect
+    PSM->>V: Check in and rotate
+    V->>PSM: New secret stored
+```
+
+*The brokered session with its actors. The admin's client talks only to the session manager, and the target sees a connection from the session manager rather than from the admin's workstation.*
+
+The sequence explains the security properties better than the component list does. Authorization happens before any credential exists in memory. The credential moves from vault to session manager to target, and never to the admin's endpoint. Recording is a side path the target does not control, so turning it off requires compromising the PSM rather than the target. The SIEM copy is written as events happen, which is what lets the trail survive a PSM compromise.
+
 Two properties of this design matter more than any product choice:
 
 - **The password never appears on the admin's screen.** The credential travels from vault to PSM to target, all machine to machine.
