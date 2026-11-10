@@ -582,10 +582,10 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 ### 2. GitHub Pages Deployment
 
 - `.github/workflows/deploy.yml`: builds on push to `main` with Node 20, `PUPPETEER_SKIP_DOWNLOAD` set so the PDF-only Chromium download is skipped, uploads `build/` through `actions/upload-pages-artifact`, deploys with `actions/deploy-pages`.
-- `static/CNAME` pins the custom domain `iamnpam.ahmeddwalid.me`; Docusaurus copies it into every build, so the artifact carries the domain.
-- `docusaurus.config.ts` `url` updated from `https://ahmeddwalid.me` to `https://iamnpam.ahmeddwalid.me`. `baseUrl` stays `/` because the site is served from the domain root, not a project subpath.
+- `static/CNAME` pins the custom domain `iamandpam.ahmeddwalid.me`; Docusaurus copies it into every build, so the artifact carries the domain.
+- `docusaurus.config.ts` `url` updated from `https://ahmeddwalid.me` to `https://iamandpam.ahmeddwalid.me`. `baseUrl` stays `/` because the site is served from the domain root, not a project subpath.
 - Repo Settings → Pages is set to `build_type: workflow` with the custom domain verified. HTTPS enforcement is enabled once the certificate is issued.
-- DNS is managed at the registrar (Namecheap nameservers). Required record: `CNAME iamnpam → ahmeddwalid.github.io`. This is the one step that cannot be done from the repository; the domain does not resolve until the record exists.
+- DNS is managed at the registrar (Namecheap nameservers). Required record: `CNAME iamandpam → ahmeddwalid.github.io`. This is the one step that cannot be done from the repository; the domain does not resolve until the record exists.
 
 ### 3. Code Samples Library
 
@@ -615,6 +615,6 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 ### Open items
 
-- DNS record `iamnpam → ahmeddwalid.github.io` must be created at the registrar. Until then the Pages deployment succeeds but the custom domain does not resolve.
+- DNS record `iamandpam → ahmeddwalid.github.io` must be created at the registrar. Until then the Pages deployment succeeds but the custom domain does not resolve.
 - After the certificate is issued, confirm "Enforce HTTPS" in Pages settings.
 - Arabic mirror quality issues carried over from Phase 12 remain to be cleaned: untranslated English sentences in `interviews/07-technical-deep-dive.md`, the typo in `careers/05-salary-negotiation.md`, and `sampp:Artifact` in `protocols-iga/12-saml-deep-dive.md`.

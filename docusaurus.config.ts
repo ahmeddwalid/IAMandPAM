@@ -8,8 +8,7 @@ const config: Config = {
     'Identity and access management, privileged access management, and the security career track',
   favicon: 'img/favicon.svg',
 
-  // Placeholder until the site has a production URL (see PROGRESS.md).
-  url: 'https://iamnpam.ahmeddwalid.me',
+  url: 'https://iamandpam.ahmeddwalid.me',
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
