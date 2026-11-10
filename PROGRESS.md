@@ -707,3 +707,11 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 - Rendered in headless Chrome at 1440 px: zero console errors, diagrams between 670x335 and 823x852, Arabic labels render right to left without overlap.
 - `autonumber` is not used: this site's theme draws the number markers as filled dots with the digits invisible, so the numbers added clutter without information. The messages read top to bottom instead.
 - `npm run build:site` and `npx tsc --noEmit` clean. Internal link audit over 42,508 references resolves everything except the locale switcher on the 404 page.
+
+## Phase 15 — open items
+
+- Bilingual parity is not what the Phase 11 heading claims. A character scan of `i18n/ar/docusaurus-plugin-content-docs/current` finds 71 of 124 pages with under 5% Arabic letters: they are English text served under the Arabic route. By section: scenarios 20 of 23, vendors 9 of 10, labs 10 of 18, pam-core 9 of 17, fundamentals 8 of 17, interviews 6 of 9, protocols-iga 4 of 16, reference 3 of 7, careers 2 of 6.
+- The five `code-samples` pages have no Arabic mirror at all.
+- 307 absolute `/docs/...` links inside the Arabic pages point at English routes. They should become relative `.md` links, which Docusaurus resolves per locale.
+- The sequence diagrams added in this phase are written in Arabic on the Arabic pages, so those six pages are now partly translated even where the body is still English.
+- Proposed order for the translation pass: fundamentals, protocols-iga, pam-core, scenarios, labs, vendors, interviews, careers, reference, code-samples. Each page also gets its absolute links converted as it is rewritten.
