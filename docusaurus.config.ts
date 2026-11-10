@@ -9,14 +9,26 @@ const config: Config = {
   favicon: 'img/favicon.svg',
 
   // Placeholder until the site has a production URL (see PROGRESS.md).
-  url: 'https://ahmeddwalid.me',
+  url: 'https://iamnpam.ahmeddwalid.me',
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ar'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      ar: {
+        label: 'العربية',
+        direction: 'rtl',
+        htmlLang: 'ar-SA',
+      },
+    },
   },
 
   presets: [
@@ -53,12 +65,7 @@ const config: Config = {
         docsRouteBasePath: '/docs',
         indexPages: false,
         hashed: false,
-      },
-    ],
-    [
-      'drawio',
-      {
-        lib: '/lib/viewer.min.js',
+        language: ['en', 'ar'],
       },
     ],
     function drawioViewer(context, options) {
@@ -120,9 +127,8 @@ const config: Config = {
           label: 'Learn',
         },
         {
-          type: 'html',
+          type: 'localeDropdown',
           position: 'right',
-          value: '<a href="/pdf/iam-pam-reference.pdf" class="navbar__link pdf-download-btn" download title="Download the entire site as a PDF">Download PDF</a>',
         },
       ],
     },

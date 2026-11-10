@@ -25,3 +25,8 @@ yarn-error.log*
 /videos/__pycache__
 *.pyc
 /media/
+
+# Local-only working material (not part of the published site)
+/Gemini NotebookLM Videos/
+/directorystructure.txt
+/.hermes/
