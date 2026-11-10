@@ -19,8 +19,8 @@ Every model in this section is a different way of organizing that predicate. The
 
 RBAC grants access through roles. A role is a named collection of permissions ("finance-manager"), and users get access by being assigned to roles. The relationship chain is the site's reference diagram:
 
-import Drawio from '../../src/components/Drawio';
-import rbacRel from '!!raw-loader!../../static/diagrams/rbac-relationship.drawio';
+import Drawio from '@site/src/components/Drawio';
+import rbacRel from '!!raw-loader!@site/static/diagrams/rbac-relationship.drawio';
 
 <Drawio content={rbacRel} />
 

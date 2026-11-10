@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="ciem-architecture" name="CIEM and Identity Posture Architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="cloud_estate" value="Multi-Cloud Estate&#10;AWS Orgs / Azure Tenants / GCP&#10;(Roles, Policies, Service Accounts)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="telemetry" value="Activity Telemetry&#10;AWS CloudTrail / Azure Logs&#10;real-time API calls" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ciem_engine" value="CIEM Analysis Engine&#10;Effective Permissions Calculator&#10;SCPs + Boundaries + Roles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="120" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="risk_detector" value="Privilege Escalation Detector&#10;identifies toxic permissions&#10;(e.g. PassRole + Lambda)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="270" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="remediation" value="Automated Remediation&#10;generates least-privilege&#10;Terraform / SCP pull requests" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="160" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="soc" value="Security Team Dashboard&#10;entitlement drift alerts&#10;&amp; posture scoring" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="270" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="IAM configuration snapshot" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="cloud_estate" target="ciem_engine">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="event stream ingestion" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="telemetry" target="ciem_engine">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="granted vs used delta" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ciem_engine" target="risk_detector">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="right-sized policy recommendations" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ciem_engine" target="remediation">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" value="alerts on toxic paths" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="risk_detector" target="soc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value="applies updated policies" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="remediation" target="cloud_estate">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="80"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

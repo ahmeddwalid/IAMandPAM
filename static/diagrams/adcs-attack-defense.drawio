@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="adcs-flow" name="ADCS Attack Vectors and Hardening Topology">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="low_user" value="Standard Domain User&#10;(unprivileged account)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="vuln_template" value="Misconfigured Template (ESC1)&#10;ENROLLEE_SUPPLIES_SUBJECT&#10;+ Client Authentication EKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#c0392b;fontColor=#3d352a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ca_server" value="Enterprise Certificate Authority&#10;issues X.509 certificate&#10;with arbitrary Admin SAN" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="340" y="140" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pkinit_kdc" value="Domain Controller / KDC&#10;PKINIT Kerberos Exchange&#10;validates signed cert" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="60" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tier0_compromise" value="Forest Takeover (Tier 0)&#10;issues Domain Admin TGT&#10;(DCSync / full compromise)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#c0392b;fontColor=#c0392b;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="240" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="1. requests cert with admin SAN" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="low_user" target="vuln_template">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="2. submits CSR to CA" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="vuln_template" target="ca_server">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="3. returns rogue admin cert" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ca_server" target="low_user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="185"/>
+              <mxPoint x="320" y="95"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e4" value="4. PKINIT auth using rogue cert" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="low_user" target="pkinit_kdc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="40"/>
+              <mxPoint x="600" y="40"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e5" value="5. issues Domain Admin TGT" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="pkinit_kdc" target="tier0_compromise">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

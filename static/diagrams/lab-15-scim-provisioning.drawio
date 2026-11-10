@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2026-09-29T00:00:00.000Z" agent="opencode" version="24.0.0" type="device">
+  <diagram id="lab-15-scim-provisioning" name="SCIM Provisioning">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="820" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hr" value="HR System&#xa;(CSV Export)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline" value="SCIM Client&#xa;(Python)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="scim" value="SCIM Service Provider&#xa;(SaaS App)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="users" value="Users Endpoint&#xa;/Users" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="groups" value="Groups Endpoint&#xa;/Groups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="220" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1. HR Event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="hr" target="pipeline">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="2. POST /Users" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="pipeline" target="scim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="3. 201 Created" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94541f;fontColor=#3d352a;fontSize=11;dashed=1;" edge="1" parent="1" source="scim" target="pipeline">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="65" />
+              <mxPoint x="480" y="65" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="4. Store Mapping" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="pipeline" target="users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="120" />
+              <mxPoint x="590" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="5. PATCH /Groups" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="users" target="groups">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="6. PATCH active=false" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#c0392b;fontColor=#3d352a;fontSize=11;dashed=1;" edge="1" parent="1" source="pipeline" target="users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="160" />
+              <mxPoint x="240" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Idempotent via externalId" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7a6e5f;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="200" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

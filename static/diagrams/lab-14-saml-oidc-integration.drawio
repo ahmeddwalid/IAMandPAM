@@ -1,0 +1,59 @@
+<mxfile host="app.diagrams.net" modified="2026-09-29T00:00:00.000Z" agent="opencode" version="24.0.0" type="device">
+  <diagram id="lab-14-saml-oidc" name="SAML and OIDC Integration">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="820" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="browser" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="saml-sp" value="SAML SP&#xa;(localhost:8083)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oidc-client" value="OIDC Client&#xa;(localhost:8081)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="keycloak" value="Keycloak IdP&#xa;(localhost:8080)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="140" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ad" value="Active Directory&#xa;(corp.local)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ldap" value="LDAP&#xa;Port 389" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="280" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1. SAML AuthnRequest" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="saml-sp" target="keycloak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="2. LDAP Bind" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="keycloak" target="ad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="3. SAML Assertion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=11;dashed=1;" edge="1" parent="1" source="keycloak" target="saml-sp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="165" />
+              <mxPoint x="280" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="4. OIDC Auth Code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94541f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="keycloak" target="oidc-client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="5. Token Exchange" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94541f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="oidc-client" target="keycloak">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="265" />
+              <mxPoint x="280" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="LDAP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" edge="1" parent="1" source="ad" target="ldap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Same user, same directory, two protocols" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7a6e5f;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="400" width="240" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

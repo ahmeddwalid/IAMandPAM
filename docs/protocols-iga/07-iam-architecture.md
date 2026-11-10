@@ -7,8 +7,8 @@ description: "The full identity stack in one diagram: users, identity provider, 
 
 This page assembles everything in this section into one view: the full identity stack, from users through the identity provider to applications, with the directory, governance, and audit layers around it. It is the reference picture for the rest of the site: every later section (PAM, zero trust, vendor architecture, labs) describes a variation or a slice of this picture.
 
-import Drawio from '../../src/components/Drawio';
-import arch from '!!raw-loader!../../static/diagrams/iam-architecture.drawio';
+import Drawio from '@site/src/components/Drawio';
+import arch from '!!raw-loader!@site/static/diagrams/iam-architecture.drawio';
 
 <Drawio content={arch} />
 

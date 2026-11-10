@@ -11,8 +11,8 @@ Lightweight Directory Access Protocol (LDAP) is the protocol for reading and sea
 
 A directory is a database optimized for reads: many lookups, few writes, with a hierarchical, attribute-based model. Unlike a relational database, entries are not rows in tables. An entry is a set of attributes (uid, mail, department) identified by a distinguished name (DN) that encodes its position in the tree. The tree structure is the directory information tree (DIT).
 
-import Drawio from '../../src/components/Drawio';
-import dit from '!!raw-loader!../../static/diagrams/ldap-dit.drawio';
+import Drawio from '@site/src/components/Drawio';
+import dit from '!!raw-loader!@site/static/diagrams/ldap-dit.drawio';
 
 <Drawio content={dit} />
 

@@ -46,8 +46,8 @@ The key properties:
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import devopsFlow from '!!raw-loader!../../static/diagrams/devops-identity-flow.drawio';
+import Drawio from '@site/src/components/Drawio';
+import devopsFlow from '!!raw-loader!@site/static/diagrams/devops-identity-flow.drawio';
 
 <Drawio content={devopsFlow} />
 

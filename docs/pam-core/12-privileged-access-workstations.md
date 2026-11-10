@@ -27,8 +27,8 @@ The rule is directional: a higher-tier admin can manage lower-tier resources, bu
 
 ## The network flow
 
-import Drawio from '../../src/components/Drawio';
-import pawArch from '!!raw-loader!../../static/diagrams/paw-architecture.drawio';
+import Drawio from '@site/src/components/Drawio';
+import pawArch from '!!raw-loader!@site/static/diagrams/paw-architecture.drawio';
 
 <Drawio content={pawArch} />
 

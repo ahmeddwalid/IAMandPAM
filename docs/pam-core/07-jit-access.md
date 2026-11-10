@@ -7,8 +7,8 @@ description: "The JIT access workflow: request, approve, grant, use, revoke, aud
 
 Just-in-time (JIT) access is the pattern of granting privilege only when a task requires it, for the shortest useful window, and taking it back automatically. It is the operational answer to standing privilege: instead of asking "who has admin rights," the question becomes "who has admin rights *right now*," and the answer should be as small as the organization can make it.
 
-import Drawio from '../../src/components/Drawio';
-import arch from '!!raw-loader!../../static/diagrams/jit-access-flow.drawio';
+import Drawio from '@site/src/components/Drawio';
+import arch from '!!raw-loader!@site/static/diagrams/jit-access-flow.drawio';
 
 <Drawio content={arch} />
 

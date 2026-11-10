@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="ciam-architecture" name="Customer IAM and Multi-Tenant SaaS Architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="tenant_a" value="Enterprise Tenant A&#10;Corporate IdP (Okta)&#10;SAML 2.0 / SCIM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tenant_b" value="Enterprise Tenant B&#10;Corporate IdP (Entra ID)&#10;OIDC / SCIM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="consumer" value="B2C Consumers&#10;Passkeys / Social Login&#10;(Google / Apple)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ciam_hub" value="CIAM &amp; Federation Hub&#10;Home Realm Discovery (HRD)&#10;Tenant Routing &amp; Session Engine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="scim_bridge" value="Inbound SCIM Receiver&#10;automated provisioning per tenant&#10;(JML sync)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tenant_db" value="Partitioned Tenant Store&#10;isolated user catalogs&#10;&amp; custom tenant roles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="saas_api" value="SaaS Application Backend&#10;evaluates tenant-scoped JWT&#10;(tenant_id + roles + permissions)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="100" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="SAML SSO" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="tenant_a" target="ciam_hub">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="OIDC SSO" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="tenant_b" target="ciam_hub">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="WebAuthn" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="consumer" target="ciam_hub">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="295"/>
+              <mxPoint x="260" y="160"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e4" value="SCIM user sync" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="tenant_a" target="scim_bridge">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="75"/>
+              <mxPoint x="280" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e5" value="persists tenant data" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="scim_bridge" target="tenant_db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value="issues tenant-scoped token" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="ciam_hub" target="saas_api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" value="validates tenant context" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=1;dashed=1;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="saas_api" target="tenant_db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

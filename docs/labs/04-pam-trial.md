@@ -11,8 +11,8 @@ Everything in the PAM section of this site is easier to defend after you have wa
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-3-pam-trial.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-3-pam-trial.drawio';
 
 <Drawio content={simpleGraph} />
 

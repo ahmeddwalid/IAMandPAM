@@ -11,8 +11,8 @@ Standing access is the default in most environments: a role that exists is a rol
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-4-jit-mfa.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-4-jit-mfa.drawio';
 
 <Drawio content={simpleGraph} />
 

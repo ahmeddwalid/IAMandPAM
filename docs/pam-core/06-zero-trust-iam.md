@@ -7,8 +7,8 @@ description: "How just-in-time access and the elimination of standing privilege 
 
 Zero trust is the operating principle: no implicit trust for any user, device, or network position; every request is verified against identity, device posture, and risk, with continuous monitoring. This page shows what that means for IAM and PAM together, and how the [JIT access](jit-access) pattern is the mechanism that makes "never trust, always verify" work for privileged access.
 
-import Drawio from '../../src/components/Drawio';
-import arch from '!!raw-loader!../../static/diagrams/zero-trust-iam.drawio';
+import Drawio from '@site/src/components/Drawio';
+import arch from '!!raw-loader!@site/static/diagrams/zero-trust-iam.drawio';
 
 <Drawio content={arch} />
 

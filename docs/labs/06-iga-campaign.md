@@ -11,8 +11,8 @@ Identity governance is the unglamorous half of IAM: someone must periodically pr
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-5-iga.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-5-iga.drawio';
 
 <Drawio content={simpleGraph} />
 

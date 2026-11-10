@@ -12,8 +12,8 @@ The [Secrets Management](../pam-core/09-secrets-management.md) page argued that 
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-6-secrets-vault.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-6-secrets-vault.drawio';
 
 <Drawio content={simpleGraph} />
 

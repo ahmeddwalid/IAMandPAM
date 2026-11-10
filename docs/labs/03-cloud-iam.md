@@ -11,8 +11,8 @@ The cloud re-orders identity: instead of one directory and many apps, you have o
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-2-cloud-iam.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-2-cloud-iam.drawio';
 
 <Drawio content={simpleGraph} />
 

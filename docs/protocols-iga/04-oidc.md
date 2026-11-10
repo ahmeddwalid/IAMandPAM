@@ -11,8 +11,8 @@ OpenID Connect (OIDC) is the identity layer built on top of OAuth 2.0. OAuth 2.0
 
 The relationship is deliberately layered: everything OIDC does for the login flow is an OAuth 2.0 flow, with additional identity artifacts on top.
 
-import Drawio from '../../src/components/Drawio';
-import oidc from '!!raw-loader!../../static/diagrams/oidc-on-oauth.drawio';
+import Drawio from '@site/src/components/Drawio';
+import oidc from '!!raw-loader!@site/static/diagrams/oidc-on-oauth.drawio';
 
 <Drawio content={oidc} />
 

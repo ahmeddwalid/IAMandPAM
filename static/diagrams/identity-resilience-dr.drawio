@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="id-resilience" name="Identity Resilience and Disaster Recovery Architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="users" value="Workforce &amp; Admins&#10;authentication requests" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="primary_idp" value="Primary Cloud IdP&#10;(Entra ID / Okta)&#10;[Outage / Degraded State]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#c0392b;fontColor=#c0392b;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="break_glass" value="Emergency Break-Glass Vault&#10;Dual-custody hardware keys&#10;Zero cloud IdP dependencies" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="resilience_controller" value="Resilience &amp; Failover Policy&#10;Continuous Access Evaluation (CAE)&#10;cached validation &amp; emergency rules" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="100" width="240" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="local_ca" value="Isolated Recovery CA&#10;issues emergency short-lived certs&#10;for infrastructure control plane" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="270" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="core_infra" value="Critical Control Plane&#10;AWS Console, Kubernetes,&#10;Hypervisors, Core Routers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="100" width="160" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="out_of_band_log" value="Out-of-Band Audit Pipeline&#10;direct immutable logging&#10;(independent of SSO)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="270" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="SSO fail (timeout)" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#c0392b;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="users" target="primary_idp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="activates emergency dual-key" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="users" target="break_glass">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="10" y="75"/>
+              <mxPoint x="10" y="350"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e3" value="asserts emergency bypass" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="break_glass" target="local_ca">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="ephemeral recovery cert" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="local_ca" target="core_infra">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="310"/>
+              <mxPoint x="600" y="145"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e5" value="triggers break-glass alert" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="local_ca" target="out_of_band_log">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value="evaluated health signals" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=1;dashed=1;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="primary_idp" target="resilience_controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" value="enforces offline caching policy" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="resilience_controller" target="core_infra">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

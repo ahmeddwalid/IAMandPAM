@@ -2,14 +2,9 @@
 /**
  * Generate a styled PDF of the entire IAM & PAM Reference site.
  * 
- * Usage: npm run build:pdf (after npm run build:site)
- * 
- * Approach:
- * 1. Read sidebar structure to get page order
- * 2. Extract main content from each built HTML page
- * 3. Generate individual HTML files for cover, TOC, and each page
- * 4. Use Puppeteer to render each to a separate PDF
- * 5. Use pdf-lib to merge all PDFs into one with page numbers
+ * Usage:
+ *   node scripts/build-pdf.js              # English PDF (build/pdf/iam-pam-reference.pdf)
+ *   node scripts/build-pdf.js --locale ar  # Arabic PDF (build/pdf/iam-pam-reference-ar.pdf)
  */
 
 const puppeteer = require('puppeteer');
@@ -17,24 +12,57 @@ const fs = require('fs');
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
 
+const args = process.argv.slice(2);
+let locale = 'en';
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--locale' && args[i + 1]) {
+    locale = args[i + 1];
+  } else if (args[i].startsWith('--locale=')) {
+    locale = args[i].split('=')[1];
+  }
+}
+
+const isAr = locale === 'ar';
+
 const BUILD_DIR = path.join(__dirname, '..', 'build');
 const PDF_DIR = path.join(BUILD_DIR, 'pdf');
-const OUTPUT_FILE = path.join(PDF_DIR, 'iam-pam-reference.pdf');
-const TEMP_DIR = path.join(PDF_DIR, 'temp');
+const OUTPUT_FILE = path.join(PDF_DIR, isAr ? 'iam-pam-reference-ar.pdf' : 'iam-pam-reference.pdf');
+const TEMP_DIR = path.join(PDF_DIR, isAr ? 'temp-ar' : 'temp');
 
 // Site metadata
-const SITE_TITLE = 'IAM & PAM Reference';
-const SITE_SUBTITLE = 'Identity and Access Management, Privileged Access Management, and the Security Career Track';
-const AUTHOR = 'Ahmed Mansour';
+const SITE_TITLE = isAr 
+  ? 'مرجع إدارة الهوية والوصول (IAM) والوصول المميز (PAM)' 
+  : 'IAM & PAM Reference';
+const SITE_SUBTITLE = isAr
+  ? 'المعمارية المتكاملة لإدارة الهوية، آليات الوصول المميز، والمسار المهني في الأمن السيبراني'
+  : 'Identity and Access Management, Privileged Access Management, and the Security Career Track';
+const AUTHOR = isAr ? 'أحمد وليد (Ahmed Walid)' : 'Ahmed Walid';
+const TOC_TITLE = isAr ? 'فهرس المحتويات' : 'Contents';
+
 const ACCENT = '#b76e2e';
 const WARM_0 = '#f8f6f2';
 const INK_1 = '#3d352a';
 
+// Read fonts to base64 if Arabic
+let amiriFontBase64 = '';
+let ibmPlexFontBase64 = '';
+
+if (isAr) {
+  try {
+    const amiriPath = require.resolve('@fontsource/amiri/files/amiri-arabic-400-normal.woff2');
+    amiriFontBase64 = fs.readFileSync(amiriPath).toString('base64');
+    const ibmPath = require.resolve('@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2');
+    ibmPlexFontBase64 = fs.readFileSync(ibmPath).toString('base64');
+  } catch (e) {
+    console.warn('[pdf] Warning: Font files could not be read for base64 embedding:', e.message);
+  }
+}
+
 async function main() {
-  console.log('[pdf] Starting PDF generation...');
+  console.log(`[pdf] Starting PDF generation for locale: ${locale}...`);
   
   if (!fs.existsSync(BUILD_DIR)) {
-    console.error('[pdf] Build directory not found. Run "npm run build" first.');
+    console.error('[pdf] Build directory not found. Run "npm run build:site" first.');
     process.exit(1);
   }
   
@@ -42,7 +70,7 @@ async function main() {
   fs.mkdirSync(TEMP_DIR, { recursive: true });
   
   const pages = getOrderedPages();
-  console.log(`[pdf] Found ${pages.length} pages`);
+  console.log(`[pdf] Found ${pages.length} pages in sidebar order`);
   
   // Extract content from each page
   const pageContents = [];
@@ -52,6 +80,11 @@ async function main() {
   }
   console.log(`[pdf] Extracted content from ${pageContents.length} pages`);
   
+  if (pageContents.length === 0) {
+    console.error('[pdf] No page contents found. Check build output.');
+    process.exit(1);
+  }
+
   // Generate individual HTML files
   const htmlFiles = [];
   
@@ -70,7 +103,8 @@ async function main() {
   // Content pages
   pageContents.forEach((p, i) => {
     const pageHtml = generatePageHtml(p, i + 2);
-    const pagePath = path.join(TEMP_DIR, `${String(i + 2).padStart(2, '0')}-${p.docId.replace('/', '-')}.html`);
+    const sanitizedDocId = p.docId.replace(/[/\\?%*:|"<>]/g, '-');
+    const pagePath = path.join(TEMP_DIR, `${String(i + 2).padStart(2, '0')}-${sanitizedDocId}.html`);
     fs.writeFileSync(pagePath, pageHtml);
     htmlFiles.push(pagePath);
   });
@@ -90,7 +124,7 @@ async function main() {
     
     const page = await browser.newPage();
     await page.goto('file://' + htmlPath, { waitUntil: 'networkidle0', timeout: 60000 });
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 1000));
     
     await page.pdf({
       path: pdfPath,
@@ -113,7 +147,7 @@ async function main() {
   await mergePdfs(pdfPaths);
   
   // Cleanup temp files
-  fs.rmSync(TEMP_DIR, { recursive: true });
+  fs.rmSync(TEMP_DIR, { recursive: true, force: true });
   
   const stats = fs.statSync(OUTPUT_FILE);
   console.log(`[pdf] Done: ${OUTPUT_FILE} (${(stats.size / 1024 / 1024).toFixed(1)} MB)`);
@@ -124,7 +158,7 @@ function getOrderedPages() {
   const sidebarContent = fs.readFileSync(sidebarPath, 'utf-8');
   
   const pages = [];
-  const docPattern = /['"]([a-z-]+\/[a-z-]+)['"]/g;
+  const docPattern = /['"]([a-z-0-9]+\/[a-z-0-9]+)['"]/g;
   let match;
   const seen = new Set();
   
@@ -140,21 +174,31 @@ function getOrderedPages() {
 }
 
 function extractPageContent(docId) {
-  const htmlPath = path.join(BUILD_DIR, 'docs', docId, 'index.html');
+  const relativeSubdir = isAr ? path.join('ar', 'docs', docId) : path.join('docs', docId);
+  const htmlPath = path.join(BUILD_DIR, relativeSubdir, 'index.html');
   if (!fs.existsSync(htmlPath)) {
-    console.warn(`[pdf] Skipping ${docId}: no built HTML`);
-    return null;
+    // Fall back to English if Arabic page not yet built
+    const fallbackPath = path.join(BUILD_DIR, 'docs', docId, 'index.html');
+    if (!fs.existsSync(fallbackPath)) {
+      console.warn(`[pdf] Skipping ${docId}: no built HTML found in ${htmlPath} or ${fallbackPath}`);
+      return null;
+    }
+    return extractFromHtml(fallbackPath, docId);
   }
   
+  return extractFromHtml(htmlPath, docId);
+}
+
+function extractFromHtml(htmlPath, docId) {
   const html = fs.readFileSync(htmlPath, 'utf-8');
   
-  const titleMatch = html.match(/<h1[^>]*>([^<]+)<\/h1>/i);
-  const title = titleMatch ? titleMatch[1].trim() : docId;
+  const titleMatch = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const title = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, '').trim() : docId;
   
   const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   let content = mainMatch ? mainMatch[1] : '';
   
-  // Clean up
+  // Clean up Docusaurus navigation elements
   content = content.replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '');
   content = content.replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '');
   content = content.replace(/<div class="[^"]*pagination[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
@@ -169,21 +213,54 @@ function extractPageContent(docId) {
 }
 
 function getBaseStyles() {
+  const fontFaceCss = isAr && amiriFontBase64 ? `
+    @font-face {
+      font-family: 'Amiri';
+      font-style: normal;
+      font-weight: 400 700;
+      src: url(data:font/woff2;charset=utf-8;base64,${amiriFontBase64}) format('woff2');
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans Arabic';
+      font-style: normal;
+      font-weight: 400 600;
+      src: url(data:font/woff2;charset=utf-8;base64,${ibmPlexFontBase64}) format('woff2');
+    }
+  ` : '';
+
+  const bodyFont = isAr 
+    ? "'IBM Plex Sans Arabic', 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" 
+    : "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif";
+  const headingFont = isAr 
+    ? "'Amiri', 'EB Garamond', Georgia, serif" 
+    : "'EB Garamond', Georgia, serif";
+
+  const direction = isAr ? 'rtl' : 'ltr';
+  const textAlign = isAr ? 'right' : 'left';
+  const borderSide = isAr ? 'border-right' : 'border-left';
+
   return `
+    ${fontFaceCss}
     * { box-sizing: border-box; }
     
+    html {
+      direction: ${direction};
+    }
+
     body {
-      font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+      font-family: ${bodyFont};
       font-size: 11pt;
       line-height: 1.6;
       color: ${INK_1};
       background: #fff;
       margin: 0;
       padding: 25mm 20mm 25mm 20mm;
+      direction: ${direction};
+      text-align: ${textAlign};
     }
     
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'EB Garamond', Georgia, serif;
+      font-family: ${headingFont};
       font-weight: 600;
       color: ${INK_1};
       margin-top: 1.5rem;
@@ -198,7 +275,7 @@ function getBaseStyles() {
     
     p { margin: 0 0 0.75rem; }
     a { color: ${ACCENT}; text-decoration: none; }
-    ul, ol { margin: 0 0 0.75rem; padding-left: 1.5rem; }
+    ul, ol { margin: 0 0 0.75rem; padding-${isAr ? 'right' : 'left'}: 1.5rem; }
     li { margin-bottom: 0.25rem; }
     
     table {
@@ -207,12 +284,13 @@ function getBaseStyles() {
       margin: 1rem 0;
       font-size: 10pt;
       page-break-inside: avoid;
+      direction: ${direction};
     }
     
     th, td {
       border: 1px solid #e0ddd8;
       padding: 0.5rem 0.75rem;
-      text-align: left;
+      text-align: ${textAlign};
     }
     
     th { background: #f5f3ef; font-weight: 600; color: ${INK_1}; }
@@ -225,6 +303,9 @@ function getBaseStyles() {
       padding: 0.1em 0.35em;
       border: 1px solid #e0ddd8;
       border-radius: 2px;
+      direction: ltr !important;
+      unicode-bidi: isolate;
+      display: inline-block;
     }
     
     pre {
@@ -237,15 +318,19 @@ function getBaseStyles() {
       line-height: 1.5;
       margin: 1rem 0;
       page-break-inside: avoid;
+      direction: ltr !important;
+      text-align: left !important;
+      unicode-bidi: isolate;
     }
     
-    pre code { background: none; border: none; padding: 0; color: inherit; }
+    pre code { background: none; border: none; padding: 0; color: inherit; display: block; }
     
     blockquote {
-      border-left: 2px solid #e0ddd8;
+      ${borderSide}: 3px solid ${ACCENT};
       margin: 1rem 0;
       padding: 0.5rem 1rem;
-      color: #7a6e5f;
+      color: #5a4f42;
+      background: #f9f8f5;
       font-style: italic;
       page-break-inside: avoid;
     }
@@ -263,8 +348,15 @@ function getBaseStyles() {
 }
 
 function generateCoverHtml() {
+  const dateStr = new Date().toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>${SITE_TITLE}</title>
+<html lang="${isAr ? 'ar' : 'en'}" dir="${isAr ? 'rtl' : 'ltr'}">
+<head><meta charset="utf-8"><title>${SITE_TITLE}</title>
 <style>
   ${getBaseStyles()}
   body {
@@ -278,8 +370,7 @@ function generateCoverHtml() {
     padding: 40mm;
   }
   h1 {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 36pt;
+    font-size: 32pt;
     font-weight: 600;
     color: ${INK_1};
     margin: 0 0 1rem;
@@ -298,7 +389,7 @@ function generateCoverHtml() {
   <h1>${SITE_TITLE}</h1>
   <div class="accent-line"></div>
   <p class="subtitle">${SITE_SUBTITLE}</p>
-  <p class="meta">${AUTHOR} &middot; ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+  <p class="meta">${AUTHOR} &middot; ${dateStr}</p>
 </body></html>`;
 }
 
@@ -311,11 +402,11 @@ function generateTocHtml(pages) {
   `).join('');
   
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Contents</title>
+<html lang="${isAr ? 'ar' : 'en'}" dir="${isAr ? 'rtl' : 'ltr'}">
+<head><meta charset="utf-8"><title>${TOC_TITLE}</title>
 <style>
   ${getBaseStyles()}
   h2 {
-    font-family: 'EB Garamond', Georgia, serif;
     font-size: 24pt;
     font-weight: 600;
     color: ${INK_1};
@@ -326,12 +417,12 @@ function generateTocHtml(pages) {
   table { width: 100%; border-collapse: collapse; }
   tr { border-bottom: 1px dotted #d5cdc0; }
   td { padding: 0.5rem 0; vertical-align: top; }
-  td:first-child { padding-right: 1rem; }
-  .page-num { color: ${ACCENT}; font-weight: 600; text-align: right; white-space: nowrap; }
+  td:first-child { padding-${isAr ? 'left' : 'right'}: 1rem; }
+  .page-num { color: ${ACCENT}; font-weight: 600; text-align: ${isAr ? 'left' : 'right'}; white-space: nowrap; }
 </style>
 </head>
 <body>
-  <h2>Contents</h2>
+  <h2>${TOC_TITLE}</h2>
   <table>
     ${tocItems}
   </table>
@@ -340,11 +431,11 @@ function generateTocHtml(pages) {
 
 function generatePageHtml(page, pageNum) {
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>${escapeHtml(page.title)}</title>
+<html lang="${isAr ? 'ar' : 'en'}" dir="${isAr ? 'rtl' : 'ltr'}">
+<head><meta charset="utf-8"><title>${escapeHtml(page.title)}</title>
 <style>
   ${getBaseStyles()}
   .page-title {
-    font-family: 'EB Garamond', Georgia, serif;
     font-size: 20pt;
     font-weight: 600;
     color: ${INK_1};
@@ -361,11 +452,10 @@ function generatePageHtml(page, pageNum) {
 }
 
 async function mergePdfs(pdfPaths) {
-  console.log('[pdf] Merging PDFs...');
+  console.log('[pdf] Merging PDFs into final document...');
   
   const mergedPdf = await PDFDocument.create();
   
-  // Add metadata
   mergedPdf.setTitle(SITE_TITLE);
   mergedPdf.setAuthor(AUTHOR);
   mergedPdf.setSubject(SITE_SUBTITLE);
@@ -379,11 +469,10 @@ async function mergePdfs(pdfPaths) {
     pages.forEach(page => mergedPdf.addPage(page));
   }
   
-  // Add page numbers as a post-process
   const pdfBytes = await mergedPdf.save();
   fs.writeFileSync(OUTPUT_FILE, pdfBytes);
   
-  console.log(`[pdf] Merged ${pdfPaths.length} files into one PDF`);
+  console.log(`[pdf] Merged ${pdfPaths.length} pages into ${OUTPUT_FILE}`);
 }
 
 function escapeHtml(str) {

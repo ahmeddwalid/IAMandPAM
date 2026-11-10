@@ -1,0 +1,98 @@
+{
+  "version.label": {
+    "message": "الحالية",
+    "description": "The label for version current"
+  },
+  "sidebar.learn.category.IAM Fundamentals": {
+    "message": "أساسيات إدارة الهوية والوصول (IAM)",
+    "description": "The label for category 'IAM Fundamentals' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Identity Protocols & IGA": {
+    "message": "بروتوكولات الهوية وحوكمتها (IGA)",
+    "description": "The label for category 'Identity Protocols & IGA' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.PAM Core": {
+    "message": "أساسيات إدارة الوصول المميّز (PAM)",
+    "description": "The label for category 'PAM Core' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Vendor Landscape": {
+    "message": "منظومة الموردين والتقنيات",
+    "description": "The label for category 'Vendor Landscape' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Scenarios & Troubleshooting": {
+    "message": "السيناريوهات العملية واستكشاف الأخطاء",
+    "description": "The label for category 'Scenarios & Troubleshooting' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Scenarios": {
+    "message": "السيناريوهات التشغيلية",
+    "description": "The label for category 'Scenarios' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Troubleshooting": {
+    "message": "دليل استكشاف الأخطاء وحلها",
+    "description": "The label for category 'Troubleshooting' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Incident Response": {
+    "message": "الاستجابة لحوادث الهوية الأمنية",
+    "description": "The label for category 'Incident Response' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Interview Preparation": {
+    "message": "التحضير للمقابلات المهنية",
+    "description": "The label for category 'Interview Preparation' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Certifications & Career": {
+    "message": "الشهادات والمسار المهني",
+    "description": "The label for category 'Certifications & Career' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Hands-On Labs & Projects": {
+    "message": "المختبرات والمشاريع التطبيقية",
+    "description": "The label for category 'Hands-On Labs & Projects' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Video Series": {
+    "message": "السلسلة المرئية",
+    "description": "The label for category 'Video Series' in sidebar 'learn'"
+  },
+  "sidebar.learn.category.Reference": {
+    "message": "المراجع والملاحق الفنية",
+    "description": "The label for category 'Reference' in sidebar 'learn'"
+  },
+  "sidebar.learn.doc.1. Home Lab Setup": {
+    "message": "1. إعداد المختبر المنزلي (Home Lab)",
+    "description": "The label for the doc item '1. Home Lab Setup' in sidebar 'learn', linking to the doc labs/home-lab-setup"
+  },
+  "sidebar.learn.doc.2. AD + Keycloak SSO": {
+    "message": "2. الربط الأحادي مع AD و Keycloak",
+    "description": "The label for the doc item '2. AD + Keycloak SSO' in sidebar 'learn', linking to the doc labs/keycloak-sso"
+  },
+  "sidebar.learn.doc.3. Cloud IAM Federation": {
+    "message": "3. اتحاد هويات السحابة (AWS Federation)",
+    "description": "The label for the doc item '3. Cloud IAM Federation' in sidebar 'learn', linking to the doc labs/cloud-iam"
+  },
+  "sidebar.learn.doc.4. PAM on a Trial": {
+    "message": "4. تطبيق إدارة الوصول المميز تجريبياً",
+    "description": "The label for the doc item '4. PAM on a Trial' in sidebar 'learn', linking to the doc labs/pam-trial"
+  },
+  "sidebar.learn.doc.5. JIT Access with MFA": {
+    "message": "5. الوصول الفوري (JIT) مع المصادقة المتعددة",
+    "description": "The label for the doc item '5. JIT Access with MFA' in sidebar 'learn', linking to the doc labs/jit-mfa"
+  },
+  "sidebar.learn.doc.6. Lightweight IGA": {
+    "message": "6. حوكمة الهوية وإدارتها خفيفة الوزن",
+    "description": "The label for the doc item '6. Lightweight IGA' in sidebar 'learn', linking to the doc labs/iga-campaign"
+  },
+  "sidebar.learn.doc.7. Secrets Management with Vault": {
+    "message": "7. إدارة الأسرار الرقمية عبر HashiCorp Vault",
+    "description": "The label for the doc item '7. Secrets Management with Vault' in sidebar 'learn', linking to the doc labs/secrets-vault"
+  },
+  "sidebar.learn.doc.8. DevOps CI-CD Identity": {
+    "message": "8. هويات مسارات التطوير DevOps CI/CD",
+    "description": "The label for the doc item '8. DevOps CI-CD Identity' in sidebar 'learn', linking to the doc labs/devops-identity"
+  },
+  "sidebar.learn.doc.9. Cloud Least-Privilege Mining": {
+    "message": "9. هندسة الصلاحيات السحابية الدنيا (CIEM)",
+    "description": "The label for the doc item '9. Cloud Least-Privilege Mining' in sidebar 'learn', linking to the doc labs/ciem-least-privilege"
+  },
+  "sidebar.learn.doc.10. Zero Standing Privileges with Teleport": {
+    "message": "10. انعدام الصلاحيات الدائمة مع Teleport",
+    "description": "The label for the doc item '10. Zero Standing Privileges with Teleport' in sidebar 'learn', linking to the doc labs/ephemeral-access-teleport"
+  }
+}

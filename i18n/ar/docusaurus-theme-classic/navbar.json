@@ -1,0 +1,10 @@
+{
+  "title": {
+    "message": "مرجع إدارة الهوية والوصول",
+    "description": "The title in the navbar"
+  },
+  "item.label.Learn": {
+    "message": "المحتوى التعليمي",
+    "description": "Navbar item with label Learn"
+  }
+}

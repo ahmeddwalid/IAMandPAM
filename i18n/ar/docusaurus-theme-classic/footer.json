@@ -1,0 +1,50 @@
+{
+  "link.title.Sections": {
+    "message": "الأقسام الرئيسية",
+    "description": "The title of the footer links column with title=Sections in the footer"
+  },
+  "link.item.label.IAM Fundamentals": {
+    "message": "أساسيات إدارة الهوية والوصول (IAM)",
+    "description": "The label of footer link with label=IAM Fundamentals linking to /docs/fundamentals"
+  },
+  "link.item.label.Identity Protocols & IGA": {
+    "message": "بروتوكولات الهوية وحوكمتها (IGA)",
+    "description": "The label of footer link with label=Identity Protocols & IGA linking to /docs/protocols-iga"
+  },
+  "link.item.label.PAM Core": {
+    "message": "أساسيات إدارة الوصول المميّز (PAM)",
+    "description": "The label of footer link with label=PAM Core linking to /docs/pam-core"
+  },
+  "link.item.label.Vendor Landscape": {
+    "message": "منظومة الموردين والتقنيات",
+    "description": "The label of footer link with label=Vendor Landscape linking to /docs/vendors"
+  },
+  "link.item.label.Scenarios & Troubleshooting": {
+    "message": "السيناريوهات العملية واستكشاف الأخطاء",
+    "description": "The label of footer link with label=Scenarios & Troubleshooting linking to /docs/scenarios"
+  },
+  "link.item.label.Interview Preparation": {
+    "message": "التحضير للمقابلات المهنية",
+    "description": "The label of footer link with label=Interview Preparation linking to /docs/interviews"
+  },
+  "link.item.label.Certifications & Career": {
+    "message": "الشهادات والمسار المهني",
+    "description": "The label of footer link with label=Certifications & Career linking to /docs/careers"
+  },
+  "link.item.label.Hands-On Labs & Projects": {
+    "message": "المختبرات والمشاريع التطبيقية",
+    "description": "The label of footer link with label=Hands-On Labs & Projects linking to /docs/labs"
+  },
+  "link.item.label.Glossary": {
+    "message": "معجم المصطلحات",
+    "description": "The label of footer link with label=Glossary linking to /docs/reference/glossary"
+  },
+  "link.item.label.Cheat Sheets": {
+    "message": "الجداول المرجعية المركّزة",
+    "description": "The label of footer link with label=Cheat Sheets linking to /docs/reference/cheat-sheets"
+  },
+  "copyright": {
+    "message": "جميع الحقوق محفوظة © 2026 مرجع إدارة الهوية والوصول (IAM & PAM). مبادرة تعليمية وتوثيقية مستقلة.",
+    "description": "The footer copyright"
+  }
+}

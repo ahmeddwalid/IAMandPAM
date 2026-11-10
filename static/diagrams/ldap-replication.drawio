@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" modified="2026-09-29T00:00:00.000Z" agent="opencode" version="24.0.0" type="device">
+  <diagram id="ldap-replication" name="LDAP Advanced">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="820" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dc1" value="DC1&#xa;(Master)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dc2" value="DC2&#xa;(Replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dc3" value="DC3&#xa;(Replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="replication" value="Multi-Master Replication&#xa;(Syncrepl / DFS-R)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="140" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="schema" value="Schema Design&#xa;(Object Classes, Attributes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="indexing" value="Indexing&#xa;(Equality, Substring)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="220" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="referral" value="Referral Chasing&#xa;(LDAP URL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="220" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;" edge="1" parent="1" source="dc1" target="dc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;" edge="1" parent="1" source="dc2" target="dc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7a6e5f;" edge="1" parent="1" source="dc2" target="replication">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7a6e5f;" edge="1" parent="1" source="replication" target="indexing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="LDAP Advanced Topics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7a6e5f;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="200" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

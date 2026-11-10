@@ -7,8 +7,8 @@ description: "The complete PAM architecture: vault, session manager, targets, ap
 
 This page is the reference architecture for a complete PAM deployment, the privileged slice of the [complete IAM architecture](/docs/protocols-iga/iam-architecture). It shows every component a production program needs and the data flows between them.
 
-import Drawio from '../../src/components/Drawio';
-import arch from '!!raw-loader!../../static/diagrams/pam-architecture.drawio';
+import Drawio from '@site/src/components/Drawio';
+import arch from '!!raw-loader!@site/static/diagrams/pam-architecture.drawio';
 
 <Drawio content={arch} />
 

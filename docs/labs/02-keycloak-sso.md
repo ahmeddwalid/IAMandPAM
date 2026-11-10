@@ -11,8 +11,8 @@ Lab 1 left you with an identity provider that has no real identities. This lab c
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import simpleGraph from '!!raw-loader!../../static/diagrams/lab-1-iam-sso.drawio';
+import Drawio from '@site/src/components/Drawio';
+import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-1-iam-sso.drawio';
 
 <Drawio content={simpleGraph} />
 

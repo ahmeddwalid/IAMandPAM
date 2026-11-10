@@ -51,8 +51,8 @@ Current status, verified 2026-08-18:
 
 ## Hybrid identity architecture
 
-import Drawio from '../../src/components/Drawio';
-import hybrid from '!!raw-loader!../../static/diagrams/hybrid-identity-architecture.drawio';
+import Drawio from '@site/src/components/Drawio';
+import hybrid from '!!raw-loader!@site/static/diagrams/hybrid-identity-architecture.drawio';
 
 <Drawio content={hybrid} />
 

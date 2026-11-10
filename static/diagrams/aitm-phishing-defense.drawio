@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="aitm-defense" name="AiTM Reverse-Proxy Phishing and FIDO2 Defense">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="victim" value="User Browser&#10;(clicks phish link)&#10;connects to proxy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="proxy" value="AiTM Reverse Proxy&#10;(Evilginx server)&#10;proxies traffic in real time" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#c0392b;fontColor=#3d352a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="idp" value="Legitimate Enterprise IdP&#10;(Entra ID / Okta)&#10;issues challenges" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cookie_theft" value="Attack Path A: Legacy MFA&#10;TOTP / Push bypassed;&#10;Attacker steals session cookie" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#c0392b;fontColor=#c0392b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fido2_defense" value="Defense Path B: FIDO2 / WebAuthn&#10;Cryptographic Origin Binding:&#10;Browser signs real origin;&#10;Proxy origin mismatch rejected!" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#2c7a4a;fontColor=#2c7a4a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="240" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="protected_apps" value="Protected Cloud Resources&#10;Zero standing sessions&#10;Continuous Access Evaluation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="1. navigates to phishing URL" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="victim" target="proxy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="2. mirrors request to real IdP" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="proxy" target="idp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="steals authenticated cookie" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="proxy" target="cookie_theft">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="WebAuthn origin challenge" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#2c7a4a;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="victim" target="fido2_defense">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" value="valid session grants access" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="idp" target="protected_apps">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value="stolen cookie replay" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c0392b;strokeWidth=1;dashed=1;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="cookie_theft" target="protected_apps">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

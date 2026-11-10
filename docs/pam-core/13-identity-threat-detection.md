@@ -90,8 +90,8 @@ The prerequisite is log quality. If identity logs are incomplete, inconsistent, 
 
 ## Architecture
 
-import Drawio from '../../src/components/Drawio';
-import itdrFlow from '!!raw-loader!../../static/diagrams/itdr-workflow.drawio';
+import Drawio from '@site/src/components/Drawio';
+import itdrFlow from '!!raw-loader!@site/static/diagrams/itdr-workflow.drawio';
 
 <Drawio content={itdrFlow} />
 

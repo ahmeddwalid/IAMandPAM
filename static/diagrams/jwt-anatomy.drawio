@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" modified="2026-09-29T00:00:00.000Z" agent="opencode" version="24.0.0" type="device">
+  <diagram id="jwt-anatomy" name="JWT Deep Dive">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="820" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header" value="Header&#xa;{alg, typ, kid}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="payload" value="Payload&#xa;{sub, iss, aud, exp}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="signature" value="Signature&#xa;HMAC/RSA/ECDSA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jws" value="JWS&#xa;(Signed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jwe" value="JWE&#xa;(Encrypted)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rs256" value="RS256&#xa;RSA + SHA-256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="es256" value="ES256&#xa;ECDSA + P-256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eddsa" value="EdDSA&#xa;Ed25519" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jwks" value="JWKS&#xa;Key Distribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rotation" value="Key Rotation&#xa;kid-based" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dpop" value="DPoP&#xa;Token Binding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mtls" value="mTLS&#xa;Cert Binding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae8e4;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;" edge="1" parent="1" source="header" target="payload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b76e2e;" edge="1" parent="1" source="payload" target="signature">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="JWT Structure and Security" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7a6e5f;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="200" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

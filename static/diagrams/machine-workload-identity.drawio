@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" agent="hand-authored" version="24.7.7">
+  <diagram id="machine-workload-identity" name="Machine and Workload Identity Federation">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="840" pageHeight="440" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Nodes -->
+        <mxCell id="workload" value="Workload Pod / Job&#10;(Kubernetes or GitHub Action)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="oidc_issuer" value="Local OIDC Issuer&#10;(K8s API / GitHub Actions)&#10;signs projected JWT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="jwks_endpoint" value="Public JWKS Endpoint&#10;/.well-known/jwks.json&#10;(public signing keys)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#7a6e5f;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud_sts" value="Cloud STS Broker&#10;(AWS STS / GCP STS)&#10;AssumeRoleWithWebIdentity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7ead9;strokeColor=#b76e2e;fontColor=#3d352a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="120" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud_iam_role" value="Target Cloud Role&#10;trust policy validates:&#10;aud + sub + iss claims" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="120" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud_api" value="Protected Cloud API&#10;(S3, Secrets, Database)&#10;short-lived 1h access" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f3ef;strokeColor=#3d352a;fontColor=#3d352a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="1. requests projected token" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="workload" target="oidc_issuer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="hosts public keys" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=1;dashed=1;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="oidc_issuer" target="jwks_endpoint">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="2. exchanges JWT for cloud credentials" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="workload" target="cloud_sts">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="80"/>
+              <mxPoint x="280" y="150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e4" value="3. fetches JWKS &amp; verifies JWT signature" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="cloud_sts" target="jwks_endpoint">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="355"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e5" value="4. evaluates trust policy" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#7a6e5f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="cloud_sts" target="cloud_iam_role">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value="5. issues temporary token (STS)" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#94541f;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="cloud_sts" target="workload">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="100"/>
+              <mxPoint x="240" y="100"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e7" value="6. calls API with short-lived token" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#b76e2e;strokeWidth=2;fontColor=#3d352a;fontSize=11;labelBackgroundColor=#f8f6f2;" edge="1" parent="1" source="workload" target="cloud_api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="60"/>
+              <mxPoint x="600" y="60"/>
+              <mxPoint x="600" y="320"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
