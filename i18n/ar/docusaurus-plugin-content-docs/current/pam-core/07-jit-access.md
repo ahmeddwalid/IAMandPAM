@@ -14,7 +14,7 @@ import arch from '!!raw-loader!@site/static/diagrams/jit-access-flow.drawio';
 
 *مسار عمل الوصول في الوقت المناسب (JIT): الطلب، الاعتماد، المنح، الاستخدام، الإلغاء، والتدقيق. المنح محدد زمنياً بطبيعته، والإلغاء آلي ومتحقق منه برمجياً، وكل مرحلة موثقة في سجلات التدقيق.*
 
-[تحميل / تعديل هذا المخطط](/diagrams/jit-access-flow.drawio)
+<a href="/diagrams/jit-access-flow.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 ## المسار الإجرائي والتقني خطوة بخطوة
 

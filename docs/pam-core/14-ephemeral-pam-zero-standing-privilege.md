@@ -39,7 +39,7 @@ While vaulting significantly improves upon static spreadsheets and unmanaged pas
 
 <p className="diagram-caption">
   Zero Standing Privilege Architecture: Operators authenticate via corporate IdP with FIDO2, receiving a short-lived signed certificate valid for 1 hour. Target hosts trust the CA public key directly.
-  [Download / edit this diagram](/diagrams/zero-standing-privilege-zsp.drawio)
+  <a href="/diagrams/zero-standing-privilege-zsp.drawio" download>Download / edit this diagram</a>
 </p>
 
 ### The Six-Step Ephemeral Lifecycle:

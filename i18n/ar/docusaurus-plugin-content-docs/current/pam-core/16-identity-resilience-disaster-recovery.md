@@ -27,7 +27,7 @@ import idResilience from '!!raw-loader!@site/static/diagrams/identity-resilience
 
 <Drawio content={idResilience} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/identity-resilience-dr.drawio)
+<a href="/diagrams/identity-resilience-dr.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 يتضمن نموذج المرونة ثلاثة مستويات تعافٍ مستقلة:
 

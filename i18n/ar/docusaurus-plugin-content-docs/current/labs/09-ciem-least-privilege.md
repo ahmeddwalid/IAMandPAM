@@ -21,7 +21,7 @@ In this lab, you will deploy a realistic over-privileged application role on AWS
 
 <p className="diagram-caption">
   CIEM Analysis Pipeline: Ingesting active CloudTrail event telemetry and generating an automated right-sized IAM policy.
-  [Download / edit this diagram](/diagrams/ciem-ispm-architecture.drawio)
+  <a href="/diagrams/ciem-ispm-architecture.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 </p>
 
 ### What You Will Learn:

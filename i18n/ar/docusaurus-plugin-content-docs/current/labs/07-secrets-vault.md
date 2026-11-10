@@ -17,7 +17,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-6-secrets-vault.
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-6-secrets-vault.drawio)
+<a href="/diagrams/lab-6-secrets-vault.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 The application never stores a credential: it authenticates to Vault with an AppRole identity, asks Vault for what it needs, and holds each secret only for its lease. The admin's job is configuration, not credential distribution.
 

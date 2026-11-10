@@ -16,7 +16,7 @@ import kerberosWs from '!!raw-loader!@site/static/diagrams/lab-16-kerberos-wires
 
 <Drawio content={kerberosWs} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/lab-16-kerberos-wireshark.drawio)
+<a href="/diagrams/lab-16-kerberos-wireshark.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 التدفق: العميل يرسل AS-REQ إلى KDC (الخطوة 1)، KDC يعيد TGT في AS-REP (الخطوة 2)، العميل يرسل TGS-REQ مع TGT لطلب تذكرة خدمة (الخطوة 3)، KDC يعيد تذكرة خدمة في TGS-REP (الخطوة 4)، والعميل يرسل AP-REQ مع تذكرة الخدمة إلى الخدمة المستهدفة (الخطوة 5).
 

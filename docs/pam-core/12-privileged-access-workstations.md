@@ -32,7 +32,7 @@ import pawArch from '!!raw-loader!@site/static/diagrams/paw-architecture.drawio'
 
 <Drawio content={pawArch} />
 
-[Download / edit this diagram](/diagrams/paw-architecture.drawio)
+<a href="/diagrams/paw-architecture.drawio" download>Download / edit this diagram</a>
 
 The flow: the admin uses a normal workstation for email and web. That workstation connects to the internet through a firewall but has no route to the management network. When the admin needs to manage a domain controller, they switch to the PAW. The PAW connects to the management network through a separate firewall path. It has no internet access, no browser, and no email client. The two environments share nothing.
 

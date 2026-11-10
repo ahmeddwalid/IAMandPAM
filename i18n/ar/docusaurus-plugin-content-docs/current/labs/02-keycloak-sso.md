@@ -16,7 +16,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-1-iam-sso.drawio
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-1-iam-sso.drawio)
+<a href="/diagrams/lab-1-iam-sso.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 The flow: the browser hits an application, gets redirected to Keycloak (step 1), Keycloak verifies the password against AD with an LDAP bind (step 2), and on success issues OIDC tokens to the application (step 3). Once the Keycloak SSO session exists, the second application requires no login at all (step 4).
 

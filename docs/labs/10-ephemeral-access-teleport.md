@@ -21,7 +21,7 @@ In this lab, you will deploy an open-source **Teleport Community Edition** clust
 
 <p className="diagram-caption">
   Zero Standing Privilege Architecture: Authenticate via identity provider, receive an ephemeral signed certificate, and connect through the secure proxy.
-  [Download / edit this diagram](/diagrams/zero-standing-privilege-zsp.drawio)
+  <a href="/diagrams/zero-standing-privilege-zsp.drawio" download>Download / edit this diagram</a>
 </p>
 
 ### What You Will Learn:

@@ -16,7 +16,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-3-pam-trial.draw
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-3-pam-trial.drawio)
+<a href="/diagrams/lab-3-pam-trial.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 The admin authenticates to the vault with MFA, requests access, and the session is brokered through PSM, which injects the credential invisibly. CPM rotates the password afterward. Everything is recorded.
 

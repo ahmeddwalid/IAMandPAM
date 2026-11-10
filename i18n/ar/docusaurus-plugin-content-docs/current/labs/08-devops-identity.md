@@ -51,7 +51,7 @@ import devopsFlow from '!!raw-loader!@site/static/diagrams/devops-identity-flow.
 
 <Drawio content={devopsFlow} />
 
-[Download / edit this diagram](/diagrams/devops-identity-flow.drawio)
+<a href="/diagrams/devops-identity-flow.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 The federation flow: the GitHub Actions runner requests a token from GitHub's OIDC provider, presents it to the cloud provider's OIDC trust provider, assumes an IAM role scoped to the repository and branch, and receives a short-lived cloud credential. The local developer laptop has no path to the cloud resources.
 

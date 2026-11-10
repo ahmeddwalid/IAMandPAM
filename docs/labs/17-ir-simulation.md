@@ -16,7 +16,7 @@ import irSim from '!!raw-loader!@site/static/diagrams/lab-17-ir-simulation.drawi
 
 <Drawio content={irSim} />
 
-[Download / edit this diagram](/diagrams/lab-17-ir-simulation.drawio)
+<a href="/diagrams/lab-17-ir-simulation.drawio" download>Download / edit this diagram</a>
 
 The flow: a service account exhibits anomalous behavior (step 1), the IR team detects the anomaly via audit logs (step 2), contains the threat by disabling the account and revoking sessions (step 3), eradicates the attacker's access by rotating credentials and removing persistence (step 4), and recovers by re-establishing the service account with proper controls (step 5).
 

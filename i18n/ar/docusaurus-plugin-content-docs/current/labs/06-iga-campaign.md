@@ -16,7 +16,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-5-iga.drawio';
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-5-iga.drawio)
+<a href="/diagrams/lab-5-iga.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 A CSV stands in for the HR system, Keycloak groups stand in for entitlements, a review table stands in for the certification campaign, and a check script stands in for the SoD engine.
 

@@ -16,7 +16,7 @@ import samlOidc from '!!raw-loader!@site/static/diagrams/lab-14-saml-oidc-integr
 
 <Drawio content={samlOidc} />
 
-[Download / edit this diagram](/diagrams/lab-14-saml-oidc-integration.drawio)
+<a href="/diagrams/lab-14-saml-oidc-integration.drawio" download>Download / edit this diagram</a>
 
 The flow: the browser hits a SAML application (step 1), gets redirected to Keycloak's SAML endpoint (step 2), Keycloak authenticates against AD via LDAP (step 3), and returns a SAML assertion to the application (step 4). The OIDC client from Lab 2 continues to work unchanged (step 5). Both protocols issue tokens for the same user, with the same directory as the source of truth.
 

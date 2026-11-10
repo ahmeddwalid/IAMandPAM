@@ -73,7 +73,7 @@ An identity with permission to modify trust relationships on existing roles can 
 
 <p className="diagram-caption">
   CIEM and Identity Posture Architecture: Ingesting activity telemetry and IAM metadata to compute effective permissions, identify escalation risks, and automate least-privilege policy updates.
-  [Download / edit this diagram](/diagrams/ciem-ispm-architecture.drawio)
+  <a href="/diagrams/ciem-ispm-architecture.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 </p>
 
 ### The Remediation Workflow:

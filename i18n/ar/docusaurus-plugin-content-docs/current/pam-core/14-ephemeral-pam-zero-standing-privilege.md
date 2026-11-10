@@ -39,7 +39,7 @@ import diagram from '!!raw-loader!@site/static/diagrams/zero-standing-privilege-
 
 <p className="diagram-caption">
   معمارية انعدام الامتيازات الدائمة (ZSP): يُصادق المهندسون عبر مزود الهوية المؤسسي باستخدام FIDO2، ويحصلون على شهادة رقمية موقعة وصالحة لمدة ساعة واحدة فقط. تثق الخوادم المستهدفة بالمفتاح العام لمرجع الشهادات مباشرة.
-  [تحميل / تعديل هذا المخطط](/diagrams/zero-standing-privilege-zsp.drawio)
+  <a href="/diagrams/zero-standing-privilege-zsp.drawio" download>تحميل / تعديل هذا المخطط</a>
 </p>
 
 ### دورة حياة الوصول سريع الزوال في 6 خطوات:

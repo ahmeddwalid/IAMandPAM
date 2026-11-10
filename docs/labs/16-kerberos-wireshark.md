@@ -16,7 +16,7 @@ import kerberosWs from '!!raw-loader!@site/static/diagrams/lab-16-kerberos-wires
 
 <Drawio content={kerberosWs} />
 
-[Download / edit this diagram](/diagrams/lab-16-kerberos-wireshark.drawio)
+<a href="/diagrams/lab-16-kerberos-wireshark.drawio" download>Download / edit this diagram</a>
 
 The flow: the client sends an AS-REQ to the KDC (step 1), the KDC returns a TGT in an AS-REP (step 2), the client sends a TGS-REQ with the TGT to request a service ticket (step 3), the KDC returns a service ticket in a TGS-REP (step 4), and the client sends an AP-REQ with the service ticket to the target service (step 5).
 

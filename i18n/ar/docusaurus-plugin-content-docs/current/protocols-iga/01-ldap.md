@@ -18,7 +18,7 @@ import dit from '!!raw-loader!@site/static/diagrams/ldap-dit.drawio';
 
 *بنية شجرة معلومات الدليل (DIT): تتدرج من جذر النطاق (Domain Component - DC) مروراً بالوحدات التنظيمية (Organizational Units - OUs) وصولاً إلى كائنات المستخدمين؛ وتمتلك كل مدخلة اسماً مميزاً فريداً (DN) مستمداً من مسارها الهرمي الكامل.*
 
-[تحميل / تعديل هذا المخطط](/diagrams/ldap-dit.drawio)
+<a href="/diagrams/ldap-dit.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 ## العمليات الأساسية في LDAP
 

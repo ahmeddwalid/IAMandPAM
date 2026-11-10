@@ -16,7 +16,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-4-jit-mfa.drawio
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-4-jit-mfa.drawio)
+<a href="/diagrams/lab-4-jit-mfa.drawio" download>Download / edit this diagram</a>
 
 Login demands MFA, the request goes to an approver, approval issues a 24-hour role, and expiry revokes it. The audit log records every step.
 

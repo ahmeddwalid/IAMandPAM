@@ -27,7 +27,7 @@ import idResilience from '!!raw-loader!@site/static/diagrams/identity-resilience
 
 <Drawio content={idResilience} />
 
-[Download / edit this diagram](/diagrams/identity-resilience-dr.drawio)
+<a href="/diagrams/identity-resilience-dr.drawio" download>Download / edit this diagram</a>
 
 The resilience model incorporates three independent recovery tiers:
 

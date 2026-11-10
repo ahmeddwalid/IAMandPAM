@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build && npm run build:pdf",
-    "build:site": "docusaurus build",
+    "build:site": "docusaurus build && node scripts/prune-locale-static.mjs",
     "build:pdf": "node scripts/build-pdf.js",
     "build:pdf:ar": "node scripts/build-pdf.js --locale ar",
     "build:all": "docusaurus build && npm run build:pdf && npm run build:pdf:ar",

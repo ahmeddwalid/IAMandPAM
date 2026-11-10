@@ -14,7 +14,7 @@ import arch from '!!raw-loader!@site/static/diagrams/jit-access-flow.drawio';
 
 *The JIT workflow: request, approve, grant, use, revoke, audit. The grant is time-boxed by default, revocation is automatic and verified, and every step is logged.*
 
-[Download / edit this diagram](/diagrams/jit-access-flow.drawio)
+<a href="/diagrams/jit-access-flow.drawio" download>Download / edit this diagram</a>
 
 ## The workflow, step by step
 

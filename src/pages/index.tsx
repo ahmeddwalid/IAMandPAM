@@ -288,6 +288,11 @@ export default function Home() {
           >
             <source src="/videos/part1-what-is-iam-pam.mp4" type="video/mp4" />
           </video>
+          <p>
+            <Link className="home-inline-link" to="/docs/videos/">
+              {isAr ? 'استعرض السلسلة المرئية كاملة (عشر حلقات)' : 'Watch the ten-episode series'}
+            </Link>
+          </p>
         </section>
 
         <section aria-labelledby="sections-heading">

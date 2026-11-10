@@ -21,7 +21,7 @@ When the victim enters their username, password, and completes their TOTP, SMS, 
 
 <p className="diagram-caption">
   AiTM Reverse-Proxy Phishing: Legacy MFA (Path A) allows session cookie theft, whereas FIDO2 WebAuthn (Path B) uses cryptographic origin binding to reject the proxy connection automatically.
-  [Download / edit this diagram](/diagrams/aitm-phishing-defense.drawio)
+  <a href="/diagrams/aitm-phishing-defense.drawio" download>Download / edit this diagram</a>
 </p>
 
 ---

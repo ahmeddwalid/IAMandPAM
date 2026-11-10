@@ -18,7 +18,7 @@ import oidc from '!!raw-loader!@site/static/diagrams/oidc-on-oauth.drawio';
 
 *OIDC reuses the OAuth 2.0 authorization framework unchanged and adds the ID token, the UserInfo endpoint, and discovery on top. The lower layer stays a pure authorization framework; the upper layer is where identity appears.*
 
-[Download / edit this diagram](/diagrams/oidc-on-oauth.drawio)
+<a href="/diagrams/oidc-on-oauth.drawio" download>Download / edit this diagram</a>
 
 ## The ID token
 

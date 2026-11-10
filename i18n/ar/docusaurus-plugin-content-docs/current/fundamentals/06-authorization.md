@@ -26,7 +26,7 @@ import rbacRel from '!!raw-loader!@site/static/diagrams/rbac-relationship.drawio
 
 *The RBAC relationship chain: users hold roles, roles carry permissions, permissions apply to resources. Access decisions become role membership checks.*
 
-[Download / edit this diagram](/diagrams/rbac-relationship.drawio)
+<a href="/diagrams/rbac-relationship.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 RBAC wins because it scales: with thousands of users and hundreds of permissions, granting by role is the only arrangement a human can reason about. Reviews are done per role ("who holds finance-manager?") instead of per permission. Most organizations run RBAC as their base model, including the built-in role structures in directories and cloud platforms (Azure AD roles, AWS IAM roles, Keycloak roles).
 

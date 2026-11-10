@@ -14,7 +14,7 @@ import arch from '!!raw-loader!@site/static/diagrams/iam-architecture.drawio';
 
 *The complete IAM architecture. Users authenticate at the identity provider; the IdP federates to applications over OIDC, SAML, or OAuth 2.0, reads from the directory over LDAP, provisions with IGA over SCIM, and ships everything to audit.*
 
-[Download / edit this diagram](/diagrams/iam-architecture.drawio)
+<a href="/diagrams/iam-architecture.drawio" download>Download / edit this diagram</a>
 
 ## Walking through the diagram
 

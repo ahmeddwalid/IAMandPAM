@@ -631,3 +631,49 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 - Arabic mirror quality issues carried over from Phase 12 remain to be cleaned: untranslated English sentences in `interviews/07-technical-deep-dive.md`, the typo in `careers/05-salary-negotiation.md`, and `sampp:Artifact` in `protocols-iga/12-saml-deep-dive.md`.
 - The PDF pipeline still builds only on demand (`npm run build`), not in CI. If the PDF should be downloadable from the deployed site, it needs a separate job or a release asset.
+
+## Phase 14 — Video Series on the Site (done 2026-11-10)
+
+### 1. Why the masters could not ship as they were
+
+- The ten NotebookLM exports in `Gemini NotebookLM Videos/` are 720p H.264, 587 MB in total. The largest, `Insight_Engine__Architecting_the_Zero-Trust_Enterprise (1).mp4`, is 104 MB, above GitHub's 100 MB per-file limit.
+- Committing the masters would also have put a gigabyte-class blob in a repository whose Pages artifact is capped at 1 GB. They stay local and gitignored.
+
+### 2. Web encode
+
+- `scripts/encode-series.sh` re-encodes each master into `static/videos/series/<slug>.mp4`: libx264 CRF 24, `slow`, High@4.0, yuv420p, AAC 96 kbit/s mono, `+faststart`.
+- Each video gets a poster frame at 12% of its duration, saved next to it as `<slug>.jpg`.
+- Result: 10 MP4 + 10 JPG, 308 MB in total, no file above 56 MB. Runtime is about 71 minutes across the series: enterprise 8:37, IAM stack 8:05, zero trust 10:40, vendor fit 7:22, blueprint 6:11, workflow 6:44, scenarios 6:07, labs 5:09, interviews 4:26, Arabic 8:04.
+- The script skips files that already exist, so a re-run only encodes what is missing.
+
+### 3. Page and component
+
+- `src/data/videos.ts` holds the series metadata: slug, English and Arabic title and description, duration, language, and the section the episode maps to.
+- `src/components/VideoSeries.tsx` renders a 16:9 player with a caption block and a ten-item episode rail. Selecting an episode swaps the player source without a page reload. All labels switch with the active locale.
+- `docs/videos/index.md` and its Arabic mirror were rewritten around the component. They state what the episodes are for, that the written pages remain the reference, and how the episodes were produced.
+- The Arabic episode sits last in the rail; the English page and the Arabic page share one order rather than re-sorting per locale.
+- Navigation: a "Videos" item in the navbar, "Video Series" in the footer, and a link from the homepage video section to the full series.
+- The older narrated part 1 stays on the page under "Narrated walkthrough".
+
+### 4. Build size
+
+- Docusaurus copies every `staticDirectory` into each locale's output, so `build/ar/videos` was a 315 MB duplicate of `build/videos`. The full artifact was 681 MB, more than half of it dead weight.
+- `scripts/prune-locale-static.mjs` runs at the end of `npm run build:site` and removes `videos`, `diagrams`, and `lib` from non-default locale output, but only after scanning that locale's HTML, JS, CSS, and JSON for a `/<locale>/<dir>/` reference. If one is found the directory is kept and the reason printed.
+- `img` is deliberately not pruned: translated pages reference `/ar/img/...` directly.
+- Artifact: 681 MB to 364 MB. The workflow calls `npm run build:site`, so CI prunes without any change to `deploy.yml`.
+
+### 5. Diagram download links
+
+- With `trailingSlash: true`, Docusaurus passes markdown links to static files through `useBaseUrl`, which appends a slash to any path it is given. Every "Download / edit this diagram" link became `/assets/files/<name>.<hash>.drawio/`, which returns 404 on Pages. Both locales, 24 diagrams each.
+- The links are now raw anchors with a `download` attribute pointing at `/diagrams/<name>.drawio`, the copy that sits in `static/diagrams/`. The Arabic pages use an Arabic label instead of the English one.
+
+### 6. Verification
+
+- `npm run build:site` clean for `en` and `ar`; `npx tsc --noEmit` clean.
+- A link audit over the built site resolves 42,508 internal `href`/`src`/`poster` attributes. The only two that do not match a file are the locale switcher entries on the 404 pages, which point at `/404/`; Docusaurus emits a single `404.html` and no `/404/` route.
+- Rendered checks: 10 episode buttons, correct poster and source paths per episode, Arabic rail titles render in Arabic, `build/ar` has no video duplicate.
+
+### Open items
+
+- The repository now carries 308 MB of video. Cloning is slower than it used to be. Moving the series to object storage or a video host would cut that, at the cost of a second service to keep alive.
+- Two 404-page locale-switcher links point at a route that does not exist. Harmless, but it is a framework behavior rather than a choice.

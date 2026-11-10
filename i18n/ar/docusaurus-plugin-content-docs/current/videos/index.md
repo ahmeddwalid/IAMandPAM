@@ -1,14 +1,28 @@
 ---
-title: Video Series
-description: "Narrated explainer videos for each section of the site: IAM fundamentals, protocols, PAM, vendors, scenarios, compliance, labs, and career."
+title: "السلسلة المرئية"
+description: "عشر حلقات مرئية تغطي مادة إدارة الهوية والوصول المميّز: الأساسيات، والبنية، والثقة المعدومة، والموردين، والحوكمة، واستكشاف الأخطاء، والمعامل، والمقابلات، وحلقة بالعربية."
 ---
 
-# Video Series
+# السلسلة المرئية
 
-Narrated explainer videos, animated from the same diagrams the site uses. Each part walks through one section of the reference in three minutes or so; subtitles are burned in, and the narration is generated from the verified content on the corresponding pages.
+عشر حلقات مرئية، تمتد نحو سبعين دقيقة، تغطي الموضوعات نفسها التي يغطيها المرجع المكتوب. كل حلقة مرتبطة بقسم من أقسام الموقع، والرابط أسفل المشغّل ينقلك إلى الصفحات التي تشرح موضوعها.
 
-<video controls preload="none" poster="/videos/part1-poster.png">
+هذه الحلقات تمهيد وليست بديلاً عن القراءة. شاهد حلقة قبل قراءة القسم لترى شكل الموضوع، أو بعد الانتهاء لتراجع ما رسخ. تبقى الصفحات المكتوبة هي المرجع: فيها المصادر، ورموز الأخطاء، والتفاصيل التي تختصرها هذه الحلقات. وعند اختلاف حلقة مع صفحة، فالصفحة هي الأدق.
+
+import VideoSeries from '@site/src/components/VideoSeries';
+
+<VideoSeries />
+
+## كيف أُنتجت الحلقات
+
+أُنتجت كل حلقة باستخدام NotebookLM انطلاقاً من صفحات قسمها، ثم روجعت مقابلها. الرسوم توضيحية مرسومة وليست صوراً لواجهات منتجات، ولذلك تُظهر بنية الفكرة لا شكل الأداة. هذا يجعلها مناسبة للتمهيد وغير مناسبة لتنفيذ الخطوات. لتنفيذ الخطوات استخدم [المعامل التطبيقية](/ar/docs/labs/) و[أمثلة الشيفرة](/ar/docs/code-samples/).
+
+الحلقة الأخيرة في القائمة بالعربية وتغطي التخصص كاملاً. أما بقية الحلقات فهي بالإنجليزية.
+
+## عرض سردي
+
+عمل منفصل، مبني على مخططات الموقع نفسها مع ترجمة مدمجة في الصورة. يغطي كائنات الهوية، ونموذج AAA، ودورة حياة الهوية، ومبدأ الامتياز الأقل، وموقع إدارة الوصول المميّز من الصورة الكاملة.
+
+<video controls preload="none" poster="/videos/part1-poster.png" className="video-embed">
   <source src="/videos/part1-what-is-iam-pam.mp4" type="video/mp4" />
 </video>
-
-**Part 1 of a planned series: What is IAM & PAM?** The objects of identity, the AAA model, the lifecycle, least privilege, and where privileged access management fits. Additional parts are planned to cover protocols, PAM in depth, vendors and cloud IAM, scenarios and break-glass, compliance and metrics, and the labs and career track.

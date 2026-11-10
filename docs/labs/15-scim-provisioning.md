@@ -16,7 +16,7 @@ import scimProv from '!!raw-loader!@site/static/diagrams/lab-15-scim-provisionin
 
 <Drawio content={scimProv} />
 
-[Download / edit this diagram](/diagrams/lab-15-scim-provisioning.drawio)
+<a href="/diagrams/lab-15-scim-provisioning.drawio" download>Download / edit this diagram</a>
 
 The flow: an HR system (or CSV export) triggers a provisioning event (step 1), the SCIM client sends a POST to the service provider's `/Users` endpoint (step 2), the service provider creates the user and returns a 201 with the user's SCIM ID (step 3), the client stores the mapping between HR ID and SCIM ID (step 4), and on termination the client sends a PATCH to deactivate the user (step 5).
 

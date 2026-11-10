@@ -21,7 +21,7 @@ Following the landmark research by Will Schroeder and Lee Christensen ("Certifie
 
 <p className="diagram-caption">
   ADCS ESC1 Exploitation Topology: An unprivileged domain user requests a certificate from a misconfigured template supplying an arbitrary Domain Admin SAN, using PKINIT to obtain a Tier 0 TGT.
-  [Download / edit this diagram](/diagrams/adcs-attack-defense.drawio)
+  <a href="/diagrams/adcs-attack-defense.drawio" download>Download / edit this diagram</a>
 </p>
 
 ---

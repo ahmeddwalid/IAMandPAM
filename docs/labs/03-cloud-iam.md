@@ -16,7 +16,7 @@ import simpleGraph from '!!raw-loader!@site/static/diagrams/lab-2-cloud-iam.draw
 
 <Drawio content={simpleGraph} />
 
-[Download / edit this diagram](/diagrams/lab-2-cloud-iam.drawio)
+<a href="/diagrams/lab-2-cloud-iam.drawio" download>Download / edit this diagram</a>
 
 The company IdP federates into IAM Identity Center (SAML), Identity Center maps groups to permission sets, and permission sets grant short-lived roles in the member accounts. Nobody holds long-lived IAM user credentials in the member accounts.
 

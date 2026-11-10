@@ -30,7 +30,7 @@ import ciamFlow from '!!raw-loader!@site/static/diagrams/ciam-multi-tenant-saas.
 
 <Drawio content={ciamFlow} />
 
-[Download / edit this diagram](/diagrams/ciam-multi-tenant-saas.drawio)
+<a href="/diagrams/ciam-multi-tenant-saas.drawio" download>Download / edit this diagram</a>
 
 The architecture contains three primary flows:
 

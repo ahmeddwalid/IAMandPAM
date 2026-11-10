@@ -16,7 +16,7 @@ import scimProv from '!!raw-loader!@site/static/diagrams/lab-15-scim-provisionin
 
 <Drawio content={scimProv} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/lab-15-scim-provisioning.drawio)
+<a href="/diagrams/lab-15-scim-provisioning.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 التدفق: نظام HR (أو تصدير CSV) يطلق حدث تزويد (الخطوة 1)، عميل SCIM يرسل POST إلى نقطة نهاية `/Users` لمزوّد الخدمة (الخطوة 2)، مزوّد الخدمة ينشئ المستخدم ويعيد 201 مع معرف SCIM للمستخدم (الخطوة 3)، العميل يخزن التعيين بين معرف HR ومعرف SCIM (الخطوة 4)، وعند الإنهاء العميل يرسل PATCH لتعطيل المستخدم (الخطوة 5).
 

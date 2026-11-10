@@ -58,7 +58,7 @@ import hybrid from '!!raw-loader!@site/static/diagrams/hybrid-identity-architect
 
 *The hybrid identity architecture. Users sign in to on-prem applications through Active Directory and to cloud applications through Entra ID. A sync agent carries directory objects from AD to Entra ID, Conditional Access evaluates every cloud sign-in, and PIM provides just-in-time role activation.*
 
-[Download / edit this diagram](/diagrams/hybrid-identity-architecture.drawio)
+<a href="/diagrams/hybrid-identity-architecture.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 ## Walking through the architecture
 

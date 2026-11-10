@@ -57,7 +57,7 @@ Rather than embedding long-lived cloud credentials (e.g., `AWS_ACCESS_KEY_ID` an
 
 <p className="diagram-caption">
   Machine and Workload Identity Federation: An ephemeral workload exchanges a platform-signed OIDC token for short-lived cloud STS credentials.
-  [Download / edit this diagram](/diagrams/machine-workload-identity.drawio)
+  <a href="/diagrams/machine-workload-identity.drawio" download>Download / edit this diagram</a>
 </p>
 
 ### Step-by-Step Federation Mechanics:

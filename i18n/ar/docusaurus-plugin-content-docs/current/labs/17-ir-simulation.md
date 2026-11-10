@@ -16,7 +16,7 @@ import irSim from '!!raw-loader!@site/static/diagrams/lab-17-ir-simulation.drawi
 
 <Drawio content={irSim} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/lab-17-ir-simulation.drawio)
+<a href="/diagrams/lab-17-ir-simulation.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 التدفق: حساب الخدمة يُظهر سلوكًا شاذًا (الخطوة 1)، فريق IR يكتشف الشذوذ عبر سجلات التدقيق (الخطوة 2)، يحتوي التهديد بتعطيل الحساب وإلغاء الجلسات (الخطوة 3)، يستأصل وصول المهاجم بتدوير بيانات الاعتماد وإزالة الثبات (الخطوة 4)، ويتعافى بإعادة إنشاء حساب الخدمة بضوابط مناسبة (الخطوة 5).
 

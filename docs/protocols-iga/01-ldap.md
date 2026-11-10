@@ -18,7 +18,7 @@ import dit from '!!raw-loader!@site/static/diagrams/ldap-dit.drawio';
 
 *A simplified directory tree. The DIT is organized from the domain root down through organizational units to entries; every entry has a globally unique DN made from its path.*
 
-[Download / edit this diagram](/diagrams/ldap-dit.drawio)
+<a href="/diagrams/ldap-dit.drawio" download>Download / edit this diagram</a>
 
 ## The core operations
 

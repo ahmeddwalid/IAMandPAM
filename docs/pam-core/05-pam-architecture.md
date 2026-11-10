@@ -14,7 +14,7 @@ import arch from '!!raw-loader!@site/static/diagrams/pam-architecture.drawio';
 
 *The PAM architecture. The admin requests a session, the ticketing system approves it, the session manager retrieves the credential from the vault and connects to the target, the session is mirrored to recording, and everything logs to the SIEM. The vault replicates for high availability.*
 
-[Download / edit this diagram](/diagrams/pam-architecture.drawio)
+<a href="/diagrams/pam-architecture.drawio" download>Download / edit this diagram</a>
 
 ## The components
 

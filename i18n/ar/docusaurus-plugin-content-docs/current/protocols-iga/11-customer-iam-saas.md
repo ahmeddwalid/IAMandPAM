@@ -30,7 +30,7 @@ import ciamFlow from '!!raw-loader!@site/static/diagrams/ciam-multi-tenant-saas.
 
 <Drawio content={ciamFlow} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/ciam-multi-tenant-saas.drawio)
+<a href="/diagrams/ciam-multi-tenant-saas.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 تتضمن المعمارية ثلاثة مسارات تدفق رئيسية:
 

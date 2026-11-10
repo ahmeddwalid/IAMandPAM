@@ -95,7 +95,7 @@ import itdrFlow from '!!raw-loader!@site/static/diagrams/itdr-workflow.drawio';
 
 <Drawio content={itdrFlow} />
 
-[Download / edit this diagram](/diagrams/itdr-workflow.drawio)
+<a href="/diagrams/itdr-workflow.drawio" download>Download / edit this diagram</a>
 
 The ITDR pipeline: identity logs flow into the SIEM or ITDR platform, correlation rules evaluate them against identity context, risk scoring aggregates the signals, and alerts are prioritized for the analyst. High-risk alerts can trigger automated responses (session revocation, step-up MFA) without analyst intervention.
 

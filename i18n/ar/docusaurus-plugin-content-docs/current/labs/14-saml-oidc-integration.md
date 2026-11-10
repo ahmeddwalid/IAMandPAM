@@ -16,7 +16,7 @@ import samlOidc from '!!raw-loader!@site/static/diagrams/lab-14-saml-oidc-integr
 
 <Drawio content={samlOidc} />
 
-[تحميل / تعديل هذا المخطط](/diagrams/lab-14-saml-oidc-integration.drawio)
+<a href="/diagrams/lab-14-saml-oidc-integration.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 التدفق: المتصفح يصل إلى تطبيق SAML (الخطوة 1)، يتم توجيهه إلى نقطة نهاية SAML في Keycloak (الخطوة 2)، Keycloak يصادق ضد AD عبر LDAP (الخطوة 3)، ويعيد تأكيد SAML إلى التطبيق (الخطوة 4). عميل OIDC من المعمل 2 يستمر في العمل دون تغيير (الخطوة 5). كلا البروتوكولين يصدران رموزًا لنفس المستخدم، مع نفس الدليل كمصدر للحقيقة.
 

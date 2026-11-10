@@ -128,6 +128,11 @@ const config: Config = {
           label: 'Learn',
         },
         {
+          to: '/docs/videos/',
+          label: 'Videos',
+          position: 'left',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
@@ -147,6 +152,7 @@ const config: Config = {
             {label: 'Interview Preparation', to: '/docs/interviews/'},
             {label: 'Certifications & Career', to: '/docs/careers/'},
             {label: 'Hands-On Labs & Projects', to: '/docs/labs/'},
+            {label: 'Video Series', to: '/docs/videos/'},
             {label: 'Glossary', to: '/docs/reference/glossary/'},
             {label: 'Cheat Sheets', to: '/docs/reference/cheat-sheets/'},
           ],

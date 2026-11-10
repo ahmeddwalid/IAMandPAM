@@ -14,7 +14,7 @@ import arch from '!!raw-loader!@site/static/diagrams/zero-trust-iam.drawio';
 
 *The zero-trust IAM architecture. Every request crosses the policy engine, which consults the identity provider and directory. Privileged requests get a time-boxed grant from the JIT broker, not standing rights. Standing privileged accounts are eliminated, and everything logs to monitoring.*
 
-[Download / edit this diagram](/diagrams/zero-trust-iam.drawio)
+<a href="/diagrams/zero-trust-iam.drawio" download>تنزيل هذا المخطط أو تعديله</a>
 
 ## The trust model
 

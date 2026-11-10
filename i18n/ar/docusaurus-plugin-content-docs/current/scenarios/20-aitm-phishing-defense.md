@@ -21,7 +21,7 @@ import diagram from '!!raw-loader!@site/static/diagrams/aitm-phishing-defense.dr
 
 <p className="diagram-caption">
   التصيد بالوسيط العكسي (AiTM): تسمح أساليب المصادقة التقليدية (المسار A) بسرقة كعكات الجلسة والرموز، بينما يفرض معيار FIDO2 WebAuthn (المسار B) التحقق التشفيري الصارم من اسم النطاق (Origin Binding)، مما يؤدي لرفض الاتصال بالوسيط آلياً.
-  [تحميل / تعديل هذا المخطط](/diagrams/aitm-phishing-defense.drawio)
+  <a href="/diagrams/aitm-phishing-defense.drawio" download>تحميل / تعديل هذا المخطط</a>
 </p>
 
 ---

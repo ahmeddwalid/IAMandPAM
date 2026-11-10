@@ -18,7 +18,7 @@ import oidc from '!!raw-loader!@site/static/diagrams/oidc-on-oauth.drawio';
 
 *بنية OIDC فوق OAuth 2.0: يُعاد استخدام إطار عمل OAuth 2.0 دون أي تعديل، وتُضاف فوقه طبقة الهوية عبر رمز ID Token، ونقطة نهاية UserInfo، ومستند الاكتشاف التلقائي Discovery. تظل الطبقة السفلى إطاراً للتخويل، بينما تظهر الهوية في الطبقة العليا.*
 
-[تحميل / تعديل هذا المخطط](/diagrams/oidc-on-oauth.drawio)
+<a href="/diagrams/oidc-on-oauth.drawio" download>تحميل / تعديل هذا المخطط</a>
 
 ## رمز التعريف (ID Token) وبنيته التشفيرية
 
