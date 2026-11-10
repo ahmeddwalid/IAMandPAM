@@ -139,4 +139,4 @@ Without regular IAM audits, the program drifts. Roles accumulate access. Certifi
 
 The IAM audit is organized around four domains: identity lifecycle, authentication, authorization, and governance. The evidence list is specific and sampleable. The auditor's questions are operational, not theoretical. And the common findings (orphaned accounts, standing privilege, weak MFA, audit log gaps, unmonitored privileged group changes) are process failures that can be fixed with the right controls.
 
-Next: [Certifications](../careers/certifications), because the audit knowledge maps directly to the SC-300 and CISSP exam objectives.
+Next: [Certifications](../careers/01-certifications.md), because the audit knowledge maps directly to the SC-300 and CISSP exam objectives.

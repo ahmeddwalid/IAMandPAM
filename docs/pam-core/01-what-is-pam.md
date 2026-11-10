@@ -42,12 +42,12 @@ They are complements, not competitors. IAM decides who you are and what you may 
 
 Regardless of vendor, a PAM program is built from a small set of components:
 
-- **Discovery and inventory**: finding the privileged accounts that exist (covered in [Privileged account types](privileged-account-types))
-- **Vaulting**: encrypted storage with check-out/check-in and rotation ([Core capabilities](core-capabilities))
-- **Session management**: brokered, recorded, monitored sessions ([PAM architecture](pam-architecture))
-- **Just-in-time access**: ephemeral, time-boxed grants ([JIT access](jit-access))
+- **Discovery and inventory**: finding the privileged accounts that exist (covered in [Privileged account types](02-privileged-account-types.md))
+- **Vaulting**: encrypted storage with check-out/check-in and rotation ([Core capabilities](03-core-capabilities.md))
+- **Session management**: brokered, recorded, monitored sessions ([PAM architecture](05-pam-architecture.md))
+- **Just-in-time access**: ephemeral, time-boxed grants ([JIT access](07-jit-access.md))
 - **Monitoring and review**: the audit trail that makes everything else credible
 
-The rest of this section is those components in order. The architecture page ties them together, and the [best practices](best-practices) page turns them into rules.
+The rest of this section is those components in order. The architecture page ties them together, and the [best practices](04-best-practices.md) page turns them into rules.
 
-Next: [Privileged account types](privileged-account-types), because scope is the first decision in any PAM program.
+Next: [Privileged account types](02-privileged-account-types.md), because scope is the first decision in any PAM program.

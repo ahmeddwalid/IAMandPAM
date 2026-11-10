@@ -71,7 +71,7 @@ The detection pipeline for ITDR:
 
 The detection is only half the job. The response is the playbook:
 
-- **Compromised privileged account.** Follow the [existing playbook](../scenarios/incident-compromised-privileged-account): disable the account, terminate sessions, revoke MFA, rotate credentials, cut downstream access, preserve evidence.
+- **Compromised privileged account.** Follow the [existing playbook](../scenarios/15-incident-compromised-privileged-account.md): disable the account, terminate sessions, revoke MFA, rotate credentials, cut downstream access, preserve evidence.
 - **DCSync detection.** Immediate Tier 0 containment. Rotate the KRBTGT password twice (the second rotation invalidates the first rotation's output, so the attacker's extracted hashes are useless after the second rotation). Wait 10 hours between rotations for replication to complete.
 - **Federation trust modification.** Treat as Tier 0 compromise. Verify every federation trust and certificate. Remove any trust that was not planned. Rotate the federation signing certificate.
 - **MFA fatigue.** Revoke all sessions for the affected user. Require phishing-resistant re-enrollment (a new hardware key or passkey, not a new phone number). Review the user's recent activity for any actions taken after the approved push.
@@ -103,4 +103,4 @@ The ITDR pipeline: identity logs flow into the SIEM or ITDR platform, correlatio
 
 ITDR is the detection layer for the identity infrastructure. It is distinct from generic SIEM monitoring because it requires identity-specific logs, identity-specific correlation rules, and identity-specific playbooks. The four signal categories (authentication, authorization, infrastructure, behavioral) cover the full range of identity attacks. And the honest limit is that ITDR is only as good as the logs it ingests.
 
-Next: [Identity Analytics and UEBA](../fundamentals/identity-analytics), because ITDR detects known attack patterns and analytics detect the unknown.
+Next: [Identity Analytics and UEBA](../fundamentals/10-identity-analytics.md), because ITDR detects known attack patterns and analytics detect the unknown.

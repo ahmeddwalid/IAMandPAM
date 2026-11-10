@@ -5,7 +5,7 @@ description: "The certifications, career ladders, and regional market notes for 
 
 # Certifications & Career
 
-The career section maps the field's credentials and progression, with the [content integrity rules](../interviews/) applied strictly: every certification price was verified against official sources on 2026-08-18, and every salary figure is either sourced or explicitly labeled as a rough estimate with its basis stated.
+The career section maps the field's credentials and progression, with the [content integrity rules](../interviews/index.md) applied strictly: every certification price was verified against official sources on 2026-08-18, and every salary figure is either sourced or explicitly labeled as a rough estimate with its basis stated.
 
 ## Pages in this section
 

@@ -95,4 +95,4 @@ Note: the `admin-cli` client exists in every realm by default for exactly this p
 
 JIT is three separable mechanics: step-up authentication (MFA), a second actor's approval, and expiry. Keycloak gives you the first two natively and the third needs a small script, which is a realistic architecture lesson: the expensive part of JIT is not the role issuance, it is the revocation guarantee and the audit trail that makes the whole thing defensible. In interviews, "how would you implement JIT with open source" is a favorite; you can now answer with exactly this stack and its limits.
 
-Next: [Lab 6 - Lightweight IGA campaign](iga-campaign).
+Next: [Lab 6 - Lightweight IGA campaign](06-iga-campaign.md).

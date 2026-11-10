@@ -118,4 +118,4 @@ Open `http://localhost:8081` and log in through the link. You will be redirected
 
 A domain controller is not "just a server with AD installed"; it is also the DNS server for its zone, which is why the static IP and DNS interplay matters. Keycloak's realm model is the first place identity isolation appears: the same Keycloak instance can serve many realms, and realms do not share users. And the OIDC redirect you saw in the example app is the same mechanism every vendor federation in later labs relies on.
 
-Next: [Lab 2 - AD plus Keycloak SSO](keycloak-sso).
+Next: [Lab 2 - AD plus Keycloak SSO](02-keycloak-sso.md).

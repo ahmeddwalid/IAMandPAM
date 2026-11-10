@@ -7,49 +7,49 @@ import topicMap from '!!raw-loader!../../static/diagrams/topic-map.drawio';
 
 const path = [
   {
-    to: '/docs/fundamentals',
+    to: '/docs/fundamentals/',
     title: 'IAM Fundamentals',
     time: '6-8 evenings',
     why: 'The vocabulary and models every later section assumes: AAA, the identity lifecycle, least privilege, zero trust.',
   },
   {
-    to: '/docs/protocols-iga',
+    to: '/docs/protocols-iga/',
     title: 'Identity Protocols & IGA',
     time: '3-4 weeks',
     why: 'The heaviest section. LDAP, SAML, OAuth, OIDC, and SCIM are the machinery every vendor and every interview question builds on.',
   },
   {
-    to: '/docs/pam-core',
+    to: '/docs/pam-core/',
     title: 'PAM Core',
     time: '2-3 weeks',
     why: 'Privileged access sits on top of IAM concepts: vaulting, session management, JIT, and the full PAM architecture.',
   },
   {
-    to: '/docs/vendors',
+    to: '/docs/vendors/',
     title: 'Vendor Landscape',
     time: '1-2 weeks',
     why: 'Evaluation only makes sense once you know what the products do underneath; this section assumes the first three.',
   },
   {
-    to: '/docs/scenarios',
+    to: '/docs/scenarios/',
     title: 'Scenarios & Troubleshooting',
     time: '2 weeks',
     why: 'Concrete failure modes tie the theory back to operations, and the interview answers draw on these cases.',
   },
   {
-    to: '/docs/labs',
+    to: '/docs/labs/',
     title: 'Hands-On Labs',
     time: '2-4 weeks, in parallel',
     why: 'Seventeen projects that prove the material on free and open-source tools. Run these alongside the reading; the evidence is worth more than the notes.',
   },
   {
-    to: '/docs/interviews',
+    to: '/docs/interviews/',
     title: 'Interview Preparation',
     time: '2-4 weeks, at the end',
     why: 'Question banks with full answers, grounded in everything above, plus STAR templates for the behavioral round.',
   },
   {
-    to: '/docs/careers',
+    to: '/docs/careers/',
     title: 'Certifications & Career',
     time: 'A weekend to plan; exam prep separately',
     why: 'Verified certification facts and the two career tracks, with an honest look at the Middle East and Egypt markets.',
@@ -58,42 +58,42 @@ const path = [
 
 const sections = [
   {
-    to: '/docs/fundamentals',
+    to: '/docs/fundamentals/',
     title: 'IAM Fundamentals',
     desc: 'What IAM is, the AAA model, the identity lifecycle, authentication and authorization mechanics.',
   },
   {
-    to: '/docs/protocols-iga',
+    to: '/docs/protocols-iga/',
     title: 'Identity Protocols & IGA',
     desc: 'LDAP, SAML, OAuth, OIDC, SCIM, and the governance machinery around them.',
   },
   {
-    to: '/docs/pam-core',
+    to: '/docs/pam-core/',
     title: 'PAM Core',
     desc: 'Privileged access: vaulting, session management, just-in-time access, and the complete PAM architecture.',
   },
   {
-    to: '/docs/vendors',
+    to: '/docs/vendors/',
     title: 'Vendor Landscape',
     desc: 'CyberArk, Delinea, BeyondTrust, the Microsoft stack, cloud IAM, and governance tools.',
   },
   {
-    to: '/docs/scenarios',
+    to: '/docs/scenarios/',
     title: 'Scenarios & Troubleshooting',
     desc: 'Real workflows, failure modes, and incident response for identity systems.',
   },
   {
-    to: '/docs/interviews',
+    to: '/docs/interviews/',
     title: 'Interview Preparation',
     desc: 'Conceptual, protocol, scenario, and architecture questions with full answers.',
   },
   {
-    to: '/docs/careers',
+    to: '/docs/careers/',
     title: 'Certifications & Career',
     desc: 'Verified certification facts and the IAM and PAM career tracks.',
   },
   {
-    to: '/docs/labs',
+    to: '/docs/labs/',
     title: 'Hands-On Labs & Projects',
     desc: 'A home lab with Active Directory, Keycloak, and cloud IAM, built on free and trial tools.',
   },
@@ -101,49 +101,49 @@ const sections = [
 
 const pathAr = [
   {
-    to: '/docs/fundamentals',
+    to: '/docs/fundamentals/',
     title: 'أساسيات إدارة الهوية والوصول (IAM)',
     time: '6–8 فترات مسائية',
     why: 'المصطلحات والمفاهيم التي تبنى عليها بقية الأقسام: نموذج AAA، دورة حياة الهوية، مبدأ الامتياز الأقل، وبنية الثقة المعدومة.',
   },
   {
-    to: '/docs/protocols-iga',
+    to: '/docs/protocols-iga/',
     title: 'بروتوكولات الهوية وحوكمتها (IGA)',
     time: '3–4 أسابيع',
     why: 'القسم الأهم فنياً: LDAP و SAML و OAuth و OIDC و SCIM هي المحركات الأساسية لكافة الأنظمة والمقابلات المهنية.',
   },
   {
-    to: '/docs/pam-core',
+    to: '/docs/pam-core/',
     title: 'أساسيات إدارة الوصول المميّز (PAM)',
     time: '2–3 أسابيع',
     why: 'الحسابات ذات الامتيازات العالية: الخزائن الرقمية، إدارة الجلسات، الوصول في الوقت المناسب (JIT)، وبنية PAM الشاملة.',
   },
   {
-    to: '/docs/vendors',
+    to: '/docs/vendors/',
     title: 'منظومة الموردين والتقنيات',
     time: '1–2 أسابيع',
     why: 'فهم الفروقات التقنية بين CyberArk و Delinea و BeyondTrust ومنظومة Microsoft وحلول السحابة بعد فهم الأساسيات.',
   },
   {
-    to: '/docs/scenarios',
+    to: '/docs/scenarios/',
     title: 'السيناريوهات العملية واستكشاف الأخطاء',
     time: '2 أسبوعان',
     why: 'ربط المعرفة النظرية بالتشغيل الفعلي وحوادث الاختراق واستكشاف أخطاء الشهادات والبروتوكولات.',
   },
   {
-    to: '/docs/labs',
+    to: '/docs/labs/',
     title: 'المختبرات والمشاريع التطبيقية',
     time: '2–4 أسابيع بالتوازي',
     why: 'مشاريع عملية مثبتة بأدوات مجانية ومفتوحة المصدر تثبت المعرفة العملية وتبني معرض أعمالك التقني.',
   },
   {
-    to: '/docs/interviews',
+    to: '/docs/interviews/',
     title: 'التحضير للمقابلات المهنية',
     time: '2–4 أسابيع في الختام',
     why: 'بنك أسئلة شامل مع إجابات نموذجية معللة، ونماذج STAR للمقابلات السلوكية.',
   },
   {
-    to: '/docs/careers',
+    to: '/docs/careers/',
     title: 'الشهادات والمسار المهني',
     time: 'عطلة نهاية أسبوع للتخطيط',
     why: 'بيانات موثقة للشهادات الاحترافية ومسارات التطور الوظيفي مع تركيز خاص على سوق الخليج العربي ومصر.',
@@ -152,42 +152,42 @@ const pathAr = [
 
 const sectionsAr = [
   {
-    to: '/docs/fundamentals',
+    to: '/docs/fundamentals/',
     title: 'أساسيات إدارة الهوية والوصول (IAM)',
     desc: 'مفهوم IAM، نموذج AAA، دورة حياة الهوية، وآليات المصادقة والترخيص الحديثة.',
   },
   {
-    to: '/docs/protocols-iga',
+    to: '/docs/protocols-iga/',
     title: 'بروتوكولات الهوية وحوكمتها (IGA)',
     desc: 'دراسة متعمقة لـ LDAP و SAML و OAuth و OIDC و SCIM وآليات الحوكمة والفصل بين المهام.',
   },
   {
-    to: '/docs/pam-core',
+    to: '/docs/pam-core/',
     title: 'إدارة الوصول المميّز (PAM)',
     desc: 'حماية الحسابات الحساسة: الخزائن، إدارة الجلسات، الوصول الفوري، وبنية الثقة المعدومة.',
   },
   {
-    to: '/docs/vendors',
+    to: '/docs/vendors/',
     title: 'منظومة الموردين والتقنيات',
     desc: 'مقارنات تقنية وبنى معمارية لـ CyberArk و Delinea و BeyondTrust و Microsoft وحلول السحابة.',
   },
   {
-    to: '/docs/scenarios',
+    to: '/docs/scenarios/',
     title: 'السيناريوهات العملية واستكشاف الأخطاء',
     desc: 'إجراءات التشغيل، الاستجابة للحوادث، واستكشاف أخطاء بروتوكولات الهوية عملياً.',
   },
   {
-    to: '/docs/interviews',
+    to: '/docs/interviews/',
     title: 'التحضير للمقابلات المهنية',
     desc: 'أسئلة مفاهيمية وبروتوكولية وسيناريوهات معمارية مع إجابات فنية دقيقة.',
   },
   {
-    to: '/docs/careers',
+    to: '/docs/careers/',
     title: 'الشهادات والمسار المهني',
     desc: 'تحليل دقيق لشهادات الأمان ومسارات الترقي المهني في أسواق العمل الإقليمية والعالمية.',
   },
   {
-    to: '/docs/labs',
+    to: '/docs/labs/',
     title: 'المختبرات والمشاريع التطبيقية',
     desc: 'مختبرات متكاملة تشمل Active Directory و Keycloak والربط السحابي وإدارة الأسرار.',
   },
@@ -312,16 +312,16 @@ export default function Home() {
             {isAr ? (
               <>
                 إذا كان هدفك التوظيف والانتقال المهني، ابدأ بـ{' '}
-                <Link to="/docs/careers">قسم الشهادات والمسار المهني</Link>: معلومات دقيقة ومحدثة عن الاختبارات، ومساري
+                <Link to="/docs/careers/">قسم الشهادات والمسار المهني</Link>: معلومات دقيقة ومحدثة عن الاختبارات، ومساري
                 تطور IAM و PAM، وقراءة واقعية لسوق العمل في الخليج ومصر. بعد ذلك، يساعدك{' '}
-                <Link to="/docs/interviews">قسم التحضير للمقابلات</Link> في صياغة الإجابات بثقة واحترافية.
+                <Link to="/docs/interviews/">قسم التحضير للمقابلات</Link> في صياغة الإجابات بثقة واحترافية.
               </>
             ) : (
               <>
                 If the point is employment, start with the{' '}
-                <Link to="/docs/careers">certifications and career section</Link>: verified exam facts, the IAM and PAM
+                <Link to="/docs/careers/">certifications and career section</Link>: verified exam facts, the IAM and PAM
                 tracks, and an honest read on the Gulf and Egyptian markets. The{' '}
-                <Link to="/docs/interviews">interview preparation</Link> section then turns the rest of the site into
+                <Link to="/docs/interviews/">interview preparation</Link> section then turns the rest of the site into
                 answers.
               </>
             )}

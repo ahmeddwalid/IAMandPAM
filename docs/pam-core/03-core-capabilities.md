@@ -5,7 +5,7 @@ description: "Credential vaulting, session management, rotation, and discovery: 
 
 # Core PAM Capabilities
 
-Every PAM product, whatever its marketing, is a combination of the same handful of mechanisms. Learning the mechanisms is how you evaluate vendors, design programs, and answer interview questions about PAM without reciting product names. This page is the mechanism catalog; the [architecture page](pam-architecture) shows how they assemble.
+Every PAM product, whatever its marketing, is a combination of the same handful of mechanisms. Learning the mechanisms is how you evaluate vendors, design programs, and answer interview questions about PAM without reciting product names. This page is the mechanism catalog; the [architecture page](05-pam-architecture.md) shows how they assemble.
 
 ## Credential vaulting
 
@@ -45,7 +45,7 @@ Vaulting and session management only cover what the program knows about. Discove
 
 ## Privileged access workflows
 
-The approval, time-boxing, and emergency-access flows that decide when a check-out or session is legitimate. This is where the [JIT access](jit-access) pattern lives: request, approve, grant with an expiry, revoke on expiry, audit the whole cycle. A workflow layer is what separates "the vault with a shared password" from "governed privileged access."
+The approval, time-boxing, and emergency-access flows that decide when a check-out or session is legitimate. This is where the [JIT access](07-jit-access.md) pattern lives: request, approve, grant with an expiry, revoke on expiry, audit the whole cycle. A workflow layer is what separates "the vault with a shared password" from "governed privileged access."
 
 ## The separation that matters: vault versus session
 
@@ -54,9 +54,9 @@ The single most important architectural distinction in PAM is between the **vaul
 - The vault is the data store: encryption, rotation, check-out policy, HA/DR. It is a database problem.
 - The session manager is the control plane: policy enforcement, recording, monitoring, command filtering. It is a network and protocol problem.
 
-A program with a vault but no session layer has protected the credential and lost the attribution. A program with a session layer but no vault has the attribution and no protected credential. The [architecture page](pam-architecture) shows both and the path between them.
+A program with a vault but no session layer has protected the credential and lost the attribution. A program with a session layer but no vault has the attribution and no protected credential. The [architecture page](05-pam-architecture.md) shows both and the path between them.
 
-Next: [Best practices](best-practices), the rules that turn these mechanisms into a program.
+Next: [Best practices](04-best-practices.md), the rules that turn these mechanisms into a program.
 
 ## Capability interaction: what breaks without the pairing
 

@@ -9,7 +9,7 @@ Mechanisms do not make a program; discipline does. This page is the ruleset that
 
 ## 1. No standing privileged access for daily use
 
-The highest-impact rule in all of PAM. Privileged accounts exist for emergencies and for specific tasks, not for the working day. Where a person needs regular privileged access, use [JIT access](jit-access): grant, use, revoke, repeat. The test: at any random moment, the number of currently privileged humans in the environment should be close to zero.
+The highest-impact rule in all of PAM. Privileged accounts exist for emergencies and for specific tasks, not for the working day. Where a person needs regular privileged access, use [JIT access](07-jit-access.md): grant, use, revoke, repeat. The test: at any random moment, the number of currently privileged humans in the environment should be close to zero.
 
 **Failure mode:** the domain admin group has ten members who all "need it for their job." Every one of those memberships is a standing target.
 
@@ -75,12 +75,12 @@ The logs and recordings are not a by-product; they are the deliverable. They mus
 
 ## 10. Start with discovery, then close the gaps
 
-The program starts with an inventory ([privileged account types](privileged-account-types)), then proceeds in order: vault what exists, eliminate what can be eliminated, broker what must be used, and record everything. Attempting session management before the inventory exists produces a program with blind spots.
+The program starts with an inventory ([privileged account types](02-privileged-account-types.md)), then proceeds in order: vault what exists, eliminate what can be eliminated, broker what must be used, and record everything. Attempting session management before the inventory exists produces a program with blind spots.
 
 **Failure mode:** buying the platform first and discovering later that the estate is twice the size the scoping assumed.
 
 ## The pattern in one line
 
-Every rule above is the same rule: make privileged access personal, temporary, and recorded. The mechanisms ([core capabilities](core-capabilities)) provide the machinery; these rules are the operating manual.
+Every rule above is the same rule: make privileged access personal, temporary, and recorded. The mechanisms ([core capabilities](03-core-capabilities.md)) provide the machinery; these rules are the operating manual.
 
-Next: [PAM architecture](pam-architecture), how the components and the rules assemble into a deployment.
+Next: [PAM architecture](05-pam-architecture.md), how the components and the rules assemble into a deployment.

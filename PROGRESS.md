@@ -613,8 +613,13 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 
 - `.gitignore` gained entries for local-only working material: `/Gemini NotebookLM Videos/`, `/directorystructure.txt`, `/.hermes/`. These are large or generated and were never part of the site.
 
-### 6. Verification
+### 6. URL Policy
 
+- `trailingSlash: true` is now explicit. GitHub Pages serves `/docs/x/` and 301-redirects `/docs/x`, so the previous default produced a canonical tag and sitemap entry that redirected to themselves. Both now carry the trailing slash.
+- Enabling it exposed 68 extensionless relative links, the kind that resolve against the page directory and break the moment the page path becomes a directory. All were rewritten to real file links (`jit-access` becomes `05-jit-access.md`), which Docusaurus resolves at build time and localizes per route. 109 link targets changed across both locales; zero remain unresolved.
+- The 46 hardcoded `to:` targets in the homepage and footer now end in a slash as well, so navigation does not bounce through a redirect.
+
+### 7. Verification
 - `npm run build:site` clean for `en` and `ar`; `build/CNAME` present in the output.
 - `npx tsc --noEmit` clean.
 - `npm ci --dry-run` succeeds, so the lockfile the workflow installs from is in sync with `package.json`.

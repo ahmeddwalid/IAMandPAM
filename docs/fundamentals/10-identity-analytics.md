@@ -93,4 +93,4 @@ The products are also expensive and require skilled analysts to tune and operate
 
 Identity analytics is the detection layer for the unknown. It complements rule-based detection (which catches known patterns) by building baselines of normal behavior and flagging deviations. The signals are peer-group analysis, time-of-day patterns, resource-access patterns, authentication-method patterns, and privilege-usage patterns. The risk score aggregates the signals and triggers actions at thresholds. And the operational reality is that analytics requires ongoing tuning to avoid alert fatigue.
 
-Next: [DevOps and CI-CD Identity](../labs/devops-identity), because the analytics principles apply to machine identities as much as human ones.
+Next: [DevOps and CI-CD Identity](../labs/08-devops-identity.md), because the analytics principles apply to machine identities as much as human ones.

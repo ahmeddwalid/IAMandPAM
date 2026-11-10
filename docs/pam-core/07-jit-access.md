@@ -24,11 +24,11 @@ import arch from '!!raw-loader!@site/static/diagrams/jit-access-flow.drawio';
 
 **3. Grant.** The JIT broker issues the grant: ephemeral group membership, a time-boxed role activation, or a temporary credential. The default window is measured in minutes to hours, and the policy caps the maximum.
 
-**4. Use.** The user performs the task through a brokered, monitored session ([PAM architecture](pam-architecture)). The session is attributed to the person, recorded, and visible to monitoring.
+**4. Use.** The user performs the task through a brokered, monitored session ([PAM architecture](05-pam-architecture.md)). The session is attributed to the person, recorded, and visible to monitoring.
 
 **5. Revoke.** The grant expires with the window, or is revoked early when the task completes. Revocation is automatic and *verified*: the broker confirms the ephemeral membership or credential is actually gone. An unverified revocation is a standing grant in disguise.
 
-**6. Audit.** The full cycle is logged: request, approval, grant, use, revocation. The audit trail is the deliverable; the [best practices](best-practices) rule about the audit trail applies to JIT most of all, because the whole point of JIT is that every privileged grant is a visible event.
+**6. Audit.** The full cycle is logged: request, approval, grant, use, revocation. The audit trail is the deliverable; the [best practices](04-best-practices.md) rule about the audit trail applies to JIT most of all, because the whole point of JIT is that every privileged grant is a visible event.
 
 ## The patterns
 
@@ -58,6 +58,6 @@ JIT fails in predictable ways, all of them human:
 
 ## Where JIT lives in the architecture
 
-JIT is the privileged-access heart of the [zero-trust IAM architecture](zero-trust-iam): the broker in that diagram is the JIT grant engine, and the eliminated standing accounts are what the pattern removes. The workflow above is the zoomed-in view of the broker.
+JIT is the privileged-access heart of the [zero-trust IAM architecture](06-zero-trust-iam.md): the broker in that diagram is the JIT grant engine, and the eliminated standing accounts are what the pattern removes. The workflow above is the zoomed-in view of the broker.
 
-Next: [Best practices](best-practices) is the full ruleset; [core capabilities](core-capabilities) is the mechanism catalog. Or continue to the [Index](index.md) for the section map.
+Next: [Best practices](04-best-practices.md) is the full ruleset; [core capabilities](03-core-capabilities.md) is the mechanism catalog. Or continue to the [Index](index.md) for the section map.

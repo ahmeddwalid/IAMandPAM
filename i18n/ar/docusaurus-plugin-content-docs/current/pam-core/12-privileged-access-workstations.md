@@ -74,6 +74,6 @@ With a PAW, the same phishing email lands on a machine that has no privileged cr
 
 PAWs work with the PAM architecture, not instead of it. The PAW is the workstation from which the admin opens a PAM-brokered session. The PAM session records the admin's actions. The PAW ensures the endpoint that initiates that session is trusted. The combination is stronger than either alone: a PAM session from a compromised daily driver is a recorded session on a compromised endpoint, which means the attacker's actions are logged, but the attacker is still acting.
 
-The [PAM architecture](pam-architecture) page covers the vault and session broker side. The [JIT access](jit-access) page covers the time-limited grant side. The [Zero trust](zero-trust-iam) page covers the model that ties them together.
+The [PAM architecture](05-pam-architecture.md) page covers the vault and session broker side. The [JIT access](07-jit-access.md) page covers the time-limited grant side. The [Zero trust](06-zero-trust-iam.md) page covers the model that ties them together.
 
-Next: [Privileged account types](privileged-account-types), to understand what is being protected.
+Next: [Privileged account types](02-privileged-account-types.md), to understand what is being protected.

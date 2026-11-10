@@ -26,13 +26,13 @@ import arch from '!!raw-loader!@site/static/diagrams/pam-architecture.drawio';
 
 **Target systems.** Servers, databases, and network devices. The PSM connects to each with the appropriate protocol (SSH, RDP, SQL, console). Targets with no connector are unmanaged privileged access; the connector catalog is a real evaluation criterion.
 
-**Ticketing / approval.** The workflow layer: a session is tied to a ticket, an approver, or an emergency rule. This is where the [JIT access](jit-access) request-approve pattern plugs in.
+**Ticketing / approval.** The workflow layer: a session is tied to a ticket, an approver, or an emergency rule. This is where the [JIT access](07-jit-access.md) request-approve pattern plugs in.
 
 **Session recording & storage.** The immutable record: keystroke-level capture for text protocols, video for graphical, with retention and tamper-evidence. The deliverable for audits and investigations.
 
 **Vault HA/DR.** Replication and failover for the vault itself. The vault is a single point of failure and a single point of attack; it gets the same resilience as the systems it protects.
 
-**SIEM.** The independent log sink: session logs, vault events, approvals. Shipping logs off-platform is what prevents the PAM admin from being able to delete the evidence (best practice 7 on the [best practices](best-practices) page).
+**SIEM.** The independent log sink: session logs, vault events, approvals. Shipping logs off-platform is what prevents the PAM admin from being able to delete the evidence (best practice 7 on the [best practices](04-best-practices.md) page).
 
 ## The flow, step by step
 
@@ -53,10 +53,10 @@ Two properties of this design matter more than any product choice:
 
 - An identity foundation: the admin's identity comes from the organization's directory and IdP, which is the [IAM architecture](/docs/protocols-iga/iam-architecture) link.
 - Network segmentation: the PSM is the only path to the targets, which is a zero-trust enforcement point. Direct admin routes to targets are removed.
-- Policy discipline: the approval and JIT rules are real, reviewed, and enforced (the [best practices](best-practices) page).
+- Policy discipline: the approval and JIT rules are real, reviewed, and enforced (the [best practices](04-best-practices.md) page).
 
 ## The zero-trust angle
 
-This PAM architecture is already a zero-trust pattern: no implicit trust for the admin, a policy check on every session, and continuous logging. The [zero-trust IAM architecture](zero-trust-iam) page makes that connection explicit by putting the PAM broker inside the trust model.
+This PAM architecture is already a zero-trust pattern: no implicit trust for the admin, a policy check on every session, and continuous logging. The [zero-trust IAM architecture](06-zero-trust-iam.md) page makes that connection explicit by putting the PAM broker inside the trust model.
 
-Next: [Zero-trust IAM architecture](zero-trust-iam), where PAM and IAM meet zero trust.
+Next: [Zero-trust IAM architecture](06-zero-trust-iam.md), where PAM and IAM meet zero trust.

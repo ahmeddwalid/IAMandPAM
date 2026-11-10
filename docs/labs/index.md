@@ -11,23 +11,23 @@ Theory earns credibility when you can prove it in a lab. These projects are desi
 
 | # | Project | What it proves | Time |
 |---|---------|----------------|------|
-| 1 | [Home lab setup](home-lab-setup) | Building the VirtualBox + Windows Server + Keycloak base | 1-2 evenings |
-| 2 | [AD + Keycloak SSO](keycloak-sso) | LDAP federation, OIDC SSO, and the app side of identity | 2-3 evenings |
-| 3 | [Cloud IAM federation](cloud-iam) | AWS Organizations, IAM Identity Center, permission sets | 2 evenings |
-| 4 | [PAM fundamentals on a trial](pam-trial) | Vaulting, session brokering, credential rotation, recording | 3 evenings |
-| 5 | [Just-in-time access with MFA](jit-mfa) | JIT roles, approval flow, expiry-driven revocation | 2 evenings |
-| 6 | [Lightweight IGA campaign](iga-campaign) | Identity import, certification, segregation of duties | 2 evenings |
-| 7 | [Secrets management with Vault](secrets-vault) | AppRole identity, dynamic database credentials, lease expiry | 2 evenings |
-| 8 | [DevOps CI/CD Pipeline Identity](devops-identity) | GitHub Actions OIDC federation to AWS STS without static keys | 2 evenings |
-| 9 | [Cloud Least-Privilege Mining with CIEM](ciem-least-privilege) | AWS IAM Access Analyzer and policy right-sizing from CloudTrail | 2 evenings |
-| 10 | [Zero Standing Privileges with Teleport](ephemeral-access-teleport) | Ephemeral SSH and Kubernetes access via short-lived certificate CA | 2 evenings |
-| 11 | [Customer IAM and Multi-Tenant SaaS](ciam-multitenant-sso) | Keycloak B2B multi-tenancy, Home Realm Discovery, and tenant-scoped JWTs | 2 evenings |
-| 12 | [Automated PKI and mTLS with Vault](vault-pki-mtls) | Two-tier Vault CA, 24-hour dynamic certificates, and mutual TLS enforcement | 2 evenings |
-| 13 | [Identity DR and Break-Glass Drill](identity-dr-breakglass) | Simulated cloud IdP blackout, offline hardware key authentication, and audit preservation | 2 evenings |
-| 14 | [SAML and OIDC Integration](saml-oidc-integration) | Multi-protocol IdP: SAML and OIDC clients authenticating the same AD user | 2 evenings |
-| 15 | [SCIM Provisioning Automation](scim-provisioning) | Python SCIM client: user provisioning, group management, deprovisioning | 2 evenings |
-| 16 | [Kerberos Analysis with Wireshark](kerberos-wireshark) | Live Kerberos ticket capture, dissection, and anomaly detection | 2 evenings |
-| 17 | [Incident Response Simulation](ir-simulation) | Compromised service account: detection, containment, eradication, recovery | 2 evenings |
+| 1 | [Home lab setup](01-home-lab-setup.md) | Building the VirtualBox + Windows Server + Keycloak base | 1-2 evenings |
+| 2 | [AD + Keycloak SSO](02-keycloak-sso.md) | LDAP federation, OIDC SSO, and the app side of identity | 2-3 evenings |
+| 3 | [Cloud IAM federation](03-cloud-iam.md) | AWS Organizations, IAM Identity Center, permission sets | 2 evenings |
+| 4 | [PAM fundamentals on a trial](04-pam-trial.md) | Vaulting, session brokering, credential rotation, recording | 3 evenings |
+| 5 | [Just-in-time access with MFA](05-jit-mfa.md) | JIT roles, approval flow, expiry-driven revocation | 2 evenings |
+| 6 | [Lightweight IGA campaign](06-iga-campaign.md) | Identity import, certification, segregation of duties | 2 evenings |
+| 7 | [Secrets management with Vault](07-secrets-vault.md) | AppRole identity, dynamic database credentials, lease expiry | 2 evenings |
+| 8 | [DevOps CI/CD Pipeline Identity](08-devops-identity.md) | GitHub Actions OIDC federation to AWS STS without static keys | 2 evenings |
+| 9 | [Cloud Least-Privilege Mining with CIEM](09-ciem-least-privilege.md) | AWS IAM Access Analyzer and policy right-sizing from CloudTrail | 2 evenings |
+| 10 | [Zero Standing Privileges with Teleport](10-ephemeral-access-teleport.md) | Ephemeral SSH and Kubernetes access via short-lived certificate CA | 2 evenings |
+| 11 | [Customer IAM and Multi-Tenant SaaS](11-ciam-multitenant-sso.md) | Keycloak B2B multi-tenancy, Home Realm Discovery, and tenant-scoped JWTs | 2 evenings |
+| 12 | [Automated PKI and mTLS with Vault](12-vault-pki-mtls.md) | Two-tier Vault CA, 24-hour dynamic certificates, and mutual TLS enforcement | 2 evenings |
+| 13 | [Identity DR and Break-Glass Drill](13-identity-dr-breakglass.md) | Simulated cloud IdP blackout, offline hardware key authentication, and audit preservation | 2 evenings |
+| 14 | [SAML and OIDC Integration](14-saml-oidc-integration.md) | Multi-protocol IdP: SAML and OIDC clients authenticating the same AD user | 2 evenings |
+| 15 | [SCIM Provisioning Automation](15-scim-provisioning.md) | Python SCIM client: user provisioning, group management, deprovisioning | 2 evenings |
+| 16 | [Kerberos Analysis with Wireshark](16-kerberos-wireshark.md) | Live Kerberos ticket capture, dissection, and anomaly detection | 2 evenings |
+| 17 | [Incident Response Simulation](17-ir-simulation.md) | Compromised service account: detection, containment, eradication, recovery | 2 evenings |
 
 Work through them in order. Lab 1 is the foundation for labs 2, 4, and 5; labs 4 and 6 reuse the environment from earlier labs rather than rebuilding it. Labs 7 through 17 run on Docker, Linux VMs, and cloud free tiers, extending the core principles into DevOps, CIEM, modern cloud PAM, PKI automation, disaster recovery, multi-protocol federation, SCIM automation, Kerberos analysis, and incident response.
 

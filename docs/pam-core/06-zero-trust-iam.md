@@ -5,7 +5,7 @@ description: "How just-in-time access and the elimination of standing privilege 
 
 # Zero-Trust IAM Architecture
 
-Zero trust is the operating principle: no implicit trust for any user, device, or network position; every request is verified against identity, device posture, and risk, with continuous monitoring. This page shows what that means for IAM and PAM together, and how the [JIT access](jit-access) pattern is the mechanism that makes "never trust, always verify" work for privileged access.
+Zero trust is the operating principle: no implicit trust for any user, device, or network position; every request is verified against identity, device posture, and risk, with continuous monitoring. This page shows what that means for IAM and PAM together, and how the [JIT access](07-jit-access.md) pattern is the mechanism that makes "never trust, always verify" work for privileged access.
 
 import Drawio from '@site/src/components/Drawio';
 import arch from '!!raw-loader!@site/static/diagrams/zero-trust-iam.drawio';
@@ -28,8 +28,8 @@ Traditional security trusted the perimeter: inside the network, users were trust
 
 The privileged account was the sharpest contradiction of the old model: maximum power, minimum verification, standing forever. Under zero trust, privileged access is the case that needs the most rigorous treatment:
 
-- **JIT, not standing.** The [JIT broker](jit-access) issues time-boxed grants. The box on the diagram labeled "standing privileged accounts (eliminated)" is a target, not a description of reality: the architecture is designed to make it empty.
-- **Brokered, not direct.** Privileged sessions run through the PAM session manager (the [PAM architecture](pam-architecture) page), so the person, the session, and the actions are all attributable.
+- **JIT, not standing.** The [JIT broker](07-jit-access.md) issues time-boxed grants. The box on the diagram labeled "standing privileged accounts (eliminated)" is a target, not a description of reality: the architecture is designed to make it empty.
+- **Brokered, not direct.** Privileged sessions run through the PAM session manager (the [PAM architecture](05-pam-architecture.md) page), so the person, the session, and the actions are all attributable.
 - **Verified at request time.** Even an approved JIT grant is issued only after identity, posture, and risk checks pass at that moment.
 
 ## The components
@@ -60,12 +60,12 @@ The loop is what "never trust, always verify" means operationally: verification 
 
 ## Standing privilege versus zero trust
 
-A standing privileged account violates zero trust twice: it is implicit trust (the holder is trusted by the account's very existence, without per-request verification) and it is invisible trust (no request, no grant, no log entry precedes its use). Eliminating it is not a zero-trust optional extra; it is the load-bearing wall. The mechanics of the elimination are the [JIT patterns](jit-access): ephemeral groups, time-boxed activation, and brokered sessions.
+A standing privileged account violates zero trust twice: it is implicit trust (the holder is trusted by the account's very existence, without per-request verification) and it is invisible trust (no request, no grant, no log entry precedes its use). Eliminating it is not a zero-trust optional extra; it is the load-bearing wall. The mechanics of the elimination are the [JIT patterns](07-jit-access.md): ephemeral groups, time-boxed activation, and brokered sessions.
 
 ## Relationship to the other architecture pages
 
 - [IAM architecture](/docs/protocols-iga/iam-architecture): the full identity estate; this page is the zero-trust reading of its privileged slice.
-- [PAM architecture](pam-architecture): the component design; this page shows where it sits in the trust model.
-- [JIT access](jit-access): the mechanism; this page is why it is non-negotiable.
+- [PAM architecture](05-pam-architecture.md): the component design; this page shows where it sits in the trust model.
+- [JIT access](07-jit-access.md): the mechanism; this page is why it is non-negotiable.
 
-Next: [Just-in-time access](jit-access), the mechanism that removes standing privilege.
+Next: [Just-in-time access](07-jit-access.md), the mechanism that removes standing privilege.

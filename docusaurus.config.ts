@@ -10,6 +10,7 @@ const config: Config = {
 
   url: 'https://iamandpam.ahmeddwalid.me',
   baseUrl: '/',
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
 
@@ -138,16 +139,16 @@ const config: Config = {
         {
           title: 'Sections',
           items: [
-            {label: 'IAM Fundamentals', to: '/docs/fundamentals'},
-            {label: 'Identity Protocols & IGA', to: '/docs/protocols-iga'},
-            {label: 'PAM Core', to: '/docs/pam-core'},
-            {label: 'Vendor Landscape', to: '/docs/vendors'},
-            {label: 'Scenarios & Troubleshooting', to: '/docs/scenarios'},
-            {label: 'Interview Preparation', to: '/docs/interviews'},
-            {label: 'Certifications & Career', to: '/docs/careers'},
-            {label: 'Hands-On Labs & Projects', to: '/docs/labs'},
-            {label: 'Glossary', to: '/docs/reference/glossary'},
-            {label: 'Cheat Sheets', to: '/docs/reference/cheat-sheets'},
+            {label: 'IAM Fundamentals', to: '/docs/fundamentals/'},
+            {label: 'Identity Protocols & IGA', to: '/docs/protocols-iga/'},
+            {label: 'PAM Core', to: '/docs/pam-core/'},
+            {label: 'Vendor Landscape', to: '/docs/vendors/'},
+            {label: 'Scenarios & Troubleshooting', to: '/docs/scenarios/'},
+            {label: 'Interview Preparation', to: '/docs/interviews/'},
+            {label: 'Certifications & Career', to: '/docs/careers/'},
+            {label: 'Hands-On Labs & Projects', to: '/docs/labs/'},
+            {label: 'Glossary', to: '/docs/reference/glossary/'},
+            {label: 'Cheat Sheets', to: '/docs/reference/cheat-sheets/'},
           ],
         },
       ],

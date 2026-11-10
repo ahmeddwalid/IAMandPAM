@@ -45,15 +45,15 @@ Not all privileged accounts deserve the same urgency. A defensible ordering:
 
 ## Control patterns per type
 
-The [core capabilities](core-capabilities) page defines the mechanisms; here is the assignment:
+The [core capabilities](03-core-capabilities.md) page defines the mechanisms; here is the assignment:
 
 - **Local admin**: unique passwords per machine, rotated automatically (LAPS-style), checked out only when needed. Direct login should be rare.
 - **Domain/enterprise admin**: no daily use, ever. Vaulted, broken out only for emergencies or through a brokered session, with dual approval.
 - **Service accounts**: least privilege by design, gMSA or equivalent managed rotation where the platform supports it, an owner who reviews usage quarterly.
-- **Shared accounts**: eliminated where possible, replaced by individual accounts with temporary privilege (the [JIT access](jit-access) pattern). Where they must remain, the session is brokered and recorded so the person, not the account, is attributed.
+- **Shared accounts**: eliminated where possible, replaced by individual accounts with temporary privilege (the [JIT access](07-jit-access.md) pattern). Where they must remain, the session is brokered and recorded so the person, not the account, is attributed.
 - **Break-glass**: sealed in the vault, credentials split between two holders, every use fires an alert, and the account is rotated and re-sealed after use.
 - **Cloud roles**: no standing role assignment; temporary, scoped, time-boxed grants issued on request.
 
 The common thread: the account that must exist is vaulted, the account that must be used is brokered, and the account that can be avoided is eliminated.
 
-Next: [Core capabilities](core-capabilities), the mechanisms these controls are built from.
+Next: [Core capabilities](03-core-capabilities.md), the mechanisms these controls are built from.

@@ -95,4 +95,4 @@ The company IdP federates into IAM Identity Center (SAML), Identity Center maps 
 
 Cloud identity inverts the LDAP lesson from Lab 2: the cloud account structure is the security boundary, and identities are imported into it rather than owning it. Permission sets are the cloud equivalent of roles that the IdP's groups map onto, and session duration is the operationalized version of least privilege: access that expires by default. When interviewers ask "how would you give a consultant 24 hours of read-only access to prod", the answer is the pattern you just built: group membership on the IdP side, a time-boxed permission set on the cloud side.
 
-Next: [Lab 4 - PAM fundamentals on a trial](pam-trial).
+Next: [Lab 4 - PAM fundamentals on a trial](04-pam-trial.md).

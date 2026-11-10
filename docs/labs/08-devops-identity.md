@@ -175,4 +175,4 @@ Workload identity federation eliminates long-lived credentials from CI-CD pipeli
 
 This pattern applies to every cloud provider: AWS (OIDC federation), Azure (workload identity federation), GCP (workload identity federation). The mechanism is the same; only the configuration details differ.
 
-Next: [Secrets Management with Vault](../labs/secrets-vault), because the federation pattern gets the pipeline into the cloud, and the secrets management pattern keeps the pipeline's access to secrets under control.
+Next: [Secrets Management with Vault](07-secrets-vault.md), because the federation pattern gets the pipeline into the cloud, and the secrets management pattern keeps the pipeline's access to secrets under control.

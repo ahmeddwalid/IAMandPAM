@@ -83,4 +83,4 @@ CyberArk's community edition (a free trial via the CyberArk website, license key
 
 PAM's value is not hiding passwords; it is that credentials become operational state nobody knows. The rotation you watched is the same mechanism that in production makes a credential useless within minutes of checkout. The trial also teaches the honest boundary of vendor demos: a community edition proves the mechanics, while production topics like HA and separation of duties between vault operators and admins stay out of scope. When an interviewer asks "what breaks if the vault goes down", your answer should include everything you just saw depend on it.
 
-Next: [Lab 5 - Just-in-time access with MFA](jit-mfa).
+Next: [Lab 5 - Just-in-time access with MFA](05-jit-mfa.md).

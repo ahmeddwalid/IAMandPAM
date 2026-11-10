@@ -94,4 +94,4 @@ docker run -d --name test-app-2 -p 8082:8080 \
 
 Password validation against AD happens through LDAP bind, not by comparing stored copies, which is why password changes take effect instantly. User federation is different from identity brokering: here AD is the source of truth and Keycloak trusts it; in Lab 3 (cloud) the direction reverses, with the cloud acting as the source of truth for its own accounts. And the SSO-session-versus-application-session distinction you just observed is exactly what interviewers probe with "how does SSO work when the user closes the browser?"
 
-Next: [Lab 3 - Cloud IAM federation](cloud-iam).
+Next: [Lab 3 - Cloud IAM federation](03-cloud-iam.md).
