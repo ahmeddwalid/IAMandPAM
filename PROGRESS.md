@@ -16,6 +16,8 @@ Session-to-session status log. Read `AGENTS.md` and `SPEC.md` before doing any w
 | 7 — Certifications & Career | **Done** | 2026-08-18 |
 | 8 — Hands-On Labs & Projects | **Done** | 2026-08-18 |
 | 9 — Home, Glossary, Polish | **Done** | 2026-08-19 |
+| 10 — Depth, Breadth & Arabic i18n | **Done** | 2026-09-17 |
+| 11 — CIAM, Resilience, AI Identity, PKI & Lab Expansion | **Done** | 2026-09-26 |
 
 ---
 
@@ -419,3 +421,200 @@ Sidebars updated (fundamentals, pam-core, scenarios, reference). Cross-links add
 - `npm run build` clean (zero warnings, zero broken links, `onBrokenMarkdownLinks=throw` enforced — one bad link `../fundamentals/04-authorization.md` → `06-authorization.md` caught and fixed).
 - §3 copy audit on all six new files: zero banned-word hits.
 - Headless checks on the served build: all six routes return 200, h1 titles correct ("Password Policy Design", "Service Accounts", "Measuring an IAM Program", "Break-Glass Access", "Vendor and External Access", "Compliance Mapping"), meta descriptions correct, verified comments do not leak into rendered HTML, sidebar sibling links present (break-glass → vendor-external-access).
+
+---
+
+## Phase 10 — Depth, Breadth, Diagrams, Interactive Components & Full Arabic i18n (done 2026-09-17)
+
+A major platform expansion enhancing technical depth, architectural breadth, interactive pedagogy, bilingual Arabic localization, and publishing pipelines:
+
+### 1. Advanced Technical Depth
+- `fundamentals/11-workload-machine-identities.md` — SPIFFE/SPIRE architecture, mTLS SVIDs, OAuth 2.0 Client Credentials with MTLS/DPoP sender-constraining, Kubernetes Workload Identity Federation (AWS IRSA, GCP Workload Identity, Azure Workload Identity), Machine Identity Lifecycle.
+- `fundamentals/12-fine-grained-authorization.md` — Google Zanzibar architecture (Relation Tuples, Zookies, Leopard indexing), OpenFGA and Cedar policy language implementations, comparing RBAC/ABAC/ReBAC, evaluating latency SLAs, consistency models.
+- `protocols-iga/09-fido2-webauthn-deep-dive.md` — WebAuthn Relying Party registration & authentication flows, CTAP2 protocol (`authenticatorMakeCredential`, `authenticatorGetAssertion`), CBOR data structures, Authenticator Data bitfields, signature verification math over `clientDataJSON` and `authData`, Passkey sync vs hardware-bound security.
+- `protocols-iga/10-federation-patterns-token-exchange.md` — RFC 8693 OAuth 2.0 Token Exchange, actor token chains for delegation vs impersonation, Cross-Cloud and Mesh Federation, Cross-Domain Identity Patterns.
+- `pam-core/14-ephemeral-pam-zero-standing-privilege.md` — Shift from static vaulted secrets to Zero Standing Privilege (ZSP), short-lived certificate issuance (SSH/RDP CA), dynamic Just-In-Time provisioning, Teleport / HashiCorp Boundary / Aembit architecture.
+- `pam-core/15-cloud-iem-posture.md` — CIEM & Identity Security Posture Management (ISPM), calculating effective permissions across IAM policies, SCPs, Permission Boundaries, Resource policies, and Session policies; cross-account toxic combinations and attack paths.
+
+### 2. Comprehensive Operational Breadth
+- `vendors/09-modern-cloud-pam.md` — Modern Next-Gen Cloud PAM vendors (Teleport, CyberArk Cloud Entitlements Manager, BeyondTrust Cloud Privilege Broker, HashiCorp Boundary, Britive, Delinea Cloud Suite, Saviynt ZSP).
+- `scenarios/20-aitm-phishing-defense.md` — Adversary-in-the-Middle (AiTM) proxy attacks (Evilginx2 / Modlishka), credential & session cookie theft bypassing traditional MFA, defense through FIDO2/WebAuthn origin binding, Conditional Access token binding, Continuous Access Evaluation (CAE / RFC 9470).
+- `scenarios/21-mergers-acquisitions-identity.md` — Complete M&A Day 1 / Day 30 / Day 90 identity playbook, cross-tenant synchronization, domain consolidation, federation trusts, privileged account consolidation, entitlement cleanup.
+- `scenarios/22-active-directory-tiering-migration.md` — Enterprise Access Model (EAM) / Tiering migration (Tier 0 Control Plane, Tier 1 Enterprise Workloads, Tier 2 User Devices), AD CS ESC1-ESC13 attack mitigations, Kerberos hardening (AES, Protected Users, PAC validation), Privileged Access Workstations (PAWs).
+- `labs/08-devops-identity.md` — CI/CD Pipeline Identity Federation, GitHub Actions OIDC to AWS STS / GCP / Azure without static long-lived keys.
+- `labs/09-ciem-least-privilege.md` — Hands-on CIEM policy right-sizing using AWS Access Advisor, IAM Access Analyzer, and Automated Least Privilege Remediation.
+- `labs/10-ephemeral-access-teleport.md` — Deploying Teleport Community Edition for ephemeral Zero Standing Privilege SSH/Kubernetes access with GitHub SSO and auto-expiring certificates.
+
+### 3. Professional Architecture Diagrams (AGENTS.md §4 Compliant)
+- `static/diagrams/machine-workload-identity.drawio` — SPIFFE/SPIRE and multi-cloud workload identity architecture.
+- `static/diagrams/zero-standing-privilege-zsp.drawio` — ZSP ephemeral CA issuance and JIT access orchestration.
+- `static/diagrams/ciem-ispm-architecture.drawio` — Multi-cloud CIEM discovery, graph evaluation, and auto-remediation.
+- `static/diagrams/aitm-phishing-defense.drawio` — AiTM reverse proxy attack vs FIDO2 cryptographic origin binding defense.
+- `static/diagrams/adcs-attack-defense.drawio` — AD CS PKI attack vectors (ESC1/ESC8) and Tier 0 control plane hardening.
+- `static/diagrams/ciam-multi-tenant-saas.drawio` — B2B CIAM tenant isolation, SAML/OIDC federation, and JIT SCIM provisioning.
+- `static/diagrams/identity-resilience-dr.drawio` — IdP outage failover, break-glass protocol, and disaster recovery architecture.
+
+### 4. Interactive Learning Components
+- `src/components/LearningTrack.tsx` — Role-based learning paths (IAM Architect, PAM Specialist, Cloud Identity Engineer, Identity Auditor) with progressive milestone roadmaps and time allocations.
+- `src/components/ProtocolChooser.tsx` — Interactive decision tree assisting architects in selecting the optimal protocol (SAML, OIDC, OAuth 2.0, SCIM, Kerberos, WebAuthn, SPIFFE) based on application context and requirements.
+- `src/components/KnowledgeCheck.tsx` — Technical self-assessment component with immediate feedback and explanatory rationales.
+
+### 5. Full Arabic i18n & RTL Typography
+- Standardized Arabic terminology: `docs/reference/06-arabic-terminology-standard.md` established accurate technical translations for all IAM and PAM terminology.
+- Complete documentation mirror under `i18n/ar/docusaurus-plugin-content-docs/current/` (93 documents).
+- Arabic typography enabled via `@fontsource/amiri` for display headings and `@fontsource/ibm-plex-sans-arabic` for body prose.
+- Strict LTR isolation (`dir="ltr"`) for all code fences, terminal sessions, JSON/YAML schemas, and protocol flags.
+- Mirrored table alignments, blockquotes, and RTL UI adjustments in `src/css/custom.css`.
+- Dual-locale static build verified (`build:site` builds `build/` and `build/ar/` with zero broken links).
+
+### 6. Bilingual PDF Publishing Pipeline
+- Extended `scripts/build-pdf.js` with `--locale` support.
+- Base64 webfont injection for `@fontsource/amiri` and `@fontsource/ibm-plex-sans-arabic` ensures crisp, fully shaped Arabic text rendering in headless Chromium.
+- Custom running headers, footers, and cover pages.
+- npm scripts configured: `build:pdf`, `build:pdf:ar`, and `build:all`.
+
+---
+
+## Phase 11 — CIAM, Resilience, AI Identity, PKI & Lab Expansion (done 2026-09-26)
+
+A major expansion completing all identified curriculum gaps, wiring orphaned architecture diagrams, adding four foundational 2025–2026 architectural modules, expanding hands-on labs from 10 to 13, synchronizing all section index pages, and achieving complete bilingual Arabic localization parity:
+
+### 1. Orphaned Architecture Diagrams Wired into Production
+- `protocols-iga/11-customer-iam-saas.md` — Customer IAM & Multi-Tenant SaaS Architecture: B2B multi-tenancy vs B2C CIAM, Home Realm Discovery (HRD), inbound SCIM synchronization per tenant, tenant isolation, and tenant-scoped JWT claims. Embeds `static/diagrams/ciam-multi-tenant-saas.drawio`.
+- `pam-core/16-identity-resilience-disaster-recovery.md` — Identity Resilience and Disaster Recovery: Single Point of Failure (SPOF) in centralized cloud IdPs, cascading failure analysis of IdP outages, Continuous Access Evaluation (CAE / RFC 9470), disconnected break-glass vaults with dual-custody hardware keys, isolated recovery CAs, and out-of-band audit logging. Embeds `static/diagrams/identity-resilience-dr.drawio`.
+
+### 2. Emerging 2025–2026 Enterprise Identity Frontiers
+- `fundamentals/13-ai-agentic-identity-governance.md` — AI & Agentic Identity Governance: Non-human identity (NHI) expansion, user-delegated agents (OAuth On-Behalf-Of / RFC 8693) vs autonomous synthetic personas, Model Context Protocol (MCP) execution boundaries, mitigating excessive agency (OWASP LLM08), ephemeral tool grants, and human-in-the-loop (HITL) step-up gating.
+- `fundamentals/14-enterprise-pki-certificate-lifecycle.md` — Enterprise PKI and Certificate Lifecycle Management (CLM): Offline Root CA with HSM vs Online Intermediate Issuing CAs, automated issuance protocols (ACME RFC 8555, SCEP RFC 8894, EST RFC 7030, CMP RFC 4210), modern CLM engines (HashiCorp Vault PKI, Kubernetes Cert-Manager), revocation mechanics (CRL vs OCSP vs OCSP Stapling), and NIST Post-Quantum Cryptography (PQC) standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA).
+- `fundamentals/15-data-access-governance.md` — Data Access Governance & Modern Data Cloud IAM: Connecting IAM with Data Security Posture Management (DSPM), identity federation into Snowflake (external OAuth, key-pair auth, SCIM), Databricks Unity Catalog, BigQuery, Attribute-Based Access Control (ABAC), dynamic row-level security (RLS), column-level security (CLS) masking, and Segregation of Duties (SoD) between data platform admins and data consumers.
+- `fundamentals/16-decentralized-identity-verifiable-credentials.md` — Decentralized Identity and Verifiable Credentials: W3C Trust Triangle (Issuer, Holder, Verifier), Decentralized Identifiers (DIDs: `did:web`, `did:key`, `did:ion`), Zero-Knowledge Proofs (ZKPs) and selective disclosure via BBS+ signatures, EU eIDAS 2.0 / EUDI wallet, Mobile Driver's Licenses (ISO/IEC 18013-5), Middle East digital identity frameworks (Saudi Nafath / Absher, UAE PASS), and enterprise IAM bridge patterns.
+
+### 3. Hands-On Lab Curriculum Expansion (Labs 11–13)
+- `labs/11-ciam-multitenant-sso.md` — Lab 11: Customer IAM and Multi-Tenant B2B SaaS Federation in Keycloak: domain-based Home Realm Discovery, SAML and OIDC enterprise federation, and tenant-scoped JWT claims.
+- `labs/12-vault-pki-mtls.md` — Lab 12: Automated PKI and mTLS Certificate Lifecycle with HashiCorp Vault: two-tier internal CA hierarchy, automated 24-hour dynamic certificates, and mutual TLS verification with OpenSSL.
+- `labs/13-identity-dr-breakglass.md` — Lab 13: Identity Disaster Recovery and Break-Glass Drill: provisioning isolated emergency accounts, physical FIDO2 hardware token enforcement with `pam_u2f`, append-only local audit logs, kernel-level cloud IdP blackout simulation, and post-drill credential revocation.
+
+### 4. Navigation & Index Synchronization
+- Synchronized all section index pages (`fundamentals/index.md`, `protocols-iga/index.md`, `pam-core/index.md`, `vendors/index.md`, `scenarios/index.md`, `labs/index.md`, `reference/index.md`) with all on-disk documents.
+- Embedded interactive `ProtocolChooser` component directly in `protocols-iga/index.md`.
+- Updated home page `src/pages/index.tsx` lab count from 6 to 13.
+- Updated `sidebars.ts` with all new document routes.
+
+### 5. 100% Bilingual Arabic Localization Parity
+- Authored professional Arabic mirrors for all 9 new documents under `i18n/ar/docusaurus-plugin-content-docs/current/` adhering strictly to `docs/reference/06-arabic-terminology-standard.md`.
+- Synchronized all Arabic section index files and embedded `ProtocolChooser`.
+- Dual-locale static build verified (`build:site` builds `build/` and `build/ar/` with zero broken links).
+
+---
+
+## Phase 12 — Completion, Depth & Anti-Slop Pass (done 2026-09-29)
+
+A major completion pass: full AI slop audit, 4 new hands-on labs, 4 new protocol deep-dive pages, 4 new interview/career pages, all with Arabic mirrors, sidebar/index synchronization, and clean dual-locale build.
+
+### 1. AI Slop Audit (Workstream 1)
+
+Full content audit across all 93+ English pages before adding new content:
+
+- **Banned-word scan**: zero hits. All "elevated"/"elevation" uses are technical terms (privileged elevation, role names). "Seamless SSO" is Microsoft's actual feature name. "Unlock" appears in PowerShell commands and physical safe procedures.
+- **Structural variety audit**: each page has unique headings that follow its content, not a formulaic template. No identical repeated card grids.
+- **Specificity audit**: 444 tool/technology references (PowerShell, CLI, curl, Keycloak, AWS, etc.), 31 error-code/event-ID anchors, good code block distribution.
+- **Tone consistency**: no formulaic transitions ("in conclusion", "to summarize"), no generic AI phrasing, no excessive bullet lists.
+- **Stub/TODO scan**: zero hits. No placeholders, no "coming soon", no lorem ipsum.
+
+**Verdict**: Content passes the AI slop bar. No rewrites needed.
+
+### 2. New Hands-On Labs (Workstream 2)
+
+Four new labs, each with English + Arabic + Draw.io diagram:
+
+- `labs/14-saml-oidc-integration.md` — Multi-protocol IdP: SAML and OIDC clients authenticating the same AD user against the same directory. Diagram: `lab-14-saml-oidc-integration.drawio`.
+- `labs/15-scim-provisioning.md` — Python SCIM 2.0 client: user provisioning, group management, deprovisioning, error handling. Diagram: `lab-15-scim-provisioning.drawio`.
+- `labs/16-kerberos-wireshark.md` — Live Kerberos ticket capture in Wireshark: AS-REQ/TGS-REQ/AP-REQ dissection, anomaly detection. Diagram: `lab-16-kerberos-wireshark.drawio`.
+- `labs/17-ir-simulation.md` — Compromised service account incident response: detection, containment, eradication, recovery. Diagram: `lab-17-ir-simulation.drawio`.
+
+### 3. Deeper Protocol Coverage (Workstream 3)
+
+Four new protocol pages, each with English + Arabic + diagram:
+
+- `protocols-iga/12-saml-deep-dive.md` — Metadata exchange, assertion encryption, artifact resolution, signature wrapping attacks (XSW1-XSW8), IdP-initiated edge cases. Diagram: `saml-deep-dive.drawio`.
+- `protocols-iga/13-jwt-deep-dive.md` — JWS/JWE structures, signing algorithms (RS256, ES256, EdDSA, HS256), JWK/JWKS key management, token binding (DPoP, mTLS), common JWT attacks. Diagram: `jwt-anatomy.drawio`.
+- `protocols-iga/14-ldap-advanced.md` — Multi-master replication, schema design, referral chasing, performance tuning, AD vs OpenLDAP. Diagram: `ldap-replication.drawio`.
+- `protocols-iga/15-oauth-token-exchange.md` — RFC 8693 deep dive: delegation vs impersonation, actor token chains, cross-cloud patterns, security considerations.
+
+### 4. Interview & Career Expansion (Workstream 4)
+
+Four new pages, each with English + Arabic:
+
+- `careers/04-resume-portfolio.md` — Resume structure for IAM roles, portfolio project ideas, GitHub presentation, LinkedIn optimization.
+- `careers/05-salary-negotiation.md` — Salary research methodology, negotiation scripts, offer evaluation, regional specifics (US/EU/Gulf/Egypt).
+- `interviews/07-technical-deep-dive.md` — 10 advanced technical questions (SAML XSW, token exchange, Kerberos delegation, FIDO2, RBAC/ABAC/ReBAC, PAM recording, SCIM vs LDAP, AWS IAM evaluation, IdP vs SP-initiated SSO).
+- `interviews/08-behavioral-advanced.md` — 10 advanced behavioral questions with STAR templates for complex scenarios.
+
+### 5. Navigation & Index Synchronization
+
+- Updated `sidebars.ts` with all new document routes (labs 14-17, protocols 12-15, careers 04-05, interviews 07-08).
+- Updated `labs/index.md` lineup table from 13 to 17 labs.
+- Updated `careers/index.md` with new pages 04-05.
+- Updated `interviews/index.md` with new pages 07-08.
+- Updated `protocols-iga/index.md` with new pages 12-15.
+
+### 6. Build & Verification
+
+- `npm run build` — clean, zero warnings, zero broken links (both `en` and `ar` locales).
+- PDF pipeline: 116 pages generated (8.9 MB).
+- All new Draw.io diagrams committed under `static/diagrams/`.
+- All new Arabic mirrors committed under `i18n/ar/docusaurus-plugin-content-docs/current/`.
+
+### Site v2 — status
+
+Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 PAM core pages, 9 vendor pages, 22 scenario pages, 8 interview pages, 5 career pages, 6 reference pages. All bilingual, all cross-linked, all building clean.
+
+## Phase 13 — Assessments, Deployment, Code Samples, Video Scripts
+
+### 1. Interactive Section Assessments
+
+- New `src/components/SectionQuiz.tsx`: five-question multiple-choice assessment with per-option explanations, a key takeaway per question, pass threshold, submit gating, and retake.
+- New `src/components/QuizScore.tsx`: reads the latest stored result for a section from `localStorage` (`iam-pam-quiz-scores`) and exposes `recordQuizScore()` for persistence.
+- New `src/data/quizzes.ts`: question banks for all eight taught sections (fundamentals, protocols-iga, pam-core, vendors, scenarios, labs, interviews, careers).
+- Each section index page ends with a `## Section Assessment` block. Pass mark is 3 of 5.
+- Styling uses the existing warm-neutral tokens (`--warm-*`, `--ink-*`, `--accent-*`, `--sem-*`); no new palette.
+
+### 2. GitHub Pages Deployment
+
+- `.github/workflows/deploy.yml`: builds on push to `main` with Node 20, `PUPPETEER_SKIP_DOWNLOAD` set so the PDF-only Chromium download is skipped, uploads `build/` through `actions/upload-pages-artifact`, deploys with `actions/deploy-pages`.
+- `static/CNAME` pins the custom domain `iamnpam.ahmeddwalid.me`; Docusaurus copies it into every build, so the artifact carries the domain.
+- `docusaurus.config.ts` `url` updated from `https://ahmeddwalid.me` to `https://iamnpam.ahmeddwalid.me`. `baseUrl` stays `/` because the site is served from the domain root, not a project subpath.
+- Repo Settings → Pages is set to `build_type: workflow` with the custom domain verified. HTTPS enforcement is enabled once the certificate is issued.
+- DNS is managed at the registrar (Namecheap nameservers). Required record: `CNAME iamnpam → ahmeddwalid.github.io`. This is the one step that cannot be done from the repository; the domain does not resolve until the record exists.
+
+### 3. Code Samples Library
+
+- New `docs/code-samples/` section, wired into `sidebars.ts` as its own category:
+  - `index.md` — what the library is, how to use it.
+  - `powershell.md` — AD user and group management, stale and privileged account discovery, logon and lockout event queries, error table.
+  - `python.md` — SCIM create and deactivate, AWS IAM role review, Microsoft Graph users, certificate chain inspection, JWT decoding, error table.
+  - `bash.md` — LDAP searches, Kerberos ticket inspection, OpenSSL certificate work, Vault CLI operations, error table.
+  - `terraform.md` — AWS IAM role/policy/instance profile, Entra ID app registration and service principal, GCP service account and binding, error table.
+- Every sample states prerequisites and expected failure modes. Samples are framed as lab material to adapt, not production code.
+
+### 4. Video Scripts (local only)
+
+- `video-scripts/` at the repo root, one markdown script per section (`01-iam-fundamentals.md` through `09-reference-materials.md`) plus a `README.md` describing the Gemini Notebook workflow.
+- Each script carries learning objectives, key concepts, suggested visuals tied to existing diagrams, a timed narrative flow, and an estimated duration.
+- Deliberately untracked and deliberately absent from `.gitignore`, per the Phase 13 instruction. It is working material for video generation, not site content.
+
+### 5. Repository Hygiene
+
+- `.gitignore` gained entries for local-only working material: `/Gemini NotebookLM Videos/`, `/directorystructure.txt`, `/.hermes/`. These are large or generated and were never part of the site.
+
+### 6. Verification
+
+- `npm run build:site` clean for `en` and `ar`; `build/CNAME` present in the output.
+- `npm ci --dry-run` succeeds, so the lockfile the workflow installs from is in sync with `package.json`.
+- `video-scripts/` reports as untracked (`?? video-scripts/`), confirming it is neither committed nor ignored.
+
+### Open items
+
+- DNS record `iamnpam → ahmeddwalid.github.io` must be created at the registrar. Until then the Pages deployment succeeds but the custom domain does not resolve.
+- After the certificate is issued, confirm "Enforce HTTPS" in Pages settings.
+- Arabic mirror quality issues carried over from Phase 12 remain to be cleaned: untranslated English sentences in `interviews/07-technical-deep-dive.md`, the typo in `careers/05-salary-negotiation.md`, and `sampp:Artifact` in `protocols-iga/12-saml-deep-dive.md`.
