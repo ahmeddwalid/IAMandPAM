@@ -22,6 +22,13 @@ The bank is built in waves. [Wave 1](01-conceptual-questions.md) covers the conc
 
 The treatment is intentionally opinionated where the industry has a clear practice, such as the zero standing privilege rule. Interviewers respond better to a candidate with a position than a candidate who lists options.
 
+## Section Assessment
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES } from '@site/src/data/quizzes';
+
+<SectionQuiz title={QUIZZES.interviews.title} questions={QUIZZES.interviews.questions} passingScore={3} />
+
 ## Pages in this section
 
 1. [Wave 1: Conceptual Questions](01-conceptual-questions.md): fifteen fundamentals questions.
@@ -30,3 +37,5 @@ The treatment is intentionally opinionated where the industry has a clear practi
 4. [Wave 2: Architecture Questions](04-architecture-questions.md): ten architecture design questions.
 5. [Wave 3: Behavioral Questions](05-behavioral-questions.md): ten behavioral questions with STAR templates.
 6. [Cloud Identity Questions](06-cloud-questions.md): ten cloud-specific questions on Entra ID, AWS IAM, and workload identity.
+7. [Advanced Technical Questions](07-technical-deep-dive.md): ten advanced technical questions on SAML signature wrapping, token exchange, Kerberos delegation, and JWT security.
+8. [Advanced Behavioral Questions](08-behavioral-advanced.md): ten advanced behavioral questions with STAR templates for complex scenarios.

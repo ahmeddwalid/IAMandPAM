@@ -18,6 +18,11 @@ This section turns the concepts into work. The [scenarios](01-onboarding.md) fol
 5. [Access certification campaign](05-certification-campaign.md): running the IGA loop as a real project.
 6. [MFA enrollment and recovery](06-mfa-enrollment-recovery.md): first enrollment, re-enrollment, lost device.
 7. [SaaS SSO integration](07-saas-sso-integration.md): onboarding a new cloud application with SAML and SCIM.
+8. [Break-Glass Emergency Access](18-break-glass-access.md): account design, physical safe custody, activation checklist, and quarterly testing.
+9. [Vendor and External Access](19-vendor-external-access.md): B2B guest federation, sponsored lifecycle, and PAM session brokering.
+10. [Adversary-in-the-Middle (AiTM) Phishing Defense](20-aitm-phishing-defense.md): reverse proxy session cookie theft, FIDO2 origin binding, and token binding.
+11. [Mergers, Acquisitions, and Divestitures](21-mergers-acquisitions-identity.md): Day 1, Day 30, Day 90 identity playbook, cross-tenant sync, and forest trusts.
+12. [Active Directory Tiering and Enterprise Access Model](22-active-directory-tiering-migration.md): Tier 0 control plane isolation, AD CS ESC mitigations, and PAWs.
 
 ### Troubleshooting
 
@@ -40,3 +45,10 @@ This section turns the concepts into work. The [scenarios](01-onboarding.md) fol
 The scenario pages assume the concepts from [IAM fundamentals](/docs/fundamentals/what-is-iam) and [PAM core](/docs/pam-core/what-is-pam). The troubleshooting pages are reference material: read the ones for technologies you operate. The incident pages are playbooks: they are deliberately prescriptive because a team under time pressure should not have to design a process.
 
 Start with [Onboarding (Joiner)](01-onboarding.md).
+
+## Section Assessment
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES } from '@site/src/data/quizzes';
+
+<SectionQuiz title={QUIZZES.scenarios.title} questions={QUIZZES.scenarios.questions} passingScore={3} />

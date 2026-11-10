@@ -1,11 +1,11 @@
 ---
 title: Hands-On Labs
-description: "Seven home-lab projects that turn the theory on this site into hands-on practice: a lab AD and Keycloak setup, SSO federation, cloud IAM federation, a PAM trial, just-in-time access with MFA, a lightweight IGA workflow, and secrets management with Vault."
+description: "Hands-on lab projects that turn the theory on this site into practice: AD and Keycloak setup, SSO federation, cloud IAM, PAM trials, JIT access, IGA, Vault secrets, DevOps CI/CD identity, CIEM least privilege, and Teleport ephemeral access."
 ---
 
 # Hands-On Labs
 
-Theory earns credibility when you can prove it in a lab. These seven projects are designed to run on a single laptop with free tools: VirtualBox, Windows Server with Active Directory, Keycloak as a self-hosted identity provider, the free tier of AWS, and HashiCorp Vault on Docker. Each project states what it proves, how long it takes, and exactly what to do step by step, with verification checks so you know the lab actually worked.
+Theory earns credibility when you can prove it in a lab. These projects are designed to run on a single laptop with free and open-source tools: VirtualBox, Windows Server with Active Directory, Keycloak, AWS Free Tier, HashiCorp Vault on Docker, and Teleport Community Edition. Each project states what it proves, how long it takes, and exactly what to do step by step, with verification checks so you know the lab actually worked.
 
 ## The lab lineup
 
@@ -18,8 +18,18 @@ Theory earns credibility when you can prove it in a lab. These seven projects ar
 | 5 | [Just-in-time access with MFA](jit-mfa) | JIT roles, approval flow, expiry-driven revocation | 2 evenings |
 | 6 | [Lightweight IGA campaign](iga-campaign) | Identity import, certification, segregation of duties | 2 evenings |
 | 7 | [Secrets management with Vault](secrets-vault) | AppRole identity, dynamic database credentials, lease expiry | 2 evenings |
+| 8 | [DevOps CI/CD Pipeline Identity](devops-identity) | GitHub Actions OIDC federation to AWS STS without static keys | 2 evenings |
+| 9 | [Cloud Least-Privilege Mining with CIEM](ciem-least-privilege) | AWS IAM Access Analyzer and policy right-sizing from CloudTrail | 2 evenings |
+| 10 | [Zero Standing Privileges with Teleport](ephemeral-access-teleport) | Ephemeral SSH and Kubernetes access via short-lived certificate CA | 2 evenings |
+| 11 | [Customer IAM and Multi-Tenant SaaS](ciam-multitenant-sso) | Keycloak B2B multi-tenancy, Home Realm Discovery, and tenant-scoped JWTs | 2 evenings |
+| 12 | [Automated PKI and mTLS with Vault](vault-pki-mtls) | Two-tier Vault CA, 24-hour dynamic certificates, and mutual TLS enforcement | 2 evenings |
+| 13 | [Identity DR and Break-Glass Drill](identity-dr-breakglass) | Simulated cloud IdP blackout, offline hardware key authentication, and audit preservation | 2 evenings |
+| 14 | [SAML and OIDC Integration](saml-oidc-integration) | Multi-protocol IdP: SAML and OIDC clients authenticating the same AD user | 2 evenings |
+| 15 | [SCIM Provisioning Automation](scim-provisioning) | Python SCIM client: user provisioning, group management, deprovisioning | 2 evenings |
+| 16 | [Kerberos Analysis with Wireshark](kerberos-wireshark) | Live Kerberos ticket capture, dissection, and anomaly detection | 2 evenings |
+| 17 | [Incident Response Simulation](ir-simulation) | Compromised service account: detection, containment, eradication, recovery | 2 evenings |
 
-Work through them in order. Lab 1 is the foundation for labs 2, 4, and 5; labs 4 and 6 reuse the environment from earlier labs rather than rebuilding it. Lab 7 runs on Docker alone, but its concepts build directly on labs 4 and 6 (credential vaulting and governance loops).
+Work through them in order. Lab 1 is the foundation for labs 2, 4, and 5; labs 4 and 6 reuse the environment from earlier labs rather than rebuilding it. Labs 7 through 17 run on Docker, Linux VMs, and cloud free tiers, extending the core principles into DevOps, CIEM, modern cloud PAM, PKI automation, disaster recovery, multi-protocol federation, SCIM automation, Kerberos analysis, and incident response.
 
 ## What the tools cost
 
@@ -45,3 +55,10 @@ See the [site topic map](/) for where these labs sit in the overall learning pat
 - Confirm virtualization is enabled in your laptop's BIOS/UEFI and that you can run a 64-bit guest VM.
 - Install VirtualBox and Docker Desktop first; both have straightforward installers on Windows, macOS, and Linux.
 - Give yourself a full evening for the first lab. Nothing here is hard, but downloads of evaluation ISOs are large and virtualization setup has many small steps.
+
+## Section Assessment
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES } from '@site/src/data/quizzes';
+
+<SectionQuiz title={QUIZZES.labs.title} questions={QUIZZES.labs.questions} passingScore={3} />

@@ -22,10 +22,18 @@ The identity market is split into a few distinct categories, and each category s
 6. [Cloud IAM](06-cloud-iam.md): AWS, Google Cloud, and Azure native IAM.
 7. [Governance tools](07-governance-tools.md): SailPoint, Okta Identity Governance, and Saviynt.
 8. [Comparison and evaluation](08-vendor-comparison.md): how to compare products, and what to check before buying.
+9. [Modern Cloud PAM and Zero Standing Privilege](09-modern-cloud-pam.md): Teleport, HashiCorp Boundary, Britive, and cloud-native JIT broker architecture.
 
 ## Suggestion order
 
 Start with [The vendor landscape](01-major-vendors.md), then read the two or three pages closest to your interest. If you are preparing for interviews, read all of them: the comparison page ([comparison and evaluation](08-vendor-comparison.md)) is where the interview questions about "which tool when" are answered.
+
+## Section Assessment
+
+import SectionQuiz from '@site/src/components/SectionQuiz';
+import { QUIZZES } from '@site/src/data/quizzes';
+
+<SectionQuiz title={QUIZZES.vendors.title} questions={QUIZZES.vendors.questions} passingScore={3} />
 
 ## Fact-checking note
 
