@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from '@docusaurus/Link';
 
 interface Step {
   title: string;
@@ -27,37 +28,37 @@ const TRACKS: Track[] = [
     steps: [
       {
         title: 'OAuth 2.0 & OIDC Core Mechanics',
-        link: '/docs/protocols-iga/oauth2',
+        link: '/docs/protocols-iga/oauth2/',
         duration: '1 week',
         focus: 'Authorization code with PKCE, token validation, client credentials',
       },
       {
         title: 'Cloud IAM & Multi-Cloud Federation',
-        link: '/docs/vendors/cloud-iam',
+        link: '/docs/vendors/cloud-iam/',
         duration: '1 week',
         focus: 'AWS IAM Identity Center, GCP Workforce Pools, Azure Managed Identities',
       },
       {
         title: 'Workload & Machine Identities',
-        link: '/docs/fundamentals/workload-machine-identities',
+        link: '/docs/fundamentals/workload-machine-identities/',
         duration: '1 week',
         focus: 'SPIFFE/SPIRE, Kubernetes ServiceAccount token projections, mTLS',
       },
       {
         title: 'Lab: Secrets Management with Vault',
-        link: '/docs/labs/secrets-vault',
+        link: '/docs/labs/secrets-vault/',
         duration: '3 days',
         focus: 'AppRole authentication, dynamic PostgreSQL credentials with lease expiry',
       },
       {
         title: 'Lab: DevOps CI/CD Workload Identity',
-        link: '/docs/labs/devops-identity',
+        link: '/docs/labs/devops-identity/',
         duration: '3 days',
         focus: 'GitHub Actions OIDC federation into AWS without static secret keys',
       },
       {
         title: 'Cloud Identity Interview Bank',
-        link: '/docs/interviews/cloud-questions',
+        link: '/docs/interviews/cloud-questions/',
         duration: '1 week',
         focus: 'Service principals vs managed identities, permission boundaries, CA policies',
       },
@@ -73,37 +74,37 @@ const TRACKS: Track[] = [
     steps: [
       {
         title: 'Privileged Access Fundamentals',
-        link: '/docs/pam-core/what-is-pam',
+        link: '/docs/pam-core/what-is-pam/',
         duration: '1 week',
         focus: 'The capability test, standing privilege elimination, vault vs session management',
       },
       {
         title: 'Complete PAM Architecture',
-        link: '/docs/pam-core/pam-architecture',
+        link: '/docs/pam-core/pam-architecture/',
         duration: '1 week',
         focus: 'PSM broker, CPM engine, target isolation, SIEM integration, HA/DR failover',
       },
       {
         title: 'Identity Attack & Defense Techniques',
-        link: '/docs/pam-core/attack-defense',
+        link: '/docs/pam-core/attack-defense/',
         duration: '1 week',
         focus: 'Kerberoasting, DCSync, Pass-the-Hash, token theft, detection telemetry',
       },
       {
         title: 'Vendor Architectures (CyberArk, Delinea, BeyondTrust)',
-        link: '/docs/vendors/cyberark',
+        link: '/docs/vendors/cyberark/',
         duration: '1–2 weeks',
         focus: 'Deep component topologies, distributed engines, cloud broker zones',
       },
       {
         title: 'Incident Playbooks: Privileged Account Compromise',
-        link: '/docs/scenarios/incident-compromised-privileged-account',
+        link: '/docs/scenarios/incident-compromised-privileged-account/',
         duration: '3 days',
         focus: 'Triage order, emergency credential rotation, blast radius containment',
       },
       {
         title: 'Lab: Hands-on PAM Deployment',
-        link: '/docs/labs/pam-trial',
+        link: '/docs/labs/pam-trial/',
         duration: '1 week',
         focus: 'Vaulting, PSM-brokered RDP/SSH, CPM auto-rotation, recording inspection',
       },
@@ -119,37 +120,37 @@ const TRACKS: Track[] = [
     steps: [
       {
         title: 'Identity Lifecycle (JML) Engineering',
-        link: '/docs/fundamentals/identity-lifecycle',
+        link: '/docs/fundamentals/identity-lifecycle/',
         duration: '1 week',
         focus: 'State transitions, event-driven HR triggers, orphan account prevention',
       },
       {
         title: 'IGA Capabilities & SoD Matrices',
-        link: '/docs/protocols-iga/iga',
+        link: '/docs/protocols-iga/iga/',
         duration: '1 week',
         focus: 'Access certifications, role mining algorithms, toxic combinations',
       },
       {
         title: 'SCIM 2.0 In-Depth Provisioning',
-        link: '/docs/protocols-iga/scim',
+        link: '/docs/protocols-iga/scim/',
         duration: '1 week',
         focus: 'Schema extensions, PATCH operations, bulk synchronization, idempotency',
       },
       {
         title: 'Regulatory Compliance Mapping',
-        link: '/docs/reference/compliance-mapping',
+        link: '/docs/reference/compliance-mapping/',
         duration: '1 week',
         focus: 'SOX 404, PCI DSS 4.0, ISO 27001:2022, NIST CSF 2.0 audit controls',
       },
       {
         title: 'Measuring an IAM Program (Metrics)',
-        link: '/docs/pam-core/iam-metrics',
+        link: '/docs/pam-core/iam-metrics/',
         duration: '3 days',
         focus: 'Operational definitions, drift metrics, coverage formulas without fake benchmarks',
       },
       {
         title: 'IAM Architecture Interview Bank',
-        link: '/docs/interviews/architecture-questions',
+        link: '/docs/interviews/architecture-questions/',
         duration: '1–2 weeks',
         focus: 'Enterprise migration design, hybrid directory topologies, break-glass strategies',
       },
@@ -305,8 +306,8 @@ export default function LearningTrack() {
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <a
-                  href={step.link}
+                <Link
+                  to={step.link}
                   style={{
                     fontWeight: 600,
                     fontSize: '0.95rem',
@@ -315,7 +316,7 @@ export default function LearningTrack() {
                   }}
                 >
                   {step.title}
-                </a>
+                </Link>
                 <span style={{ fontSize: '0.8rem', color: 'var(--ink-4)', fontStyle: 'italic' }}>{step.duration}</span>
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--ink-3)', marginTop: '0.2rem' }}>

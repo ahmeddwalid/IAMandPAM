@@ -618,6 +618,7 @@ Complete. 114 English docs + 114 Arabic mirrors, 17 labs, 15 protocol pages, 16 
 - `trailingSlash: true` is now explicit. GitHub Pages serves `/docs/x/` and 301-redirects `/docs/x`, so the previous default produced a canonical tag and sitemap entry that redirected to themselves. Both now carry the trailing slash.
 - Enabling it exposed 68 extensionless relative links, the kind that resolve against the page directory and break the moment the page path becomes a directory. All were rewritten to real file links (`jit-access` becomes `05-jit-access.md`), which Docusaurus resolves at build time and localizes per route. 109 link targets changed across both locales; zero remain unresolved.
 - The 46 hardcoded `to:` targets in the homepage and footer now end in a slash as well, so navigation does not bounce through a redirect.
+- `LearningTrack` rendered its step links as raw `<a href>` elements, so the Arabic homepage sent six cards to English pages. It now uses Docusaurus's `Link`, which resolves the locale route; the rendered Arabic homepage contains no `/docs/` links outside `/ar/`.
 
 ### 7. Verification
 - `npm run build:site` clean for `en` and `ar`; `build/CNAME` present in the output.
